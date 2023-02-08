@@ -1,0 +1,108 @@
+import 'SimplePDL.ecore'
+
+package simplepdl
+
+/*
+	 * Nom valide Process
+	 */
+
+/* Nom valide Process */
+context Process
+inv validName('Invalid name: ' + self.name):
+	self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+
+/*
+	 * Non réflexivité des dépendances
+	 */
+	
+/* Non réflexivité des dépendances */
+context ProcessElement
+def: process(): Process =
+	Process.allInstances()
+		->select(p | p.processElements->includes(self))
+		->asSequence()->first()
+		
+context WorkSequence 
+inv predecessorAndSuccessorInSameProcess('Activities not in the same process : '
+	+ self.predecessor.name + ' in ' + self.predecessor.process().name + ' and '
+	+ self.successor.name + ' in ' + self.successor.process().name
+):
+	self.process() = self.successor.process()
+	and self.process() = self.predecessor.process()
+
+/* Non réflexivité des successeurs  */
+context WorkSequence 
+inv notSamePredecessorAndSuccessor(
+	'Successor ' + self.successor.name + ' and predecessor ' + self.predecessor.name + ' should be different'):
+	self.predecessor <> self.successor
+
+/*
+	 * Nom différents pour des sous-activités différentes
+	 */
+	
+/*  Nom différents pour des sous-activités différentes */
+context WorkDefinition 
+inv uniqueName('Name already used: ' + self.name):
+	self.Process.processElements
+    ->select(pe | pe.oclIsKindOf(WorkDefinition))
+    ->collect(pe | pe.oclAsType(WorkDefinition))
+    ->forAll(w | self = w or self.name <> w.name)
+
+/*
+	 * Nom différents pour des sous-activités différentes
+	 */
+
+/* Nom valide activité */
+context WorkDefinition
+inv validName('Invalid name: ' + self.name):
+	self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+
+/*
+	 * Nom différents pour des sous-activités différentes
+	 */
+	
+/* Une unique requête par ressource pour une activité */
+context WorkDefinition
+inv uniqueRequest('Request already exists '):
+	self.request.resource->forAll(r1, r2 | r1 <> r2 implies r1.name <> r2.name)
+
+/*
+	 * L'occurence d'une ressource doit être inférieur à la quantité disponible et non nulle
+	 */ 
+
+/* L'occurence d'une ressource doit être inférieur à la quantité disponible et non nulle */
+context Request
+inv validRequest('Invalid request'):
+	self.occurrence <= self.resource.amount and self.occurrence > 0
+
+/*
+	 * Deux ressources différentes on un nom différent
+	 */
+
+/* Deux ressources différentes on un nom différent */
+context Resource
+inv uniqueName('Name already used: ' + self.name):
+ 	self.Process.processElements
+    ->select(pe | pe.oclIsKindOf(Resource))
+    ->collect(pe | pe.oclAsType(Resource))
+    ->forAll(w | self = w or self.name <> w.name)
+
+/*
+	 * Deux ressources différentes on un nom différent
+	 */
+
+/* Quantité positive strictement */
+context Resource
+inv positivAmount('Amount should be greater than 0 '):
+	self.amount > 0
+
+/*
+	 * Deux ressources différentes on un nom différent
+	 */
+	
+/* Nom valide ressource */
+context Resource
+inv validName('Invalid name: ' + self.name):
+	self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+	
+endpackage

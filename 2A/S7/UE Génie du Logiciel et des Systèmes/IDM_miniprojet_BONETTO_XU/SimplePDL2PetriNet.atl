@@ -1,0 +1,154 @@
+module SimplePDL2PetriNet;
+create OUT: petrinet from  IN: simplepdl;
+
+-- Obtenir le processus qui contient ce process element.
+-- Remarque: Ce helper ne serait pas utile si une r�f�rence opposite
+-- avait �t� plac�e entre Process et ProcessElement
+helper context simplepdl!ProcessElement
+def: getProcess(): simplepdl!Process =
+	simplepdl!Process.allInstances()
+		->select(p | p.processElements->includes(self))
+		->asSequence()->first();
+
+-- Traduire un Process en un PetriNet de m�me nom
+rule Process2PetriNet {
+	from p: simplepdl!Process
+	to pn: petrinet!PetriNet (name <- p.name)
+}
+
+-- Traduire une WorkDefinition en un motif sur le r�seau de Petri
+rule WorkDefinition2PetriNet {
+	from wd: simplepdl!WorkDefinition
+	to
+		-- PLACES d'une WorkDefinition
+		p_ready: petrinet!Place(
+				name <- wd.name + '_ready',
+				jetons <- 1,
+				petrinet <- wd.getProcess()
+		),
+		
+		p_inProgress: petrinet!Place(
+				name <- wd.name + '_inProgress',
+				jetons <- 0,
+				petrinet <- wd.getProcess()
+		),
+		
+		p_started: petrinet!Place(
+				name <- wd.name + '_started',
+				jetons <- 0,
+				petrinet <- wd.getProcess()
+		),
+		
+		p_finished: petrinet!Place(
+				name <- wd.name + '_finished',
+				jetons <- 0,
+				petrinet <- wd.getProcess()
+		),
+		
+		-- TRANSITIONS d'une WorkDefinition
+		t_start: petrinet!Transition(
+				name <- wd.name + '_start',
+				petrinet <- wd.getProcess()
+		),
+		
+		t_finish: petrinet!Transition(
+				name <- wd.name + '_finish',
+				petrinet <- wd.getProcess()
+		),
+		
+		-- ARC d'une WorkDefinition
+		a_ready2start: petrinet!Arc(
+				poids <- 1,
+				type <- #normalArc,
+				source <- p_ready,
+				destination <- t_start,
+				petrinet <- wd.getProcess() 
+		),
+		
+		a_start2inProgress: petrinet!Arc(
+				poids <- 1,
+				type <- #normalArc,
+				source <- t_start,
+				destination <- p_inProgress,
+				petrinet <- wd.getProcess() 
+		),
+		
+		a_start2started: petrinet!Arc(
+				poids <- 1,
+				type <- #normalArc,
+				source <- t_start,
+				destination <- p_started,
+				petrinet <- wd.getProcess() 
+		),
+		
+		a_inProgress2finish: petrinet!Arc(
+				poids <- 1,
+				type <- #normalArc,
+				source <- p_inProgress,
+				destination <- t_finish,
+				petrinet <- wd.getProcess() 
+		),
+		
+		a_finish2finished: petrinet!Arc(
+				poids <- 1,
+				type <- #normalArc,
+				source <- t_finish,
+				destination <- p_finished,
+				petrinet <- wd.getProcess() 
+		)		
+				
+		
+}
+
+-- Traduire un WorkSequence en motif sur le réseau de Petri
+rule WorkSequence2PetriNet {
+	from ws: simplepdl!WorkSequence
+	to
+		a_worksequence: petrinet!Arc (
+			source <- if (ws.linkType = #startToFinish or ws.linkType = #startToStart) then
+			                 thisModule.resolveTemp(ws.predecessor, 'p_started')
+				      else thisModule.resolveTemp(ws.predecessor, 'p_finished')
+					  endif,
+					  
+			destination <- if (ws.linkType = #finishToStart or ws.linkType = #startToStart) then
+			                  thisModule.resolveTemp(ws.successor, 't_start')
+					    else thisModule.resolveTemp(ws.successor, 't_finish')
+					    endif,			
+			poids <- 1,
+			type <- #readArc,
+			petrinet <- ws.successor.getProcess())
+
+}
+
+-- Traduire une Ressource en un motif sur le réseau de Petri
+rule Ressource2PetriNet {
+	from rsc:simplepdl!Resource
+	to 
+		p_rsc: petrinet!Place(
+				name <- rsc.name + '_resource',
+				jetons <- rsc.amount,
+				petrinet <- rsc.getProcess()
+	)
+}
+
+-- Traduire une Request en un motif sur le réseau de Petri
+rule Request2PetriNet {
+	from req: simplepdl!Request
+	to 
+		ar_request: petrinet!Arc(
+				poids <- req.occurrence,
+				type <- #normalArc,
+				source <- req.resource,
+				destination <- thisModule.resolveTemp(req.workdefinition, 't_start'),
+				petrinet <- req.workdefinition.getProcess()
+		),
+		ar_release: petrinet!Arc(
+				poids <- req.occurrence,
+				type <- #normalArc,
+				source <- thisModule.resolveTemp(req.workdefinition, 't_finish'),
+				destination <- req.resource,
+				petrinet <- req.workdefinition.getProcess()
+		)
+		
+}
+

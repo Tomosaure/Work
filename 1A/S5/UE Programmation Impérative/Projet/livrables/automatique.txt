@@ -1,0 +1,119 @@
+% Validation de http:///cregut.svn.enseeiht.fr/2021/1sn/pim/projet/IJ09
+% 2022-01-20 17:57:38.838764
+
+
+################################################################################
+# Fichiers attendus
+################################################################################
+
+Remarque : un livrable peut ne pas être trouvé car il n'a pas été déposé
+avec le bon nom. Dans ce cas, on peut le renommer en faisant :
+
+	svn mv ancien_nom nouveau_nom
+
+Sinon, si le fichier n'est pas sur SVN, c'est qu'il n'y a pas été ajouté :
+
+	svn add mon_fichier
+
+Ne pas oublier le commit pour pousser les modifications sur le serveur SVN.
+
+
+
+================================================================================
+## Livrables
+================================================================================
+
+* Fichier rapport.pdf trouvé... oui
+* Fichier sources.tgz trouvé... NON
+* Fichier presentation.pdf trouvé... NON
+* Fichier manuel.pdf trouvé... NON
+* Fichier demo.txt ou demo.pdf trouvé... NON
+
+================================================================================
+## Fichiers ADA
+================================================================================
+
+* Fichier compresser.adb trouvé... oui
+* Fichier decompresser.adb trouvé... oui
+
+
+################################################################################
+# Format archive sources.tgz
+################################################################################
+
+Non vérifié car fichier `sources.tgz` absent.
+
+
+################################################################################
+# Compilation des programmes
+################################################################################
+
+* Compilation de compresser.adb... ok
+
+  | compresser.adb:1:09: warning: no entities of "Ada.Text_IO" are referenced
+  | compresser.adb:1:30: warning: use clause for package "Text_IO" has no effect
+  | compresser.adb:2:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+  | compresser.adb:2:30: warning: use clause for package "Integer_Text_IO" has no effect
+  | compresser.adb:10:05: warning: "File_Name" is not modified, could be declared constant
+  | compresser.adb:20:05: warning: variable "trouve_0" is not referenced
+  | compresser.adb:21:05: warning: variable "trouve_octet" is not referenced
+  | compresser.adb:23:05: warning: variable "Tableau_octet" is assigned but never read
+  | compresser.adb:38:05: warning: possibly useless assignment to "Tableau_octet", value might not be referenced
+  | arbre.adb:3:06: warning: no entities of "SDA_Exceptions" are referenced
+  | arbre.adb:3:30: warning: use clause for package "SDA_Exceptions" has no effect
+  | arbre.adb:14:09: warning: useless assignment to "Arbre", value overwritten at line 16
+  | compression.adb:2:06: warning: redundant with clause in body
+  | compression.adb:3:06: warning: redundant with clause in body
+  | compression.adb:3:16: warning: "Arbre" is already use-visible through previous use_clause at compression.ads:2
+  | compression.adb:3:16: warning: use clause for package "Arbre" has no effect
+  | compression.adb:4:06: warning: redundant with clause in body
+  | compression.adb:4:06: warning: unit "Piles" is not referenced
+  | compression.adb:5:06: warning: redundant with clause in body
+  | compression.adb:5:16: warning: "Tableau" is already use-visible through previous use_clause at compression.ads:4
+  | compression.adb:5:16: warning: use clause for package "Tableau" has no effect
+  | compression.adb:6:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+  | compression.adb:6:30: warning: use clause for package "Integer_Text_IO" has no effect
+  | compression.adb:11:15: warning: procedure "Afficher_Pile" is not referenced
+  | compression.adb:23:09: warning: variable "arret" is not referenced
+  | compression.ads:1:06: warning: unit "Piles" is not referenced
+  | compression.ads:3:06: warning: unit "LCA_projet" is not instantiated in spec
+  | compression.ads:3:06: warning: with clause can be moved to body
+  | openfile.adb:2:06: warning: redundant with clause in body
+  | openfile.adb:2:19: warning: "Text_IO" is already use-visible through previous use_clause at openfile.ads:3
+  | openfile.adb:2:19: warning: use clause for package "Text_IO" has no effect
+  | openfile.adb:3:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+  | openfile.adb:3:29: warning: use clause for package "Integer_Text_IO" has no effect
+  | openfile.adb:4:06: warning: redundant with clause in body
+  | openfile.adb:4:15: warning: "Tableau" is already use-visible through previous use_clause at openfile.ads:2
+  | openfile.adb:4:15: warning: use clause for package "Tableau" has no effect
+  | openfile.adb:5:06: warning: redundant with clause in body
+  | openfile.adb:5:19: warning: "compression" is already use-visible through previous use_clause at openfile.ads:1
+  | openfile.ads:1:06: warning: no entities of "compression" are referenced in spec
+  | openfile.ads:1:06: warning: with clause might be moved to body
+  | tableau.adb:3:06: warning: redundant with clause in body
+
+* Compilation de decompresser.adb... ok
+
+  | decompresser.adb:1:09: warning: no entities of "Ada.Text_IO" are referenced
+  | decompresser.adb:1:30: warning: use clause for package "Text_IO" has no effect
+  | decompresser.adb:2:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+  | decompresser.adb:2:30: warning: use clause for package "Integer_Text_IO" has no effect
+  | decompresser.adb:11:05: warning: "File_Name" is not modified, could be declared constant
+  | decompression.adb:2:06: warning: redundant with clause in body
+  | decompression.adb:3:06: warning: redundant with clause in body
+  | decompression.adb:3:16: warning: "Arbre" is already use-visible through previous use_clause at decompression.ads:2
+  | decompression.adb:3:16: warning: use clause for package "Arbre" has no effect
+  | decompression.adb:4:06: warning: redundant with clause in body
+  | decompression.adb:4:06: warning: unit "Piles" is not referenced
+  | decompression.adb:5:06: warning: redundant with clause in body
+  | decompression.adb:5:16: warning: "Tableau" is already use-visible through previous use_clause at decompression.ads:4
+  | decompression.adb:5:16: warning: use clause for package "Tableau" has no effect
+  | decompression.adb:6:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+  | decompression.adb:6:30: warning: use clause for package "Integer_Text_IO" has no effect
+  | decompression.adb:11:15: warning: procedure "Afficher_Pile" is not referenced
+  | decompression.adb:15:05: warning: use clause for package "LCA_projet_new" has no effect
+  | decompression.ads:1:06: warning: unit "Piles" is not referenced
+  | decompression.ads:3:06: warning: unit "LCA_projet" is not instantiated in spec
+  | decompression.ads:3:06: warning: with clause can be moved to body
+
+* Running gnatclean... ok

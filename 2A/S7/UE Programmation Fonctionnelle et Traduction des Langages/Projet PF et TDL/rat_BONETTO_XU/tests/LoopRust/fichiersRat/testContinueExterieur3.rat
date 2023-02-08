@@ -1,0 +1,9 @@
+int a (int a int b){
+    continue a;
+    return (a+b);
+}
+
+
+test {
+    int x = 1;
+}

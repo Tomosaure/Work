@@ -1,0 +1,89 @@
+Algorithme de Gauss-Newton
+--------------------------
+residu_C14(beta0, Donnees)
+       4.9877
+       4.4516
+       3.8127
+       3.3918
+       3.1968
+       2.8347
+       2.6741
+
+J_residu_C14(beta0, Donnees)
+     -0.95123       4756.1
+     -0.90484       9048.4
+     -0.81873        16375
+     -0.74082        22225
+     -0.67032        26813
+     -0.60653        30327
+     -0.53259        33553
+
+--------------------------------------------------------------------------------------------
+     nb_iter         A0        lambda    ||f'(beta)||     f(beta)    ||delta||     exitflag 
+--------------------------------------------------------------------------------------------
+            0           10       0.0001   4.6322e+05        48.07
+
+            1       15.022   0.00010633        15913      0.10507       5.0219            4
+
+            2       15.025   0.00010433       5.9024     0.088621    0.0032964            4
+
+            3       15.025   0.00010432      0.39911     0.088621   0.00068766            4
+
+            4       15.024   0.00010432     0.004769     0.088621   4.9165e-06            4
+
+            4       15.024   0.00010432     0.004769     0.088621   4.9165e-06            2
+
+            4       15.024   0.00010432     0.004769     0.088621   4.9165e-06            2
+
+            4       15.024   0.00010432     0.004769     0.088621   4.9165e-06            2
+
+            4       15.024   0.00010432     0.004769     0.088621   4.9165e-06            2
+
+--------------------------------------------------------------------------------------------
+Algorithme de Newton
+--------------------
+Hessienne f(beta^{(0)})
+       4.0436       -50497
+       -50497   1.8899e+09
+
+--------------------------------------------------------------------------------------------
+     nb_iter         A0        lambda    ||f'(beta)||     f(beta)    ||delta||     exitflag 
+--------------------------------------------------------------------------------------------
+            0           10       0.0001   4.6322e+05        48.07
+
+
+H_f_beta =
+
+       4.0436       -50497
+       -50497   1.8899e+09
+
+
+res_beta =
+
+       4.9877
+       4.4516
+       3.8127
+       3.3918
+       3.1968
+       2.8347
+       2.6741
+
+
+J_res_beta =
+
+     -0.95123       4756.1
+     -0.90484       9048.4
+     -0.81873        16375
+     -0.74082        22225
+     -0.67032        26813
+     -0.60653        30327
+     -0.53259        33553
+
+{Unrecognized function or variable 'f_beta'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Algo_Newton', '/home/tbonetto/Annee_1/Optimisation/TP1/src_etudiants/Algo_Newton.m', 67)" style="font-weight:bold">Algo_Newton</a> (<a href="matlab: opentoline('/home/tbonetto/Annee_1/Optimisation/TP1/src_etudiants/Algo_Newton.m',67,0)">line 67</a>)
+        delta_f = abs(f_beta_plus - f_beta);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Modelisation_C14', '/home/tbonetto/Annee_1/Optimisation/TP1/src_etudiants/Modelisation_C14.m', 199)" style="font-weight:bold">Modelisation_C14</a> (<a href="matlab: opentoline('/home/tbonetto/Annee_1/Optimisation/TP1/src_etudiants/Modelisation_C14.m',199,0)">line 199</a>)
+    Algo_Newton(@(beta) Hess_f_C14(beta, Donnees, ...
+} 

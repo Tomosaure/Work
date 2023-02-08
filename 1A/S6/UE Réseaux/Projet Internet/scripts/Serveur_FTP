@@ -1,0 +1,22 @@
+#!/bin/bash
+
+ip link set dev eth0 up
+ip address add 200.4.253.195/26 dev eth0
+ip route add 0.0.0.0/0 via 200.4.253.193
+
+#création de l'utilisateur pour le ftp
+useradd tom
+echo "tom:yo" | chpasswd
+mkdir /home/tom
+chown tom /home/tom
+usermod --shell /bin/bash tom
+
+chmod 755 /etc/proftpd
+chmod 755 /etc/proftpd/proftpd.conf
+chmod 755 /etc/proftpd/modules.conf
+#chmod 755 /etc/proftpd/proftpd.log
+
+#Lancer le serveur FTP
+hostname FTP
+echo "200.4.253.195 FTP" >> /etc/hosts
+/etc/init.d/proftpd start

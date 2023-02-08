@@ -1,0 +1,36 @@
+(* this is the prelude for Alt-Ergo, version >= 0.95.2 and <= 2.2.0 *)
+(* this is a prelude for Alt-Ergo integer arithmetic *)
+type string
+
+logic match_bool : bool, 'a, 'a -> 'a
+
+axiom match_bool_True :
+  (forall z:'a. forall z1:'a. (match_bool(true, z, z1) = z))
+
+axiom match_bool_False :
+  (forall z:'a. forall z1:'a. (match_bool(false, z, z1) = z1))
+
+axiom CompatOrderMult :
+  (forall x:int. forall y:int. forall z:int. ((x <= y) -> ((0 <= z) ->
+  ((x * z) <= (y * z)))))
+
+type 'a ref = { contents : 'a
+}
+
+logic a1 : int
+
+logic b : int
+
+axiom H : (0 <= a1)
+
+axiom H1 : (0 <= b)
+
+logic r : int
+
+logic i : int
+
+axiom LoopInvariant : (r = (a1 * (b - i)))
+
+axiom H2 : (not (0 <  i))
+
+goal produitqtvc : ((a1 * b) = r)

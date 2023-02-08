@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ASCII"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://petrinet" name="developpement">
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.6" name="Conception_ready" jetons="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.9" predecessors="//@petriNetElements.7" name="Conception_inProgress"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.44 //@petriNetElements.47" predecessors="//@petriNetElements.8" name="Conception_started"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.45 //@petriNetElements.46" predecessors="//@petriNetElements.10" name="Conception_finished"/>
+  <petriNetElements xsi:type="petrinet:Transition" successors="//@petriNetElements.7 //@petriNetElements.8" predecessors="//@petriNetElements.6 //@petriNetElements.50" name="Conception_start"/>
+  <petriNetElements xsi:type="petrinet:Transition" successors="//@petriNetElements.10 //@petriNetElements.51" predecessors="//@petriNetElements.9" name="Conception_finish"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.4" source="//@petriNetElements.0" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.1" source="//@petriNetElements.4" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.2" source="//@petriNetElements.4" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.5" source="//@petriNetElements.1" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.3" source="//@petriNetElements.5" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.17" name="RedactionDoc_ready" jetons="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.20" predecessors="//@petriNetElements.18" name="RedactionDoc_inProgress"/>
+  <petriNetElements xsi:type="petrinet:Place" predecessors="//@petriNetElements.19" name="RedactionDoc_started"/>
+  <petriNetElements xsi:type="petrinet:Place" predecessors="//@petriNetElements.21" name="RedactionDoc_finished"/>
+  <petriNetElements xsi:type="petrinet:Transition" successors="//@petriNetElements.18 //@petriNetElements.19" predecessors="//@petriNetElements.17 //@petriNetElements.44 //@petriNetElements.56 //@petriNetElements.65" name="RedactionDoc_start"/>
+  <petriNetElements xsi:type="petrinet:Transition" successors="//@petriNetElements.21 //@petriNetElements.57 //@petriNetElements.66" predecessors="//@petriNetElements.20 //@petriNetElements.45" name="RedactionDoc_finish"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.15" source="//@petriNetElements.11" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.12" source="//@petriNetElements.15" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.13" source="//@petriNetElements.15" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.16" source="//@petriNetElements.12" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.14" source="//@petriNetElements.16" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.28" name="Programmation_ready" jetons="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.31" predecessors="//@petriNetElements.29" name="Programmation_inProgress"/>
+  <petriNetElements xsi:type="petrinet:Place" predecessors="//@petriNetElements.30" name="Programmation_started"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.48" predecessors="//@petriNetElements.32" name="Programmation_finished"/>
+  <petriNetElements xsi:type="petrinet:Transition" successors="//@petriNetElements.29 //@petriNetElements.30" predecessors="//@petriNetElements.28 //@petriNetElements.46 //@petriNetElements.53 //@petriNetElements.58 //@petriNetElements.62" name="Programmation_start"/>
+  <petriNetElements xsi:type="petrinet:Transition" successors="//@petriNetElements.32 //@petriNetElements.54 //@petriNetElements.59 //@petriNetElements.63" predecessors="//@petriNetElements.31" name="Programmation_finish"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.26" source="//@petriNetElements.22" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.23" source="//@petriNetElements.26" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.24" source="//@petriNetElements.26" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.27" source="//@petriNetElements.23" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.25" source="//@petriNetElements.27" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.39" name="RedactionTests_ready" jetons="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.42" predecessors="//@petriNetElements.40" name="RedactionTests_inProgress"/>
+  <petriNetElements xsi:type="petrinet:Place" predecessors="//@petriNetElements.41" name="RedactionTests_started"/>
+  <petriNetElements xsi:type="petrinet:Place" predecessors="//@petriNetElements.43" name="RedactionTests_finished"/>
+  <petriNetElements xsi:type="petrinet:Transition" successors="//@petriNetElements.40 //@petriNetElements.41" predecessors="//@petriNetElements.39 //@petriNetElements.47 //@petriNetElements.60 //@petriNetElements.68" name="RedactionTests_start"/>
+  <petriNetElements xsi:type="petrinet:Transition" successors="//@petriNetElements.43 //@petriNetElements.61 //@petriNetElements.69" predecessors="//@petriNetElements.42 //@petriNetElements.48" name="RedactionTests_finish"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.37" source="//@petriNetElements.33" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.34" source="//@petriNetElements.37" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.35" source="//@petriNetElements.37" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.38" source="//@petriNetElements.34" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.36" source="//@petriNetElements.38" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.15" source="//@petriNetElements.2" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.16" source="//@petriNetElements.3" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.26" source="//@petriNetElements.3" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.37" source="//@petriNetElements.2" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.38" source="//@petriNetElements.25" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.50" predecessors="//@petriNetElements.51" name="Concepteur_resource" jetons="3"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.4" source="//@petriNetElements.49" type="normalArc" poids="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.49" source="//@petriNetElements.5" type="normalArc" poids="2"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.53" predecessors="//@petriNetElements.54" name="Developpeur_resource" jetons="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.26" source="//@petriNetElements.52" type="normalArc" poids="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.52" source="//@petriNetElements.27" type="normalArc" poids="2"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.56 //@petriNetElements.58 //@petriNetElements.60 //@petriNetElements.62" predecessors="//@petriNetElements.57 //@petriNetElements.59 //@petriNetElements.61 //@petriNetElements.63" name="Machine_resource" jetons="4"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.15" source="//@petriNetElements.55" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.55" source="//@petriNetElements.16" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.26" source="//@petriNetElements.55" type="normalArc" poids="3"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.55" source="//@petriNetElements.27" type="normalArc" poids="3"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.37" source="//@petriNetElements.55" type="normalArc" poids="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.55" source="//@petriNetElements.38" type="normalArc" poids="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.26" source="//@petriNetElements.55" type="normalArc" poids="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.55" source="//@petriNetElements.27" type="normalArc" poids="2"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.65" predecessors="//@petriNetElements.66" name="Redacteur_resource" jetons="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.15" source="//@petriNetElements.64" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.64" source="//@petriNetElements.16" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Place" successors="//@petriNetElements.68" predecessors="//@petriNetElements.69" name="Testeur_resource" jetons="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.37" source="//@petriNetElements.67" type="normalArc" poids="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" destination="//@petriNetElements.67" source="//@petriNetElements.38" type="normalArc" poids="1"/>
+</petrinet:PetriNet>

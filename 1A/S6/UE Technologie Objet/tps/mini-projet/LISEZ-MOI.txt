@@ -1,0 +1,40 @@
+Nom       : Bonetto
+Prénom    : Tom
+Groupe TP :  J
+
+
+Consigne :  Ci-dessous, répondre à la place des « ... ».
+
+
+=====[ Temps ]==================================================================
+
+Temps passé sur la V1 : 4 heures
+Temps passé sur la V2 : ... heures ... minutes
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+Bien sûr, les temps renseignés ici ne sont pas pris en compte dans la notation.
+
+
+=====[ Questions ]==============================================================
+
+Indiquer la relation UML entre Cercle et le Point centre du cercle.
+-------------------------------------------------------------------
+
+C'est une relation de composition, car si le cercle disparait alors le centre du cercle n'est plus un point centre
+
+
+Comment est réalisée l'exigence E18 ?
+-------------------------------------
+
+On met les attributs en private pour pas que l'utilisateur puisse les modifier sans
+passer par les opérations de mofidication, de plus l'opération getCentre() doit faire appel
+à une variable auxiliaire avant de renvoyer le centre pour pas que le centre soit modifier
+lors d'une translation par exemple.
+
+
+
+=====[ Explications ]===========================================================
+
+(Facultatif) Donner ici les explications supplémentaires utiles à la
+compréhension du travail rendu.
+
+...

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="simplepdl" version="12.0.0.2017041100">
+  <ownedViewpoints name="simplepdlViewpoint" modelFileExtension="simplepdl">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ProcessDiagram" domainClass="simplepdl::Process" enablePopupBars="true">
+      <metamodel href="http://simplepdl#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="WDNode" domainClass="simplepdl::WorkDefinition">
+          <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="RNode" domainClass="simplepdl::Resource">
+          <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="WSEdge" sourceMapping="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='WDNode']" targetMapping="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='WDNode']" targetFinderExpression="feature:successor" sourceFinderExpression="feature:predecessor" domainClass="simplepdl::WorkSequence" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="feature:linkType">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="RQEdge" sourceMapping="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='WDNode']" targetMapping="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='RNode']" targetFinderExpression="feature:resource" sourceFinderExpression="feature:workdefinition" domainClass="simplepdl::Request" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="feature:occurrence">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Node">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="WorkDefinition" nodeMappings="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='WDNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="simplepdl::WorkDefinition" referenceName="processElements"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Resource" nodeMappings="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='RNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="simplepdl::Resource" referenceName="processElements"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Guidance" nodeMappings="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@additionalLayers[name='Guidance']/@nodeMappings[name='GNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="simplepdl::Guidance" referenceName="processElements"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Link">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="WorkSequence" edgeMappings="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@edgeMappings[name='WSEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer()/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="simplepdl::WorkSequence" referenceName="processElements">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="[source/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="[target/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Request" edgeMappings="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@edgeMappings[name='RQEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer()/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="simplepdl::Request" referenceName="request">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="workdefinition" valueExpression="[source/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="resource" valueExpression="[target/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="GuidanceLink" edgeMappings="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@additionalLayers[name='Guidance']/@edgeMappings[name='GEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer()/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="elements" valueExpression="[source/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="elements" valueExpression="[target/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Guidance">
+        <nodeMappings name="GNode" domainClass="simplepdl::Guidance">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="Guidance" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="GEdge" sourceMapping="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@additionalLayers[name='Guidance']/@nodeMappings[name='GNode']" targetMapping="//@ownedViewpoints[name='simplepdlViewpoint']/@ownedRepresentations[name='ProcessDiagram']/@defaultLayer/@nodeMappings[name='WDNode']" targetFinderExpression="feature:elements">
+          <style lineStyle="dot" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <centerLabelStyleDescription labelSize="12" labelExpression="feature:text">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="fr.n7.simplepdl.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

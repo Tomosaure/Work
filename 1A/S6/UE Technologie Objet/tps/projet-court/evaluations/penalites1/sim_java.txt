@@ -1,0 +1,230 @@
+File allumettes/Arbitre.java: 740 tokens, 152 lines
+File allumettes/JeuSimple.java: 99 tokens, 33 lines
+File allumettes/CoupInvalideException.java: 68 tokens, 39 lines
+File allumettes/Joueur.java: 110 tokens, 66 lines
+File allumettes/OperationInterditeException.java: 21 tokens, 16 lines
+File allumettes/StrategieHumain.java: 249 tokens, 62 lines
+File allumettes/StrategieRapide.java: 52 tokens, 12 lines
+File allumettes/ConfigurationException.java: 21 tokens, 16 lines
+File allumettes/Jouer.java: 638 tokens, 147 lines
+File allumettes/Jeu.java: 23 tokens, 21 lines
+File allumettes/StrategieLent.java: 39 tokens, 12 lines
+File allumettes/StrategieExpert.java: 115 tokens, 22 lines
+File allumettes/Procuration.java: 68 tokens, 29 lines
+File allumettes/StrategieNaif.java: 69 tokens, 16 lines
+File allumettes/Strategie.java: 13 tokens, 11 lines
+File allumettes/StrategieTricheur.java: 99 tokens, 22 lines
+Total input: 16 files (16 new, 0 old), 2424 tokens
+
+allumettes/Jouer.java: line 70-76 [79]
+allumettes/Jouer.java: line 77-83
+< 		if (args.length == nbJoueurs) {
+< 			int count1 = args[0].length() - args[0].replace("@", "").length();
+< 			int count2 = args[1].length() - args[1].replace("@", "").length();
+< 			if (count1 != 1 || count2 != 1) {
+< 				throw new ConfigurationException("Saisi invalide");
+< 			}
+< 		}
+---
+> 		if (args.length == nbJoueurs + 1) {
+> 			int count1 = args[1].length() - args[1].replace("@", "").length();
+> 			int count2 = args[2].length() - args[2].replace("@", "").length();
+> 			if (count1 != 1 || count2 != 1) {
+> 				throw new ConfigurationException("Saisi invalide");
+> 			}
+> 		}
+
+allumettes/StrategieExpert.java: line 1-12 [43]
+allumettes/StrategieNaif.java: line 1-12
+< package allumettes;
+< 
+< import java.util.Random;
+< 
+< public class StrategieExpert implements Strategie {
+< 
+< 	private Random rdm = new Random();
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> package allumettes;
+> 
+> import java.util.Random;
+> 
+> public class StrategieNaif implements Strategie {
+> 
+> 	private Random rdm = new Random();
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+
+allumettes/StrategieRapide.java: line 1-8 [35]
+allumettes/StrategieLent.java: line 1-8
+< package allumettes;
+< 
+< public class StrategieRapide implements Strategie {
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> package allumettes;
+> 
+> public class StrategieLent implements Strategie {
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+
+allumettes/StrategieLent.java: line 1-8 [35]
+allumettes/StrategieTricheur.java: line 1-8
+< package allumettes;
+< 
+< public class StrategieLent implements Strategie {
+< 
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> package allumettes;
+> 
+> public class StrategieTricheur implements Strategie {
+> 
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+
+allumettes/Arbitre.java: line 143-146 [34]
+allumettes/Arbitre.java: line 146-149
+< 			if (joueur.joueurEgal(this.joueur2)) {
+< 				System.out.println(this.joueur1.getNom() + " perd !");
+< 				System.out.println(this.joueur2.getNom() + " gagne !");
+< 			} else {
+---
+> 			} else {
+> 				System.out.println(this.joueur2.getNom() + " perd !");
+> 				System.out.println(this.joueur1.getNom() + " gagne !");
+> 			}
+
+allumettes/Arbitre.java: line 62-69 [28]
+allumettes/Jouer.java: line 83-90
+< 		}
+< 	}
+< 
+< 	/** Afficher des indications sur la de changer de stratégie. */
+< 	public static void afficherChangementStrategie() {
+< 		System.out.println("\n" + "Changement de stratégie ? :" + "\n\t"
+< 				+ "strategie = naif | rapide | expert | humain | tricheur"
+< 				+ " | lent" + "\n" + "pas de changement : non");
+---
+> 		}
+> 	}
+> 
+> 	/** Afficher des indications sur la manière d'exécuter cette classe. */
+> 	public static void afficherUsage() {
+> 		System.out.println("\n" + "Usage :" + "\n\t"
+> 				+ "java allumettes.Jouer joueur1 joueur2" + "\n\t\t"
+> 				+ "joueur est de la forme nom@stratégie" + "\n\t\t"
+
+allumettes/StrategieNaif.java: line 9-12 [27]
+allumettes/StrategieTricheur.java: line 5-8
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+
+allumettes/StrategieHumain.java: line 17-20 [27]
+allumettes/StrategieRapide.java: line 5-8
+< 	@Override
+< 	public int getPrise(Jeu jeu) {
+< 		assert (jeu != null);
+< 		assert (jeu.getNombreAllumettes() > 0);
+---
+> 	@Override
+> 	public int getPrise(Jeu jeu) {
+> 		assert (jeu != null);
+> 		assert (jeu.getNombreAllumettes() > 0);
+
+allumettes/Jouer.java: line 78-78 [27]
+allumettes/Jouer.java: line 79-79
+< 			int count1 = args[1].length() - args[1].replace("@", "").length();
+---
+> 			int count2 = args[2].length() - args[2].replace("@", "").length();
+
+allumettes/Arbitre.java: line 116-118 [26]
+allumettes/Arbitre.java: line 119-121
+< 				if (e.getCoup() > jeu.getNombreAllumettes()) {
+< 					System.out.print("Nombre invalide : " + e.getCoup());
+< 					System.out.println(" (> " + jeu.getNombreAllumettes() + ")");
+---
+> 				} else if (e.getCoup() > Jeu.PRISE_MAX) {
+> 					System.out.print("Nombre invalide : " + e.getCoup());
+> 					System.out.println(" (> " + Jeu.PRISE_MAX + ")");
+
+allumettes/Arbitre.java: line 104-107 [26]
+allumettes/Arbitre.java: line 107-110
+< 				if (nbretirer <= 1) {
+< 					System.out.print(joueur.getNom() + " prend ");
+< 					System.out.println(nbretirer + " allumette.");
+< 				} else {
+---
+> 				} else {
+> 					System.out.print(joueur.getNom() + " prend ");
+> 					System.out.println(nbretirer + " allumettes.");
+> 				}
+
+allumettes/StrategieExpert.java: line 14-17 [25]
+allumettes/StrategieNaif.java: line 13-14
+< 			return
+< 			this.rdm.nextInt(Math.min(jeu.getNombreAllumettes(), Jeu.PRISE_MAX))
+< 			+ 1;
+< 		} else {
+---
+> 		return this.rdm.nextInt(Math.min(jeu.getNombreAllumettes(), Jeu.PRISE_MAX)) + 1;
+> 	}
+
+allumettes/Arbitre.java: line 18-21 [25]
+allumettes/Arbitre.java: line 29-32
+< 	public Arbitre(Joueur j1, Joueur j2) {
+< 		assert (j1 != null && j2 != null);
+< 		this.joueur1 = j1;
+< 		this.joueur2 = j2;
+---
+> 	public Arbitre(Joueur j1, Joueur j2, boolean confiant) {
+> 		assert (j1 != null && j2 != null);
+> 		this.joueur1 = j1;
+> 		this.joueur2 = j2;
+
+allumettes/Jouer.java: line 110-117 [24]
+allumettes/Jouer.java: line 119-126
+< 		case "naif":
+< 			return new StrategieNaif();
+< 
+< 		case "humain":
+< 			return new StrategieHumain();
+< 
+< 		case "expert":
+< 			return new StrategieExpert();
+---
+> 		case "lent":
+> 			return new StrategieLent();
+> 
+> 		case "rapide":
+> 			return new StrategieRapide();
+> 
+> 		case "tricheur":
+> 			return new StrategieTricheur();
+

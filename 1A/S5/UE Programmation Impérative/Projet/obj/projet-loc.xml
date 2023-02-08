@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file />
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/main_compression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/main_decompression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 41" line=" 27" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/test_compression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/main_decompression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/openfile.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 26" line=" 174" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/openfile.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/openfile.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/main_decompression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 30" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/main_decompression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/test_compression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 5" line=" 75" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/test_compression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 5" line=" 21" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/test_decompression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 49" line=" 10" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/test_decompression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 5" line=" 55" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/test_decompression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/decompresser.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/main_compression.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 41" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/compresser.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 11" line=" 9" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/compresser.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/IJ09/projet.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/IJ09/src/main_decompression.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<petrinet:PetriNet
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:petrinet="http://petrinet"
+    name="Invalid_Arc">
+  <petriNetElements
+      xsi:type="petrinet:Place"
+      successors="//@petriNetElements.2"
+      name="p1"
+      jetons="1"/>
+  <petriNetElements
+      xsi:type="petrinet:Place"
+      predecessors="//@petriNetElements.2"
+      name="p2"/>
+  <petriNetElements
+      xsi:type="petrinet:Arc"
+      destination="//@petriNetElements.1"
+      source="//@petriNetElements.0"
+      type="normalArc"
+      poids="1"/>
+</petrinet:PetriNet>

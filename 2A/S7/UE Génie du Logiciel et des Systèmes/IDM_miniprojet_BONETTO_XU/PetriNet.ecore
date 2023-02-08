@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="petrinet" nsURI="http://petrinet" nsPrefix="petrinet">
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="petriNetElements" upperBound="-1"
+        eType="#//PetriNetElement" containment="true" eOpposite="#//PetriNetElement/petrinet"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNetElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="petrinet" lowerBound="1"
+        eType="#//PetriNet" eOpposite="#//PetriNet/petriNetElements"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Noeud" abstract="true" eSuperTypes="#//PetriNetElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successors" upperBound="-1"
+        eType="#//Arc" eOpposite="#//Arc/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessors" upperBound="-1"
+        eType="#//Arc" eOpposite="#//Arc/destination"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="#//PetriNetElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" lowerBound="1"
+        eType="#//Noeud" eOpposite="#//Noeud/predecessors"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Noeud" eOpposite="#//Noeud/successors"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//arcType"
+        defaultValueLiteral="readArc"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="poids" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Noeud"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//Noeud">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jetons" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="arcType">
+    <eLiterals name="normalArc"/>
+    <eLiterals name="readArc" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

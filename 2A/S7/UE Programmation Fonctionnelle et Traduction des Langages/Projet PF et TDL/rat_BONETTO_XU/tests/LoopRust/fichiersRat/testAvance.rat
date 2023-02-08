@@ -1,0 +1,25 @@
+int a (int a int b){
+    return (a + b);
+}
+
+main {
+  a : loop {
+    b : loop {
+        c : loop {
+            break a;
+        }
+    }
+  }
+
+  int a = 0;
+
+  a : loop {
+    b : loop {
+        c : loop {
+            break b;
+        }
+    }
+  } 
+
+
+}

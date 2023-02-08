@@ -1,0 +1,11 @@
+\* Problem: assemblage de voiture *\
+
+Maximize
+ Benefice: 10 C + 31 T
+
+Subject To
+ HeureDeTravail: 6 T + 3 C <= 40
+ Superficie: 4 T + C  <= 16
+ LimiteLux: 3 T - C <= -6.7
+
+End

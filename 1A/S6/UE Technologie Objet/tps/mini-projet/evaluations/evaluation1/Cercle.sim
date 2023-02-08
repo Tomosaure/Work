@@ -1,0 +1,27 @@
+File Cercle.java: 605 tokens, 165 lines
+Total input: 1 file (1 new, 0 old), 605 tokens
+
+Cercle.java: line 92-101 [27]
+Cercle.java: line 101-110
+< 		return this.getRayon() * 2;
+< 	}
+< 
+< 	/** Changer le rayon du cercle.
+< 	  * @param rayon nouveau rayon
+< 	  */
+< 	public void setRayon(double rayon) {
+< 		assert (this != null);
+< 		assert (rayon > 0);
+< 		this.rayon = rayon;
+---
+> 		this.rayon = rayon;
+> 	}
+> 
+> 	/** Changer le diamètre du cercle.
+> 	  * @param diametre nouveau diamètre
+> 	  */
+> 	public void setDiametre(double diametre) {
+> 		assert (this != null);
+> 		assert (diametre > 0);
+> 		this.rayon = diametre / 2;
+

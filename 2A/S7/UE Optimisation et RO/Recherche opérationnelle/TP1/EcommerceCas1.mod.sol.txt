@@ -1,0 +1,66 @@
+Problem:    EcommerceCas1
+Rows:       11
+Columns:    12
+Non-zeros:  36
+Status:     OPTIMAL
+Objective:  ImpactMinimal = 9.5 (MINimum)
+
+   No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 CommandeInferieurAuStock[M1,P1]
+                    NU           2.5                         2.5            -1 
+     2 CommandeInferieurAuStock[M1,P2]
+                    NU             1                           1            -2 
+     3 CommandeInferieurAuStock[M2,P1]
+                    B            0.5                           1 
+     4 CommandeInferieurAuStock[M2,P2]
+                    B              1                           2 
+     5 CommandeInferieurAuStock[M3,P1]
+                    B              0                           2 
+     6 CommandeInferieurAuStock[M3,P2]
+                    NU             1                           1            -1 
+     7 LivraisonComplete[D1,P1]
+                    NS             2             2             =             2 
+     8 LivraisonComplete[D1,P2]
+                    B              0            -0             = 
+     9 LivraisonComplete[D2,P1]
+                    NS             1             1             =             2 
+    10 LivraisonComplete[D2,P2]
+                    NS             3             3             =             3 
+    11 ImpactMinimal
+                    B            9.5                             
+
+   No. Column name  St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 Q[D1,M1,P1]  B              2             0               
+     2 Q[D2,M1,P1]  B            0.5             0               
+     3 Q[D1,M1,P2]  NL             0             0                           3 
+     4 Q[D2,M1,P2]  B              1             0               
+     5 Q[D1,M2,P1]  NL             0             0                       < eps
+     6 Q[D2,M2,P1]  B            0.5             0               
+     7 Q[D1,M2,P2]  NL             0             0                           3 
+     8 Q[D2,M2,P2]  B              1             0               
+     9 Q[D1,M3,P1]  NL             0             0                           1 
+    10 Q[D2,M3,P1]  NL             0             0                           1 
+    11 Q[D1,M3,P2]  NL             0             0                           3 
+    12 Q[D2,M3,P2]  B              1             0               
+
+Karush-Kuhn-Tucker optimality conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.DE: max.abs.err = 0.00e+00 on column 0
+        max.rel.err = 0.00e+00 on column 0
+        High quality
+
+KKT.DB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output

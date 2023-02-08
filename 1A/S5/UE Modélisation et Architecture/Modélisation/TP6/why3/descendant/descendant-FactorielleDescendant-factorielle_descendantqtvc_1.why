@@ -1,0 +1,48 @@
+(* this is the prelude for Alt-Ergo, version >= 0.95.2 and <= 2.2.0 *)
+(* this is a prelude for Alt-Ergo integer arithmetic *)
+type string
+
+logic match_bool : bool, 'a, 'a -> 'a
+
+axiom match_bool_True :
+  (forall z:'a. forall z1:'a. (match_bool(true, z, z1) = z))
+
+axiom match_bool_False :
+  (forall z:'a. forall z1:'a. (match_bool(false, z, z1) = z1))
+
+axiom CompatOrderMult :
+  (forall x:int. forall y:int. forall z:int. ((x <= y) -> ((0 <= z) ->
+  ((x * z) <= (y * z)))))
+
+logic factorielle : int -> int
+
+axiom factorielle_zero : (factorielle(0) = 1)
+
+axiom factorielle_succ :
+  (forall n:int. ((0 <= n) ->
+  (factorielle((n + 1)) = ((n + 1) * factorielle(n)))))
+
+type 'a ref = { contents : 'a
+}
+
+logic n : int
+
+axiom Requires : (0 <= n)
+
+logic r : int
+
+logic i : int
+
+axiom LoopInvariant : (factorielle(n) = (r * factorielle(i)))
+
+axiom H : (0 <  i)
+
+logic r1 : int
+
+axiom Ensures : (r1 = (i * r))
+
+logic i1 : int
+
+axiom Ensures1 : (i1 = (i - 1))
+
+goal factorielle_descendantqtvc : ((0 <= r) and (r1 <  r))

@@ -1,0 +1,92 @@
+V "GNAT Lib v2021"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U piles%b		piles.adb		8ced66ef NE OO PK GE
+W ada%s			ada.ads			ada.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U piles%s		piles.ads		b1e5c8b6 BN EE NE OO PK GE
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+
+D ada.ads		20210520051130 76789da1 ada%s
+D a-except.ads		20210520051127 946f3014 ada.exceptions%s
+D a-ioexce.ads		20210520051127 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210520051128 119b8fb3 ada.streams%s
+D a-string.ads		20210520051128 90ac6797 ada.strings%s
+D a-sttebu.ads		20210520051128 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20210520051128 808c40ad ada.strings.utf_encoding%s
+D a-tags.ads		20210520051129 9eaa38c6 ada.tags%s
+D a-textio.ads		20210520051129 aef4d56d ada.text_io%s
+D a-unccon.ads		20210520051129 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210520051131 edec285f interfaces%s
+D i-cstrea.ads		20210520051131 e53d8b8e interfaces.c_streams%s
+D piles.ads		20220113133225 b1e5c8b6 piles%s
+D piles.adb		20220113133217 93fc7b34 piles%b
+D system.ads		20210520051134 a2da961d system%s
+D s-crtl.ads		20210520051131 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210520051131 54135002 system.exception_table%s
+D s-ficobl.ads		20210520051131 078245e4 system.file_control_block%s
+D s-parame.ads		20210520051133 4752c4cb system.parameters%s
+D s-putima.ads		20210520051133 4e095881 system.put_images%s
+D s-secsta.ads		20210520051133 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20210520051133 a7318a92 system.soft_links%s
+D s-stache.ads		20210520051133 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210520051133 472fbca8 system.standard_library%s
+D s-stoele.ads		20210520051133 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210520051133 ed88f8fb system.storage_elements%b
+D s-traent.ads		20210520051133 26a8d361 system.traceback_entries%s
+D s-unstyp.ads		20210520051133 2b077493 system.unsigned_types%s
+D s-wchcon.ads		20210520051134 1b7d22d2 system.wch_con%s
+D unchconv.ads		20210520051134 ca2f9e18 unchecked_conversion%s
+G a e
+G c Z s b [piles standard 7 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 14|3r6 3r24
+X 9 a-textio.ads
+58K13*Text_IO 725e16 14|3w10 3r28
+390U14*Put 14|52s9 54s13
+463U14*Put 14|57s17 63s9
+X 13 piles.ads
+4i5 Capacite{integer} 54r38 14|23r31
+5+10 T_Element 23r47 33r59 48r57 54r51 14|27r47 38r59
+7k9*Piles 4z5 5z10 54E10 62l5 62e10 14|6b14 77l5 77t10
+9R10*T_Pile 14r39 19r34 23r32 26r32 29r36 33r38 39r38 43r39 49r35 56c10 60e19
+. 14|9r39 15r34 21r36 27r32 32r32 38r38 44r38 50r35 66r37 67r14
+14U15*Initialiser 14<28 14|9b15 12l9 12t20 69s9
+14r28 Pile{9R10} 15r27 14|9b28 11m9
+19V14*Est_Vide{boolean} 15s17 19>24 24s24 40s20 44s20 14|15b14 18l9 18t17
+. 53s16 70s19
+19r24 Pile{9R10} 14|15b24 17r16
+23V14*Sommet{5+10} 23>22 35s17 14|27b14 30l9 30t15 71s30
+23r22 Pile{9R10} 24r34 14|27b22 29r16 29r31
+26V14*Taille{integer} 26>22 14|32b14 35l9 35t15
+26r22 Pile{9R10} 14|32b22 34r16
+29V14*Est_Pleine{boolean} 29>26 34s20 14|21b14 24l9 24t19
+29r26 Pile{9R10} 14|21b26 23r16
+33U15*Empiler 33=24 33>46 14|38b15 42l9 42t16 71s13
+33r24 Pile{9R10} 34r32 35r25 14|38b24 40m9 40r24 41m9 41r24
+33*46 Element{5+10} 35r33 14|38b46 41r40
+39U15*Depiler 39=24 14|44b15 47l9 47t16 72s13
+39r24 Pile{9R10} 40r30 14|44b24 46m9 46r24
+43U15*Inverser 43=25 14|66b15 75l9 75t17
+43r25 Pile{9R10} 44r30 14|66b24 70r28 71r37 72m21 74m9
+48U24 Afficher_Element 48>42 14|55s13 58s17
+48*42 Un_Element{5+10}
+49u15*Afficher 49>25 14|50b15 64l9 64t17
+49r25 Pile{9R10} 14|50b25 53r26 55r31 56r25 58r35
+54A10 T_Tab_Elements(5+10)<integer> 58r24
+58a13 Elements{54A10} 14|29r21 41m14 55r36 58r40
+59i13 Taille{integer} 14|11m14 17r21 23r21 29r36 34r21 40m14 40r29 41r29
+. 46m14 46r29 56r30
+X 14 piles.adb
+56i17 I{integer} 58r50
+67r5 memoire{13|9R10} 69m21 71m21 71r21 74r17
+

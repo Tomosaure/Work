@@ -1,0 +1,9 @@
+main {
+    a : loop {
+        continue;
+    }
+
+    loop {
+        continue a;
+    }
+}

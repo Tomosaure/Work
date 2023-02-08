@@ -1,0 +1,6 @@
+prog {
+  int x = 1;
+  int y = 1;
+  int z = ((x = y) ? 18: 21);
+  print z;
+}

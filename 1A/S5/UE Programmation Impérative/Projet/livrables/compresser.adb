@@ -1,0 +1,41 @@
+with Ada.Text_IO;            use Ada.Text_IO;
+with Ada.Integer_Text_IO;    use Ada.Integer_Text_IO;
+with Openfile; use Openfile;
+with compression; use compression;
+with Arbre; use Arbre;
+with Tableau; use Tableau;
+with Ada.Command_Line;     use Ada.Command_Line;
+
+procedure compresser is
+    File_Name : String := Argument(1);
+    Tab_text: T_Tab_symbole;
+    Tab_Freq: T_Tab;
+    Tab_Freq_copie: T_Tab;
+    Nombre_Symbole: Integer;
+    Tab_Huff: T_Tab_Huff;
+    Arbre_Huff: T_Arbre;
+    Liste_octet: T_Tab;
+    Liste_octet_compress: T_Tab;
+    Liste_binaire: T_Tab_symbole;
+    trouve_0: boolean := False;
+    trouve_octet: boolean := False;
+    Tableau_binaire: T_Tab_symbole;
+    Tableau_octet : T_Tab;
+begin
+    Liste_binaire.Nb_Elements := 0;
+    Liste_octet.Nb_Elements := 0;
+    Tab_text := Stockage(File_Name);
+    Tab_Freq := Tab_Frequence(Tab_text);
+    Nombre_Symbole := Nb_Symbole(Tab_Freq);
+    Arbre_Huff := Construire_Arbre_Huff(Tab_Freq);
+    Tab_freq_copie := Tab_Freq;
+    Construire_Liste_octet(Arbre_Huff, Tab_Freq_copie, Liste_octet);
+    Construire_Liste_binaire(Arbre_Huff, Liste_binaire);
+    Liste_octet_compress := Construire_Liste_octet_compress(Liste_octet);
+    Tab_Huff := Construire_Tab_Huff(Liste_binaire, Liste_octet, Nombre_Symbole);
+    Construire_Tab_Huff_Inverse(Tab_Huff);
+    Tableau_binaire := Construire_Liste_octet_fichier(Liste_octet_compress);
+    Tableau_octet := Transformer_Tab_binaire_octet(Tableau_binaire);
+    ecriture(Tab_Huff, Liste_binaire, Tab_text, Liste_octet_compress,File_Name);
+    Vider(Arbre_Huff);
+end compresser;

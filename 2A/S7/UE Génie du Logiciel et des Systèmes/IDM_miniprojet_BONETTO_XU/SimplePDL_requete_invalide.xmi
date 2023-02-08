@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:simplepdl="http://simplepdl"
+    xsi:schemaLocation="http://simplepdl SimplePDL.ecore"
+    name="requete_Invalide">
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      name="w1">
+    <request
+        resource="//@processElements.1"
+        occurrence="3"
+        workdefinition="//@processElements.0"/>
+  </processElements>
+  <processElements
+      xsi:type="simplepdl:Resource"
+      request="//@processElements.0/@request.0"
+      amount="2"
+      name="r1"/>
+</simplepdl:Process>

@@ -1,0 +1,33 @@
+Dans ce fichier `reponses1.txt`,
+
+
+[Question 1.1] Indiquer
+- comment obtenir le ou les exécutables par compilation séparée.
+
+1.On a d'abord la création des fichiers objet via la commande : c99 -Wextra -pedantic -c *.c
+On obtient alors les fichiers objet de TOUS LES FICHIERS .c qui se trouvent dans le répertoire courant.
+
+2.Ensuite on a la création des exécutables par létape d'édition des liens :
+c99 file.o exemple_file.o -o exemple_file
+c99 file.o test_file.o -o test_file
+
+- les dépendances entre les fichiers qui constituent l’application.
+les dépendances de exemple_file sont : file.o et exemple_file.o
+les dépendances de test_file sont : file.o et test_file.o
+
+- le rôle de la règle `.PHONY` dans Makefile.
+On peut indiquer à make que la règle clean ne produit pas un fichier dénommé clean en rajoutant la ligne à la fin du Makefile : .PHONY: clean
+Ainsi, make n'ira pas vérifier si le fichier clean existe avant d'exécuter la règle.
+Il se comporte comme si les fichiers listés après .PHONY n'étaient jamais à jour.
+
+Pour résumer .PHONY permet de s'affranchir de la vérification de l'existance des cibles lors de l'exécution.
+
+[Question 1.5] Indiquer
+- Quel est le sous-programme non-visible des autres modules et défini dans le module File.
+C'est le sous-programme cellule
+
+- Que se passe-t-il si on enlève le mot-clé static à la compilation ?
+Que static soit là ou non, dans tout les cas la compilation réussie
+
+- Quel est le risque de ne pas le mettre ?
+Le risque de ne pas mettre static est que l'utilisateur pourrait faire une mauvaise utilisation du sous-programme cellule

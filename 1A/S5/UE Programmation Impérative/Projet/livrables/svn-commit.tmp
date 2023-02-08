@@ -1,0 +1,6 @@
+
+--Cette ligne, et les suivantes ci-dessous, seront ignorées--
+
+A    interfaces/lca_projet.ads
+A    interfaces/piles.ads
+A    interfaces/sda_exceptions.ads

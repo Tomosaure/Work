@@ -1,0 +1,16 @@
+type token =
+    UL_PTVIRG
+  | UL_NAME of string
+  | UL_IDENT of string
+  | UL_FIN
+  | UL_ENTIER of int
+  | UL_AFFECT
+  | UL_ACCOUV
+  | UL_ACCFER
+val menhir_begin_marker : int
+val xv_valeur : unit
+val xv_sous_valeur_bis : unit
+val xv_sous_valeur : unit
+val xv_sous_sous_valeur : unit
+val xv_record : unit
+val menhir_end_marker : int

@@ -1,0 +1,12 @@
+\* Problem: assemblage de voiture *\
+
+Maximize
+ Benefice: 10000 L + 9000 S
+
+Subject To
+ HeureDeTravail: 6 L + 5 S <= 6000
+ Superficie: 10 L + 20 S  <= 15000
+ LimiteLux: L <= 800
+
+int L S
+End

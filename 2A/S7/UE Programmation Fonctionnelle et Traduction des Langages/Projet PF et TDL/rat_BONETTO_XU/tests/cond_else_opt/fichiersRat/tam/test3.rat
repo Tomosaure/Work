@@ -1,0 +1,12 @@
+test{
+  int x = 3;
+  int y = 0;
+  int z = 4;
+  if (x=3){
+    z=2;
+    if (z=4) {
+      y = x; 
+    }
+  }
+  print y;
+}

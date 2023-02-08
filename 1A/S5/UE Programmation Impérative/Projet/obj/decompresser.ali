@@ -1,0 +1,122 @@
+V "GNAT Lib v2021"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P SS ZX
+
+RN
+RV NO_IO
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U decompresser%b	decompresser.adb	e36646af NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W arbre%s		arbre.adb		arbre.ali
+W compression%s		compression.adb		compression.ali
+W decompression%s	decompression.adb	decompression.ali
+W openfile%s		openfile.adb		openfile.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W tableau%s		tableau.adb		tableau.ali
+
+D ada.ads		20210520051130 76789da1 ada%s
+D a-comlin.ads		20210520051127 4aa66568 ada.command_line%s
+D a-except.ads		20210520051127 946f3014 ada.exceptions%s
+D a-inteio.ads		20210520051127 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20210520051127 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210520051128 119b8fb3 ada.streams%s
+D a-string.ads		20210520051128 90ac6797 ada.strings%s
+D a-sttebu.ads		20210520051128 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20210520051128 808c40ad ada.strings.utf_encoding%s
+D a-tags.ads		20210520051129 9eaa38c6 ada.tags%s
+D a-textio.ads		20210520051129 aef4d56d ada.text_io%s
+D a-tiinio.ads		20210520051129 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20210520051129 0e9b276f ada.unchecked_conversion%s
+D arbre.ads		20220114175529 1e0feb81 arbre%s
+D compression.ads	20220117121818 35ed6e0b compression%s
+D decompresser.adb	20220118123028 d38f24cc decompresser%b
+D decompression.ads	20220117124813 c3552845 decompression%s
+D interfac.ads		20210520051131 edec285f interfaces%s
+D i-cstrea.ads		20210520051131 e53d8b8e interfaces.c_streams%s
+D lca_projet.ads	20220114175529 8db01d20 lca_projet%s
+D openfile.ads		20220118122643 de24eac5 openfile%s
+D piles.ads		20220113133225 b1e5c8b6 piles%s
+D system.ads		20210520051134 a2da961d system%s
+D s-crtl.ads		20210520051131 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210520051131 54135002 system.exception_table%s
+D s-ficobl.ads		20210520051131 078245e4 system.file_control_block%s
+D s-parame.ads		20210520051133 4752c4cb system.parameters%s
+D s-putima.ads		20210520051133 4e095881 system.put_images%s
+D s-secsta.ads		20210520051133 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20210520051133 a7318a92 system.soft_links%s
+D s-stache.ads		20210520051133 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210520051133 472fbca8 system.standard_library%s
+D s-stoele.ads		20210520051133 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210520051133 ed88f8fb system.storage_elements%b
+D s-traent.ads		20210520051133 26a8d361 system.traceback_entries%s
+D s-unstyp.ads		20210520051133 2b077493 system.unsigned_types%s
+D s-wchcon.ads		20210520051134 1b7d22d2 system.wch_con%s
+D tableau.ads		20220117134816 14631cc8 tableau%s
+D unchconv.ads		20210520051134 ca2f9e18 unchecked_conversion%s
+G a e
+G c Z b b [decompresser standard 10 11 none]
+G r c none [decompresser standard 10 11 none] [lecture openfile 25 15 none]
+G r c none [decompresser standard 10 11 none] [reconstruire_liste_octet decompression 9 15 none]
+G r c none [decompresser standard 10 11 none] [construire_tab_huff compression 9 14 none]
+G r c none [decompresser standard 10 11 none] [construire_tab_huff_inverse compression 24 15 none]
+G r c none [decompresser standard 10 11 none] [initialiser arbre 11 15 none]
+G r c none [decompresser standard 10 11 none] [reconstruire_arbre_huff decompression 12 15 none]
+G r c none [decompresser standard 10 11 none] [reconstruire_tab_text_decompress decompression 14 14 none]
+G r c none [decompresser standard 10 11 none] [ecriture_decompress openfile 27 15 none]
+G r c none [decompresser standard 10 11 none] [vider arbre 56 15 none]
+X 1 ada.ads
+16K9*Ada 20e8 16|1r6 1r34 2r6 2r34 8r6 8r32
+X 2 a-comlin.ads
+36K13*Command_Line 144e21 16|8w10 8r36
+52V13*Argument{string} 16|11s27
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[12|46] 16|2w10 2r38
+X 11 a-textio.ads
+58K13*Text_IO 725e16 16|1w10 1r38
+X 14 arbre.ads
+6K9*Arbre 73e10 16|7w6 7r17
+8P10*T_Arbre 16|16r13
+11U15*Initialiser 16|24s5
+56U15*Vider 16|28s5
+X 15 compression.ads
+6K9*compression 31e16 16|6w6 6r23
+9V14*Construire_Tab_Huff{38|31R10} 16|22s17
+24U15*Construire_Tab_Huff_Inverse 16|23s5
+X 16 decompresser.adb
+10U11*decompresser 10b11 29l5 29t17
+11a5 File_Name{string} 20r45 27r31
+12r5 Tab_Texte{38|11R10} 20m13 26r47
+13r5 Tab_octet{38|18R10} 20m24 21m30 21r30 22r48 22r59
+14r5 Tab_arbre{38|11R10} 20m35 22r37
+15r5 Tab_Huff{38|31R10} 22m5 23m33 23r33 25r29
+16p5 Arbre{14|8P10} 24m17 24r17 25m39 25r39 26r58 28m11 28r11
+17i5 compteur{integer} 25m46 25r46
+18r5 Texte{38|11R10} 26m5 27r25
+X 17 decompression.ads
+6K9*decompression 16|5w6 5r25 17|15e18
+9U15*Reconstruire_Liste_octet 16|21s5
+12U15*Reconstruire_Arbre_Huff 16|25s5
+14V14*Reconstruire_Tab_text_decompress{38|11R10} 16|26s14
+X 21 openfile.ads
+5K9*OpenFile 16|3w6 3r20 21|28e13
+25U15*lecture 16|20s5
+27U15*ecriture_decompress 16|27s5
+X 38 tableau.ads
+3K9*Tableau 16|4w6 4r19 38|40e12
+11R10*T_Tab_symbole 16|12r16 14r17 18r12 38|14e15
+18R10*T_Tab 16|13r16 38|21e15
+20i9*Nb_Elements{integer} 16|22r69
+31R10*T_Tab_Huff 16|15r15 38|34e15
+

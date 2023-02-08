@@ -1,0 +1,6 @@
+public class UsagerServer_i {
+
+    final static String hosts[] = {"localhost", "localhost", "localhost"};
+    final static int ports[] = {8081, 8082, 8083};
+
+}

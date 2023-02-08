@@ -1,0 +1,106 @@
+import 'PetriNet.ecore'
+
+package petrinet
+
+/*
+	 * Nom valide PetriNet
+	 */
+
+/*
+	 * Nom valide PetriNet
+	 */
+
+
+/* Nom valide PetriNet */
+context PetriNet
+inv validName('Invalid name: ' + self.name):
+	self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+
+/*
+	 * Non réflexivité des dépendances
+	 */
+
+/*
+	 * Non réflexivité des dépendances
+	 */
+
+
+/* Non réflexivité des dépendances */
+context PetriNetElement
+def: petrinet(): PetriNet =
+	PetriNet.allInstances()
+		->select(p | p.petriNetElements->includes(self))
+		->asSequence()->first()
+
+/*
+	 * Marquage des places positifs
+	 */
+
+/*
+	 * Marquage des places positifs
+	 */
+
+
+/* Marquage des places positifs */
+context Place 
+inv positiveMarking('Negativ marking: ' + self.name):
+	self.jetons >= 0
+
+/*
+	 * Nom valide Noeud
+	 */
+
+/*
+	 * Nom valide Noeud
+	 */
+
+	
+/* Nom valide Noeud */
+context Noeud
+inv validName('Invalid name: ' + self.name):
+	self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+
+/*
+	 * Nom valide Noeud
+	 */
+
+/*
+	 * Nom valide Noeud
+	 */
+
+
+/* Nom différents pour des noeuds différents */
+context Noeud
+inv uniqueName('Name already used: ' + self.name):
+	Noeud.allInstances()->forAll(n1, n2 | n1 <> n2 implies n1.name <> n2.name)
+
+/*
+	 * Poids non positif nul
+	 */
+
+/*
+	 * Poids non positif nul
+	 */
+
+
+/* Poids non positif nul */
+context Arc
+inv posNulWeight('Invalid weight '):
+	self.poids > 0
+
+/*
+	 * Poids non positif nul
+	 */
+
+/*
+	 * Poids non positif nul
+	 */
+
+	
+/* Arc doit être entre une Place et une Transition */
+context Arc
+inv validArc('Invalid arc '):
+	(self.source.oclIsKindOf(Place) and self.destination.oclIsKindOf(Transition))
+		or (self.destination.oclIsKindOf(Place) and self.source.oclIsKindOf(Transition))
+
+endpackage

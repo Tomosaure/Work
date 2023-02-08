@@ -1,0 +1,59 @@
+#  GLPK model file created by SUN for RO teaching
+
+
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+set Noeud;
+
+################### Variables ###################
+
+var X{i in Noeud, j in Noeud}, binary; # Matrice des trajets 
+var U{i in Noeud}, integer, >= 1; # Formulation MTZ
+
+###################  Constants: Data to load   #########################
+
+param D{i in Noeud, j in Noeud}; # Matrice des distances
+
+################### Constraints ###################
+
+s.t. TrajetEffectif{i in Noeud}:
+  X[i,i] = 0;
+
+s.t. UneArriveeParEndroit{i in Noeud}:
+  sum{j in Noeud} X[i,j] = 1; 
+
+s.t. UnDepartParEndroit{j in Noeud}:
+  sum{i in Noeud} X[i,j] = 1; 
+
+s.t. PasDeBoucleInterne{i in Noeud : i <> 'ALPHA'}:
+  U[i] >= 2;
+
+s.t. PasDeBoucleInterne2{i in Noeud, j in Noeud : i <> 'ALPHA' and j <> 'ALPHA'}:
+  U[i] - U[j] + 1 <= (sum{k in Noeud } 1) * (1 - X[i,j]);
+  
+###### Objective ######
+
+minimize ImpactMinimal: 
+    sum{i in Noeud, j in Noeud} D[i,j]*X[i,j];
+#end;
+
+
+#default data
+
+data;
+
+set Noeud := ALPHA C1 C2 C3 C4 C5;
+
+param D: ALPHA C1 C2 C3 C4 C5 :=
+ALPHA 0 1 1 10 12 12
+C1 1 0 1 8 10 11
+C2 1 1 0 8 11 10
+C3 10 8 8 0 1 1
+C4 12 10 11 1 0 1
+C5 12 11 10 1 1 0
+;
+
+end;

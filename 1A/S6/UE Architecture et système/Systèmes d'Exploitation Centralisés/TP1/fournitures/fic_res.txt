@@ -1,0 +1,1 @@
+vmsh1.sh: 63: miniminishell: not found

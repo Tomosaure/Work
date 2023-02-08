@@ -1,0 +1,26 @@
+[GENERATED OBJECT FILE]
+b__test_compression.o
+[PROJECT FILES]
+/home/tbonetto/Annee_1/pim/IJ09/projet.gpr
+20220113195753 386bbef608abc9f188d702acb9095e04
+[BOUND OBJECT FILES]
+/home/tbonetto/Annee_1/pim/IJ09/obj/piles.o
+/home/tbonetto/Annee_1/pim/IJ09/obj/sda_exceptions.o
+/home/tbonetto/Annee_1/pim/IJ09/obj/arbre.o
+/home/tbonetto/Annee_1/pim/IJ09/obj/lca_projet.o
+/home/tbonetto/Annee_1/pim/IJ09/obj/tableau.o
+/home/tbonetto/Annee_1/pim/IJ09/obj/compression.o
+/home/tbonetto/Annee_1/pim/IJ09/obj/openfile.o
+/home/tbonetto/Annee_1/pim/IJ09/obj/test_compression.o
+[GENERATED SOURCE FILES]
+b__test_compression.ads
+b__test_compression.adb
+b__test_compression.ali
+[RESULTING OPTIONS]
+-L/home/tbonetto/Annee_1/pim/IJ09/obj/
+-L/home/tbonetto/Annee_1/pim/IJ09/obj/
+-L/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/
+-static
+-static-libgcc
+/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/libgnat.a
+-ldl

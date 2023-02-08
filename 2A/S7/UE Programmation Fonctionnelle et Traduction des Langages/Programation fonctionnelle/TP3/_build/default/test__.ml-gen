@@ -1,0 +1,2 @@
+(** @canonical Test.Tp3 *)
+module Tp3 = Test__Tp3

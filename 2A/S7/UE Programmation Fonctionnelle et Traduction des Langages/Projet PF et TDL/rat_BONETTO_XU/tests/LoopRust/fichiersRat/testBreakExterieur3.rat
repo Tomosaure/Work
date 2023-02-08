@@ -1,0 +1,8 @@
+int a (int a int b){
+    break a;
+    return (a+b);
+}
+
+test {
+    int x = 1;
+}

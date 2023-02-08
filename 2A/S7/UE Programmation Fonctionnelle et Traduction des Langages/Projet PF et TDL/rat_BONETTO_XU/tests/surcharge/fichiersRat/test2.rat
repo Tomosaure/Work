@@ -1,0 +1,12 @@
+int add (int a int b){
+  return (a+b);
+ }
+ 
+rat add (rat a rat b){
+  return (a+b);
+ }
+
+
+test{
+  rat x = call add ([1/2] [2/3]);
+}

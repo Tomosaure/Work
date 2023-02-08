@@ -1,0 +1,20 @@
+[GENERATED OBJECT FILE]
+b__test_piles.o
+[PROJECT FILES]
+/home/tbonetto/Annee_1/pim/IJ09/projet.gpr
+20220110175832 a42ea3ca50e65a4e298eb42c2044c8d8
+[BOUND OBJECT FILES]
+/home/tbonetto/Annee_1/pim/IJ09/obj/piles.o
+/home/tbonetto/Annee_1/pim/IJ09/obj/test_piles.o
+[GENERATED SOURCE FILES]
+b__test_piles.ads
+b__test_piles.adb
+b__test_piles.ali
+[RESULTING OPTIONS]
+-L/home/tbonetto/Annee_1/pim/IJ09/obj/
+-L/home/tbonetto/Annee_1/pim/IJ09/obj/
+-L/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/
+-static
+-static-libgcc
+/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/libgnat.a
+-ldl

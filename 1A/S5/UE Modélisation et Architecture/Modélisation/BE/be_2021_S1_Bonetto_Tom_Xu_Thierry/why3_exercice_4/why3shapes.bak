@@ -1,0 +1,36 @@
+a<abc0
+a=alaa-aa
+a=alba-ab
+a=c0a*alac0
+loop invariant init
+a=asa*alaai
+a<aialb
+a=as1a+asala
+a=ai1a+aic1
+a<a-albai1a-albaiAa<=c0a-albai
+loop variant decrease
+a=as1a*alaai1
+loop invariant preservation
+Na<aialb
+a=asa*aaab
+postcondition
+Na<abc0
+a=c0a*aac0
+a=asa*aaai
+a<aiab
+a=as1a+asaa
+a<a-abai1a-abaiAa<=c0a-abai
+a=as1a*aaai1
+Na<aiab
+iia=V3a*V0V1a=V4a*V0V5Aa<a-V1V5a-V1V2Aa<=c0a-V1V2Ia=V5a+V2c1FIa=V4a+V3V0Fa<V2V1Ia=V3a*V0V2FAa=c0a*V0c0ia=V9a*V0V1a=V10a*V6V11Aa<a-V7V11a-V7V8Aa<=c0a-V7V8Ia=V11a+V8c1FIa=V10a+V9V6Fa<V8V7Ia=V9a*V6V8FAa=c0a*V6c0Ia=V7a-V1FIa=V6a-V0Fa<V1c0F
+VC for produit
+
+4ae18f83fa23852ce018d1c419e75dbb 25H24
+0fb09cb8a8edb9754ce76282bef10e14 4H3H2H1H0
+6b4718ab48d09d3c47dfe1306678ded6 10H9H8H7H6H5H2H1H0
+5089d7c86b51414aa92b4bf70e3e66d7 12H11H8H7H6H5H2H1H0
+bbfdf51669e7f851828c94a68536d5ab 15H14H13H5H2H1H0
+4c094fc41231975a72522af20f8339c1 4H17H16
+c9c00908af78ea859e6293e35f49f7e0 10H21H8H20H19H18H16
+63c98d2c2a3cd47871320d4c5e1407ed 12H22H8H20H19H18H16
+b71cc1cb70b52713c3de40f0ef09a60c 15H14H23H18H16

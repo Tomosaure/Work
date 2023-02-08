@@ -1,0 +1,7 @@
+main {
+(int *) c = (new int);
+(* c) = 0;
+(int *) d = (new int);
+(* d) = 1 ;
+int j = 0;
+}

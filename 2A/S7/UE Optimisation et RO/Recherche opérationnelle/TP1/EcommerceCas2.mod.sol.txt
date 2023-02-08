@@ -1,0 +1,58 @@
+Problem:    EcommerceCas2
+Rows:       11
+Columns:    12 (12 integer, 0 binary)
+Non-zeros:  36
+Status:     INTEGER OPTIMAL
+Objective:  ImpactMinimal = 10 (MINimum)
+
+   No.   Row name        Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 CommandeInferieurAuStock[M1,P1]
+                                   2                         2.5 
+     2 CommandeInferieurAuStock[M1,P2]
+                                   1                           1 
+     3 CommandeInferieurAuStock[M2,P1]
+                                   1                           1 
+     4 CommandeInferieurAuStock[M2,P2]
+                                   1                           2 
+     5 CommandeInferieurAuStock[M3,P1]
+                                   0                           2 
+     6 CommandeInferieurAuStock[M3,P2]
+                                   1                           1 
+     7 LivraisonComplete[D1,P1]
+                                   2             2             = 
+     8 LivraisonComplete[D1,P2]
+                                   0            -0             = 
+     9 LivraisonComplete[D2,P1]
+                                   1             1             = 
+    10 LivraisonComplete[D2,P2]
+                                   3             3             = 
+    11 ImpactMinimal
+                                  10                             
+
+   No. Column name       Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 Q[D1,M1,P1]  *              1             0               
+     2 Q[D2,M1,P1]  *              1             0               
+     3 Q[D1,M1,P2]  *              0             0               
+     4 Q[D2,M1,P2]  *              1             0               
+     5 Q[D1,M2,P1]  *              1             0               
+     6 Q[D2,M2,P1]  *              0             0               
+     7 Q[D1,M2,P2]  *              0             0               
+     8 Q[D2,M2,P2]  *              1             0               
+     9 Q[D1,M3,P1]  *              0             0               
+    10 Q[D2,M3,P1]  *              0             0               
+    11 Q[D1,M3,P2]  *              0             0               
+    12 Q[D2,M3,P2]  *              1             0               
+
+Integer feasibility conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output

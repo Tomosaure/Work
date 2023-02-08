@@ -1,0 +1,15 @@
+Pour compresser un fichier :
+Dans le répertoire IJ09/src :
+-Créer le fichier texte contenant le texte à compresser, lui donner n'importe quel nom et rajouter .out à la fin, ex : "texte_a_compresser.out".
+-Compilez avec gnat si ce n'est pas déjà fait le "main_compression.adb".
+-Puis écrire dans le terminal "./main_compression texte_a_compresser.out".
+
+Cela crée un fichier texte "texte_compresse.out" qui contient le texte compressé sous forme d'octet
+Pour l'observer, écrire dans le terminal "xxd -b texte_compresse.out"
+
+Pour décompresser un fichier :
+-Compilez avec gnat si ce n'est pas déjà fait le "main_décompression.adb".
+-Puis écrire dans le terminal "./main_décompression".
+
+Cela crée un fichier texte "texte_décompresse.out" qui contient le texte décompressé
+qui peut être lu avec un éditeur de texte (vim,pluma,atom).

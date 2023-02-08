@@ -1,0 +1,22 @@
+a>=anc0
+a=a*c0c2a*c0a+c0c1
+loop invariant init
+a=a*arc2a*aia+aic1
+a<aian
+a=ai1a+aic1
+a=ar1a+arai1
+a<a-anai1a-anaiAa<=c0a-anai
+loop variant decrease
+a=a*ar1c2a*ai1a+ai1c1
+loop invariant preservation
+Na<aian
+a=a*c2ara*ana+anc1
+postcondition
+ia=a*c2V1a*V0a+V0c1a=a*V4c2a*V3a+V3c1Aa<a-V0V3a-V0V2Aa<=c0a-V0V2Ia=V4a+V1V3FIa=V3a+V2c1Fa<V2V0Ia=a*V1c2a*V2a+V2c1FAa=a*c0c2a*c0a+c0c1Ia>=V0c0F
+VC for somme
+
+13dd60d5c4a26abdf4d8d562e620651a 15H14
+b8d2ea8066b71a6971bc59ff0462b818 2H1H0
+a5234deb44f912c6f45d77504cb9bb5a 8H7H6H5H4H3H0
+d0a8ae3e696971b2deef7182602bbe18 10H9H6H5H4H3H0
+2b4e93eb59bc3a4e3a0c0a1edc5f3e47 13H12H11H3H0

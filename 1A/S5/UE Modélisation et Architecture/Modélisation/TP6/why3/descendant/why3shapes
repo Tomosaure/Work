@@ -1,0 +1,22 @@
+a<=c0an
+a=afactorielleana*c1afactoriellean
+loop invariant init
+a=afactorielleana*arafactorielleai
+a<c0ai
+a=ar1a*aiar
+a=ai1a-aic1
+a<ar1arAa<=c0ar
+loop variant decrease
+a=afactorielleana*ar1afactorielleai1
+loop invariant preservation
+Na<c0ai
+a=afactorielleanar
+postcondition
+ia=afactorielleV0V1a=afactorielleV0a*V3afactorielleV4Aa<V3V1Aa<=c0V1Ia=V4a-V2c1FIa=V3a*V2V1Fa<c0V2Ia=afactorielleV0a*V1afactorielleV2FAa=afactorielleV0a*c1afactorielleV0Ia<=c0V0F
+VC for factorielle_descendant
+
+7f1f174bc04f86e8a26fa0dbabb1f3df 15H14
+30d644aa65762714833a16a5e13e4ea3 2H1H0
+f349b8327111c093fba867a0abec6ea1 8H7H6H5H4H3H0
+951b75891bf5595d485433fa3f31c035 10H9H6H5H4H3H0
+03dbbbacb9c51c430436f1c2ad7ca685 13H12H11H3H0

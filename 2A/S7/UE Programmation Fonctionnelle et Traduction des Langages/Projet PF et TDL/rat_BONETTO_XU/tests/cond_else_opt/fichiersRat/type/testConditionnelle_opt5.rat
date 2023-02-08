@@ -1,0 +1,6 @@
+test{
+  int x = 4;
+  if x {
+    int x = 3;
+  }
+}

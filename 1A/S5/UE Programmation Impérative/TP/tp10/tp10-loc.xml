@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>/home/tbonetto/Annee_1/pim/tp/tp10/tp10.gpr</vfs_file>
+    <file_marker column=" 8" line=" 60" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/tp/tp10/lca.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 8" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/tp/tp10/th.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 87" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/tp/tp10/th.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 34" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/tp/tp10/th_sujet.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/tp/tp10/lca.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 5" line=" 254" >
+      <vfs_project>/home/tbonetto/Annee_1/pim/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/tbonetto/Annee_1/pim/tp/tp10/test_th.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

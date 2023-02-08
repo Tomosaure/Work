@@ -1,0 +1,57 @@
+#  GLPK model file created by SUN for RO teaching
+
+
+###############################  Model ###############################
+
+
+
+###############################  Sets  ###############################
+
+set PERSONNEL; 
+set TRAVAIL;
+
+################### Variables ###################
+
+var Q{i in PERSONNEL, j in TRAVAIL}, binary; # Q[i,j] = 1 si le personnel i effectue le travail j
+
+###################  Constants: Data to load   #########################
+
+param CoutTravail{i in PERSONNEL, j in TRAVAIL}; # Cout de formation du travail j pour le personnel i
+
+################### Constraints ###################
+
+
+s.t. UnTravailParPersonne{i in PERSONNEL}:
+  sum{j in TRAVAIL} Q[i,j] = 1;
+
+s.t. UnePersonneParTravail{j in TRAVAIL}:
+  sum{i in PERSONNEL} Q[i,j] = 1;
+
+###### Objective ######
+
+minimize CoutTotal: 
+		sum{i in PERSONNEL, j in TRAVAIL} Q[i,j] * CoutTravail[i,j]; 
+
+#end;
+
+
+#default data
+
+data;
+
+set PERSONNEL := 
+1
+2
+3;
+
+set TRAVAIL :=
+1
+2
+3;
+
+param CoutTravail: 1 2 3 :=
+1 2 1 2
+2 1 3 1
+3 2 3 3;
+
+end;

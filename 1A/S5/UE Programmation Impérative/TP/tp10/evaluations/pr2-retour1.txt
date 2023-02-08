@@ -1,0 +1,13 @@
+
+* Voir le retour général
+* Voir le retour automatique
+
+	Revoir la procedure enregistrer ( les differents cas possibles ) 
+	Simplifier la condition dans le return de cle_presente 
+	Revoir la procedure supprimer qui ne supprime rien 
+	Redondance dans les cas traiter dans la procedure pour_chaque 
+	Il faut recuperer l'exception lever par la procedure traiter dans pour_chaque de manière à permettre la continuité de l'execution sur les couples restants 
+	
+	N'oubliez pas de vider la liste dans lca_sujet 
+
+* ...

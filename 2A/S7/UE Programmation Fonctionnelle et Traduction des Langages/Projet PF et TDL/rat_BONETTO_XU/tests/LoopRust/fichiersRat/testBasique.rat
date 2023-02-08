@@ -1,0 +1,19 @@
+main {
+
+  loop {}
+
+  loop { break; }
+
+  loop { continue ;}
+
+  a : loop {}
+
+  a : loop { break a; }
+
+  a : loop { continue a; }
+
+  a : loop { break; }
+
+  a : loop { continue; }
+
+}

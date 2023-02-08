@@ -1,0 +1,132 @@
+V "GNAT Lib v2021"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U tableau%b		tableau.adb		5ea18ef4 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W piles%s		piles.adb		piles.ali  ED
+
+U tableau%s		tableau.ads		a586d47e EE NE OO PK
+W ada%s			ada.ads			ada.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+Z ada.text_io%s		a-textio.adb		a-textio.ali
+W piles%s		piles.adb		piles.ali
+
+D ada.ads		20210520051130 76789da1 ada%s
+D a-except.ads		20210520051127 946f3014 ada.exceptions%s
+D a-inteio.ads		20210520051127 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20210520051127 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210520051128 119b8fb3 ada.streams%s
+D a-string.ads		20210520051128 90ac6797 ada.strings%s
+D a-sttebu.ads		20210520051128 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20210520051128 808c40ad ada.strings.utf_encoding%s
+D a-tags.ads		20210520051129 9eaa38c6 ada.tags%s
+D a-textio.ads		20210520051129 aef4d56d ada.text_io%s
+D a-tiinio.ads		20210520051129 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20210520051129 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210520051131 edec285f interfaces%s
+D i-cstrea.ads		20210520051131 e53d8b8e interfaces.c_streams%s
+D piles.ads		20220113133225 b1e5c8b6 piles%s
+D piles.adb		20220113133217 93fc7b34 piles%b
+D system.ads		20210520051134 a2da961d system%s
+D s-crtl.ads		20210520051131 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210520051131 54135002 system.exception_table%s
+D s-ficobl.ads		20210520051131 078245e4 system.file_control_block%s
+D s-parame.ads		20210520051133 4752c4cb system.parameters%s
+D s-putima.ads		20210520051133 4e095881 system.put_images%s
+D s-secsta.ads		20210520051133 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20210520051133 a7318a92 system.soft_links%s
+D s-stache.ads		20210520051133 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210520051133 472fbca8 system.standard_library%s
+D s-stoele.ads		20210520051133 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210520051133 ed88f8fb system.storage_elements%b
+D s-traent.ads		20210520051133 26a8d361 system.traceback_entries%s
+D s-unstyp.ads		20210520051133 2b077493 system.unsigned_types%s
+D s-wchcon.ads		20210520051134 1b7d22d2 system.wch_con%s
+D tableau.ads		20220117134816 14631cc8 tableau%s
+D tableau.adb		20220114150702 a3980643 tableau%b
+D unchconv.ads		20210520051134 ca2f9e18 unchecked_conversion%s
+G a e
+G c s s s [s tableau 3 1 none]
+G c Z s s [initialiser tableau__pile_caractere 14 15 5_5]
+G c Z s s [est_vide tableau__pile_caractere 19 14 5_5]
+G c Z s s [sommet tableau__pile_caractere 23 14 5_5]
+G c Z s s [taille tableau__pile_caractere 26 14 5_5]
+G c Z s s [est_pleine tableau__pile_caractere 29 14 5_5]
+G c Z s s [empiler tableau__pile_caractere 33 15 5_5]
+G c Z s s [depiler tableau__pile_caractere 39 15 5_5]
+G c Z s s [inverser tableau__pile_caractere 43 15 5_5]
+G c Z s s [Tt_tab_elementsBIP tableau__pile_caractere 54 5 5_5]
+G c Z s s [t_pileIP tableau__pile_caractere 56 10 5_5]
+G c Z s b [afficher_tab_huff tableau 36 15 none]
+G c Z s b [afficher_tab tableau 37 15 none]
+G c Z s b [afficher_tab_symbole tableau 38 15 none]
+G c Z s s [Tt_tab_characterBIP tableau 9 5 none]
+G c Z s s [t_tab_symboleIP tableau 11 10 none]
+G c Z s s [Tt_tab_integerBIP tableau 16 5 none]
+G c Z s s [t_tabIP tableau 18 10 none]
+G c Z s s [t_charIP tableau 23 10 none]
+G c Z s s [Tt_tab_huff_charBIP tableau 29 5 none]
+G c Z s s [t_tab_huffIP tableau 31 10 none]
+G c Z b b [afficher_pileR tableau__afficher_pileGP151 6 15 none]
+G c Z b b [afficher_pile tableau 6 15 none]
+G r i none [s tableau 3 1 none] [piles standard 7 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 33|1r6 1r34 2r6 2r34
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[11|46] 33|2w10 2r38
+X 10 a-textio.ads
+58K13*Text_IO 725e16 33|1w10 1r38
+262U14*New_Line 33|18s17
+390U14*Put 33|6r60 10s9 13s13 14s13 29s21 30s21 31s21 45s9 47s13 61s9 63s13
+. 64s13 67s17
+463U14*Put 33|12s13 15s13 19s17 21s21 22s21 25s21 26s21 32s21 40s9 50s17
+. 56s9 66s17 72s9
+X 11 a-tiinio.ads
+80U14*Put 33|48s13[3|18] 51s17[3|18]
+X 15 piles.ads
+4i5 Capacite{integer} 32|6r24
+5+10 T_Element 32|6r41
+7k9*Piles 62e10 32|1w6 6r17 33|3w6
+9R10*T_Pile 32|26r22[5]
+49u15*Afficher 33|6r51[32|5]
+X 32 tableau.ads
+3K9*Tableau 40l5 40e12 33|4b14 74l5 74t12
+5K13*Pile_Caractere[15|7] 7r9 33|6r36
+9A10*T_Tab_character(character)<integer> 12r20
+11R10*T_Tab_symbole 14e15 38r49 33|59r49
+12a9*Elements{9A10} 33|64r25 67r29
+13i9*Nb_Elements{integer} 33|62r21 65r33
+16A10*T_Tab_integer(integer)<integer> 19r20
+18R10*T_Tab 21e15 37r41 33|43r41
+19a9*Elements{16A10} 33|48r25 51r29
+20i9*Nb_Elements{integer} 33|46r21 49r33
+23R10*T_char 27e19 29r46
+25i13*char{integer} 33|13r51 20r40 24r43 30r59
+26r13*binaire{15|9R10[5]} 33|16r47 23r55 27r55 33r55
+29A10*T_Tab_Huff_char(23R10)<integer> 32r20
+31R10*T_Tab_Huff 34e15 36r46 33|8r46
+32a9*Elements{29A10} 33|13r39 16r35 20r28 23r43 24r31 27r43 30r47 33r43
+33i9*Nb_Elements{integer} 33|11r20 17r33
+36U15*Afficher_Tab_Huff 36>33 33|8b15 41l9 41t26
+36r33 Tableau{31R10} 33|8b33 11r12 13r31 16r27 17r25 20r20 23r35 24r23 27r35
+. 30r39 33r35
+37U15*Afficher_Tab 37>28 33|43b15 57l9 57t21
+37r28 Tableau{18R10} 33|43b28 46r13 48r17 49r25 51r21
+38U15*Afficher_Tab_symbole 38>36 33|59b15 73l9 73t29
+38r36 Tableau{11R10} 33|59b36 62r13 64r17 65r25 67r21
+X 33 tableau.adb
+6U15 Afficher_Pile[15|49] 16s13 23s21 27s21 33s21
+17i17 I{integer} 20r37 23r52 24r40 27r52 30r56 33r52
+49i17 I{integer} 51r38
+65i17 i{integer} 67r38
+

@@ -1,0 +1,8 @@
+vecteurs_creux.adb:60:05: warning: variable "i" is assigned but never read [-gnatwm]
+vecteurs_creux.adb:81:39: warning: formal parameter "V1" is not referenced [-gnatwu]
+vecteurs_creux.adb:81:43: warning: formal parameter "V2" is not referenced [-gnatwu]
+vecteurs_creux.adb:87:39: warning: formal parameter "V1" is not referenced [-gnatwu]
+vecteurs_creux.adb:87:43: warning: formal parameter "V2" is not referenced [-gnatwu]
+vecteurs_creux.adb:99:26: warning: formal parameter "V" is not referenced [-gnatwu]
+vecteurs_creux.adb:105:36: warning: formal parameter "V1" is not referenced [-gnatwu]
+vecteurs_creux.adb:105:40: warning: formal parameter "V2" is not referenced [-gnatwu]

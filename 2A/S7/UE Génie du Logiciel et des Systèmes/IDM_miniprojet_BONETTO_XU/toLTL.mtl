@@ -1,0 +1,34 @@
+[comment encoding = UTF-8 /]
+[module toLTL('http://simplepdl')]
+
+
+[template public processToLTL(aProcess : Process)]
+[comment @main/]
+[file (aProcess.name + '.ltl', false, 'UTF-8')]
+[let wds : OrderedSet(WorkDefinition) = aProcess.getWD() ]
+[if (wds->size() > 0)]
+[comment Toutes les activités se terminent (T10) /]
+[for (wd: WorkDefinition | wds)
+before ('<> (') separator (' /\\ ') after(');')][wd.name /]_finished[/for]
+
+
+[comment Chaque activité est soit non commencée, soit en cours, soit terminée. (T11)/]
+[for (wd : WorkDefinition | wds)]
+['[]'/]([wd.name /]_ready + [wd.name /]_inProgress + [wd.name /]_finished = 1);
+[/for]
+
+[comment Une activité terminée n’évolue plus. (T11) /]
+[for (wd: WorkDefinition | wds)
+]['[]'/]([wd.name /]_finished => ['[]'/] ([wd.name/]_finished));
+[/for]
+[/if]
+[/let]
+
+- ['[]'/] (- dead)
+[/file]
+[/template]
+[query public getWD(p: Process) : OrderedSet(WorkDefinition) =
+	p.processElements->select( e | e.oclIsTypeOf(WorkDefinition) )
+	->collect( e | e.oclAsType(WorkDefinition) )
+	->asOrderedSet()
+/]

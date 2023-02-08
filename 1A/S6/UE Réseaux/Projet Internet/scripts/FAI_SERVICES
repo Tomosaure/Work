@@ -1,0 +1,30 @@
+#!/bin/bash
+
+ip link set dev eth0 up
+ip address add 200.4.253.193/26 dev eth0
+ip link set dev eth1 up
+ip address add 200.4.253.131/26 dev eth1
+
+
+# Enlever les autorisations
+iptables -P FORWARD DROP
+
+# Autoriser toutes requêtes du réseaux local
+iptables -A FORWARD -s 200.4.253.192/26 -j ACCEPT
+
+#Autoriser les pings
+iptables -A FORWARD -p icmp -j ACCEPT
+
+# Autoriser les trames HTTP
+iptables -A FORWARD -i eth1 -d 200.4.253.196 -p tcp --dport 80 -j ACCEPT
+
+# Autoriser les trames DNS
+iptables -A FORWARD -i eth1 -d 200.4.253.194 -p udp --dport 53 -j ACCEPT
+
+# Autoriser les trames FTP
+iptables -A FORWARD -i eth1 -d 200.4.253.195 -p tcp --dport 21 -j ACCEPT
+iptables -A FORWARD -i eth1 -d 200.4.253.195 -p tcp --dport 1024:65535 -j ACCEPT
+
+#iptables -A FORWARD -i eth1 -d 200.4.253.195 -p tcp --dport 23 -j ACCEPT
+#iptables -A FORWARD -i eth1 -d 200.4.253.195 -p tcp --dport 80 -j ACCEPT
+#iptables -A FORWARD -i eth1 -d 200.4.253.195 -p tcp --dport 20 -j ACCEPT

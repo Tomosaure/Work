@@ -1,0 +1,239 @@
+% Compte-rendu minimal du mini-projet SDA : LCA et TH
+% Auteur : BONETTO Tom
+% Groupe de TP : J
+
+
+**Consigne :** Vous devez écrire vos réponse à la place des ... en laissant
+une ligne vide avant et deux après votre réponse.
+
+**Remarque :** Ce document utilise le langage Markdown. On peut en engendrer
+une version PDF en faisant par exemple :
+
+~~~
+pandoc --toc -N -o LISEZ-MOI.pdf LISEZ-MOI.txt
+~~~
+
+
+# Exercice 1
+
+## Question 1.4
+
+**Indiquer les inconvénients/avantages d'une implantation par listes chaînées
+d'une SDA.**
+
+L'implantation par listes chaînées oblige de parcourir tout la chaîne si la donnée que l'on
+cherche est en fin de chaînage, de plus quand on effectue une modification sur la chaine, on est obligé de passer par
+une chaîne intermédiaire pour ne pas perdre la tête de la chaîne (à moins de pouvoir effectuer cette modification par récursivité).
+En revanche utiliser une liste chaînée permet de ne pas définir une taile à l'avance, on peut ajouter des données sans contraintes de taille.
+
+
+
+# Évaluation expérimentale 
+les résultats obtenus.
+------------------------------
+Borne  : 1000
+Taille : 1000000
+
+LCA
+Min : 910
+Max : 1098
+
+real	2m12,362s
+user	2m10,324s
+sys	0m0,160s
+
+TH
+Min : 903
+Max : 1111
+
+real	1m30,529s
+user	1m29,235s
+sys	0m0,132s
+
+--------------------------------
+
+Borne  : 1000
+Taille : 10000
+
+LCA
+Min : 2
+Max : 21
+
+real	0m1,167s
+user	0m1,163s
+sys	0m0,005s
+
+TH
+Min : 2
+Max : 23
+
+real	0m0,990s
+user	0m0,917s
+sys	0m0,000s
+
+-------------------------------
+
+Borne  : 10
+Taille : 1000
+
+LCA
+Min : 79
+Max : 118
+
+real	0m0,006s
+user	0m0,002s
+sys	0m0,000s
+
+
+TH
+Min : 88
+Max : 118
+
+real	0m0,049s
+user	0m0,042s
+sys	0m0,000s
+
+------------------------------
+
+Borne  : 10
+Taille : 100000
+
+LCA
+Min : 9916
+Max : 10009
+
+real	0m0,110s
+user	0m0,106s
+sys	0m0,004s
+
+TH
+Min : 9801
+Max : 10265
+
+real	0m4,304s
+user	0m4,300s
+sys	0m0,004s
+
+----------------------------
+
+Borne  : 1000
+Taille : 100
+
+LCA
+Min : 1
+Max : 2
+
+real	0m0,008s
+user	0m0,003s
+sys	0m0,000s
+
+TH
+Min : 1
+Max : 3
+
+real	0m0,016s
+user	0m0,013s
+sys	0m0,000s
+
+---------------------------
+
+Borne  : 10000
+Taille : 10
+
+LCA
+Min : 1
+Max : 1
+
+real	0m0,004s
+user	0m0,002s
+sys	0m0,000s
+
+TH
+Min : 1
+Max : 1
+
+real	0m0,040s
+user	0m0,040s
+sys	0m0,000s
+
+--------------------------
+
+Borne  : 10000
+Taille : 10000
+
+LCA
+Min : 1
+Max : 8
+
+real	0m6,124s
+user	0m6,033s
+sys	0m0,020s
+
+TH
+Min : 1
+Max : 6
+
+real	0m4,474s
+user	0m4,421s
+sys	0m0,000s
+
+-------------------------
+
+Borne  : 10
+Taille : 10
+
+LCA
+Min : 1
+Max : 3
+
+real	0m0,007s
+user	0m0,001s
+sys	0m0,000s
+
+TH
+Min : 1
+Max : 5
+
+real	0m0,002s
+user	0m0,002s
+sys	0m0,000s
+
+
+## Qualité du générateur aléatoire
+
+Indiquer les conclusions quant à la qualité du générateur aléatoire.
+
+Sur un grand nombre de tirage, la qualité du générateur aléatoire est meilleure avec un type TH qu'avec un type LCA.
+Sur un nombre plus faible de tirage, il semble que la qualité du générateur soit meilleure pour le type LCA ce qui s'explique surêment 
+par le fait que le type TH demande plus d'actions dans ses procédures que le type LCA.
+Ce qui nous intéresse dans tous les cas c'est la qualité sur un grand nombre d'échantillons puisque les temps d'éxecution pour de faibles 
+quantités sont très rapides et ce quel que soit le type utilisé.
+
+
+# Principales difficultés rencontrées
+
+Indiquer ici les principales difficultés rencontrées lors de la réalisation de
+ce projet et comment elles ont été surmontées ou contournéeS.
+
+Généricité, programmation deffensive avec levées d'exceptions, packages et modules
+Reprise des TP et TD pour comprendre la syntaxe et résoudre les problèmes
+
+
+
+# Informations complémentaires
+
+Indiquer ici les informations qui pourraient aider à la compréhension du
+travail réalisé.
+
+Cette partie peut être vide.
+
+...
+
+
+
+# Bilan personnel
+
+Quel bilan personnel tirez vous de ce mini-projet ?
+
+Beaucoup de rigueur sur la manière d'écrire un programme, de nouvelles notions comme la généricité, le concept de module et la programmation défensive jamais vu auparavant. 
+

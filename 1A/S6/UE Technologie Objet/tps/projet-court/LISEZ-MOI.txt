@@ -1,0 +1,66 @@
+Nom       : Bonetto
+Prénom    : Tom
+Groupe TP : J
+
+Les « ... » indiquent les endroits à compléter.
+
+=====[ Temps passé ]============================================================
+
+Ces informations de temps sont demandées à titre indicatif et ne sont pas
+prises en compte dans la notation du projet.
+
+
+* Temps passé sur la V1 : 9 heures 0 minutes
+* Temps passé sur la V2 : ... heures ... minutes
+
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+
+
+=====[ Questions ]==============================================================
+
+--------------------------------------------------------------------------------
+Pourquoi l'exception OperationInterditeException ne peut pas être définie
+comme vérifiée par le compilateur ?
+--------------------------------------------------------------------------------
+
+OperationInterditeException hérite de RuntimeException qui n'est pas une exception vérifiée,
+donc OperationInterditeException n'est pas vérifiée par le compilateur
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qu'il faut faire pour ajouter un nouveau niveau de jeu, par
+exemple la stratégie lente (C13).  Pour plus de précision, on numérotera
+les étapes à faire.
+--------------------------------------------------------------------------------
+
+1. Créer une interface Stratégie, qui va pouvoir être réalisée par plusieurs classes.
+2. Créer la classe StrategieLent qui réalise l'interface, avec @Override on spécifie les
+méthodes de l'interface.
+3. Rajouter à la classe Jouer la possibilité de choisir la stratégie lente.
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qui permet, dans votre conception, de changer dynamiquement
+(en cours d'exécution du programme) la stratégie d'un joueur (C14).
+--------------------------------------------------------------------------------
+
+Pour changer de stratégie il faut à la manière de l'argument "confiant" écrire la ligne de commande de la manière suivante:
+java allumettes.Jouer -changementStrategie nom@strategie nom@strategie
+Ainsi on détecte si l'utilisateur souhaite faire des changements de stratégie, si c'est le cas, un argument boolean de la méthode arbitrer
+"changementStrategie" prend la valeur True. Par la suite dans la méthode arbitrer, on vérifie si le "changementStrategie" est vrai
+et si c'est le cas, alors on affiche un menu proposant les différentes stratégie mais aussi la possibilité de refuser le changement de
+stratégie "non", on récupère ensuite la saisie du l'utilisateur et on converti ce choix en Stratégie, il ne reste plus qu'à changer la
+stratégie du joueur courant avec une méthode setStrategie.
+
+
+=====[ Explications ]===========================================================
+
+--------------------------------------------------------------------------------
+Donner ici les explications supplémentaires utiles à la compréhension du
+travail rendu.
+--------------------------------------------------------------------------------
+
+Pour envisager le changement de stratégie, j'ai rajouté un argument à la méthode arbitrer. Les tests automatiques signalent une erreur
+car la méthode arbitrer(jeu) n'existe pas, en réalité elle existe c'est juste qu'elle à un argument de plus : arbitrer(jeu,changementStrategie).
+
+--------------------------------------------------------------------------------
