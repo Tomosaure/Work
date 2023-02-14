@@ -46,21 +46,40 @@ int main(int argc, char** argv)
     // see the method Mat.convertTo()
     
     m = imread(imageFilename, IMREAD_COLOR);
-
-       if(image.empty())
+       if(m.empty())
     {
         cout << "Could not open or find the image" << std::endl;
         return EXIT_FAILURE;
     }
-
-    Mat.convertTo(m, CV_32F);
+    Mat aux = m;
+    m.convertTo(m, CV_32FC3);
+    
     // 2) kmeans asks for a mono-dimensional list of "points". Our "points" are the pixels of the image that can be seen as 3D points
     // where each coordinate is one of the color channel (e.g. R, G, B). But they are organized as a 2D table, we need
     // to re-arrange them into a single vector.
     // see the method Mat.reshape(), it is similar to matlab's reshape
+    m.reshape(1, m.rows * m.cols);
 
     // now we can call kmeans(...)
+    Mat centers;
+    Mat labels;
+    kmeans(m, k, labels, TermCriteria(TermCriteria::EPS+TermCriteria::COUNT, 10, 1.0), 3, KMEANS_PP_CENTERS, centers);
 
+    centers.convertTo(centers, CV_8UC1);
+    labels.reshape(1, labels.rows * labels.cols);
+    m = centers(labels);
+    m.reshape(3, m.rows * m.cols);
+
+    imwrite("kmeans.jpg", m);
+
+    namedWindow(imageFilename, cv::WINDOW_AUTOSIZE);
+    namedWindow("kmeans image", cv::WINDOW_AUTOSIZE);
+
+    imshow(imageFilename, aux);
+    imshow("kmeans image", m);
+
+    // Wait for a keystroke in the window
+    waitKey(0);
 
     return EXIT_SUCCESS;
 }

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3
+CMAKE_SOURCE_DIR = /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build
+CMAKE_BINARY_DIR = /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build
 
 # Include any dependencies generated for this target.
 include src/tp/CMakeFiles/kmeans.dir/depend.make
@@ -59,29 +59,29 @@ include src/tp/CMakeFiles/kmeans.dir/flags.make
 
 src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.o: src/tp/CMakeFiles/kmeans.dir/flags.make
 src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.o: ../src/tp/kmeans.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.o"
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kmeans.dir/kmeans.cpp.o -c /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/kmeans.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.o"
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kmeans.dir/kmeans.cpp.o -c /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/kmeans.cpp
 
 src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kmeans.dir/kmeans.cpp.i"
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/kmeans.cpp > CMakeFiles/kmeans.dir/kmeans.cpp.i
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/kmeans.cpp > CMakeFiles/kmeans.dir/kmeans.cpp.i
 
 src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kmeans.dir/kmeans.cpp.s"
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/kmeans.cpp -o CMakeFiles/kmeans.dir/kmeans.cpp.s
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/kmeans.cpp -o CMakeFiles/kmeans.dir/kmeans.cpp.s
 
 src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.o: src/tp/CMakeFiles/kmeans.dir/flags.make
 src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.o: ../src/tp/ocv_utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.o"
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kmeans.dir/ocv_utils.cpp.o -c /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/ocv_utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.o"
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kmeans.dir/ocv_utils.cpp.o -c /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/ocv_utils.cpp
 
 src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kmeans.dir/ocv_utils.cpp.i"
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/ocv_utils.cpp > CMakeFiles/kmeans.dir/ocv_utils.cpp.i
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/ocv_utils.cpp > CMakeFiles/kmeans.dir/ocv_utils.cpp.i
 
 src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kmeans.dir/ocv_utils.cpp.s"
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/ocv_utils.cpp -o CMakeFiles/kmeans.dir/ocv_utils.cpp.s
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && /mnt/n7fs/ens/tp_cregut/gnat/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/ocv_utils.cpp -o CMakeFiles/kmeans.dir/ocv_utils.cpp.s
 
 # Object files for target kmeans
 kmeans_OBJECTS = \
@@ -143,8 +143,8 @@ bin/kmeans: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.2.0
 bin/kmeans: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.2.0
 bin/kmeans: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.2.0
 bin/kmeans: src/tp/CMakeFiles/kmeans.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../../bin/kmeans"
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/kmeans.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../../bin/kmeans"
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/kmeans.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/tp/CMakeFiles/kmeans.dir/build: bin/kmeans
@@ -152,10 +152,10 @@ src/tp/CMakeFiles/kmeans.dir/build: bin/kmeans
 .PHONY : src/tp/CMakeFiles/kmeans.dir/build
 
 src/tp/CMakeFiles/kmeans.dir/clean:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && $(CMAKE_COMMAND) -P CMakeFiles/kmeans.dir/cmake_clean.cmake
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp && $(CMAKE_COMMAND) -P CMakeFiles/kmeans.dir/cmake_clean.cmake
 .PHONY : src/tp/CMakeFiles/kmeans.dir/clean
 
 src/tp/CMakeFiles/kmeans.dir/depend:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3 /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp/CMakeFiles/kmeans.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp/CMakeFiles/kmeans.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/tp/CMakeFiles/kmeans.dir/depend
 

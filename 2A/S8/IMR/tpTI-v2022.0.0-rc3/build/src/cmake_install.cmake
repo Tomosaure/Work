@@ -1,4 +1,4 @@
-# Install script for directory: /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src
+# Install script for directory: /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp/cmake_install.cmake")
-  include("/home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tutorials/cmake_install.cmake")
+  include("/home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp/cmake_install.cmake")
+  include("/home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tutorials/cmake_install.cmake")
 
 endif()
 

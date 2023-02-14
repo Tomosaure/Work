@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3
+CMAKE_SOURCE_DIR = /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build
+CMAKE_BINARY_DIR = /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp/CMakeFiles/progress.marks
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles 0
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/src/tp/CMakeFiles/progress.marks
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/clean
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/preinstall
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/preinstall
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/tp/CMakeFiles/kmeans.dir/rule:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/CMakeFiles/kmeans.dir/rule
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f CMakeFiles/Makefile2 src/tp/CMakeFiles/kmeans.dir/rule
 .PHONY : src/tp/CMakeFiles/kmeans.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ kmeans: src/tp/CMakeFiles/kmeans.dir/rule
 
 # fast build rule for target.
 kmeans/fast:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/build
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/build
 .PHONY : kmeans/fast
 
 kmeans.o: kmeans.cpp.o
@@ -131,7 +131,7 @@ kmeans.o: kmeans.cpp.o
 
 # target to build an object file
 kmeans.cpp.o:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.o
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.o
 .PHONY : kmeans.cpp.o
 
 kmeans.i: kmeans.cpp.i
@@ -140,7 +140,7 @@ kmeans.i: kmeans.cpp.i
 
 # target to preprocess a source file
 kmeans.cpp.i:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.i
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.i
 .PHONY : kmeans.cpp.i
 
 kmeans.s: kmeans.cpp.s
@@ -149,7 +149,7 @@ kmeans.s: kmeans.cpp.s
 
 # target to generate assembly for a file
 kmeans.cpp.s:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.s
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.s
 .PHONY : kmeans.cpp.s
 
 ocv_utils.o: ocv_utils.cpp.o
@@ -158,7 +158,7 @@ ocv_utils.o: ocv_utils.cpp.o
 
 # target to build an object file
 ocv_utils.cpp.o:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.o
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.o
 .PHONY : ocv_utils.cpp.o
 
 ocv_utils.i: ocv_utils.cpp.i
@@ -167,7 +167,7 @@ ocv_utils.i: ocv_utils.cpp.i
 
 # target to preprocess a source file
 ocv_utils.cpp.i:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.i
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.i
 .PHONY : ocv_utils.cpp.i
 
 ocv_utils.s: ocv_utils.cpp.s
@@ -176,7 +176,7 @@ ocv_utils.s: ocv_utils.cpp.s
 
 # target to generate assembly for a file
 ocv_utils.cpp.s:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.s
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(MAKE) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.s
 .PHONY : ocv_utils.cpp.s
 
 # Help Target
@@ -205,6 +205,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

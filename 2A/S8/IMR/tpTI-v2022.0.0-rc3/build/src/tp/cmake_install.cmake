@@ -1,4 +1,4 @@
-# Install script for directory: /home/tbonetto/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp
+# Install script for directory: /home/tbonetto/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
