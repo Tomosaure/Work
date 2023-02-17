@@ -16,8 +16,8 @@ void printHelp(const string& progName)
     cout << "Usage:\n\t " << progName << " <image_file> <K_num_of_clusters> [<image_ground_truth>]" << endl;
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
+    
     if (argc != 3 && argc != 4)
     {
         cout << " Incorrect number of arguments." << endl;
@@ -51,32 +51,68 @@ int main(int argc, char** argv)
         cout << "Could not open or find the image" << std::endl;
         return EXIT_FAILURE;
     }
-    Mat aux = m;
-    m.convertTo(m, CV_32FC3);
+    Mat src = m.clone();
+    m.convertTo(m, CV_32F);
     
     // 2) kmeans asks for a mono-dimensional list of "points". Our "points" are the pixels of the image that can be seen as 3D points
     // where each coordinate is one of the color channel (e.g. R, G, B). But they are organized as a 2D table, we need
     // to re-arrange them into a single vector.
     // see the method Mat.reshape(), it is similar to matlab's reshape
-    m.reshape(1, m.rows * m.cols);
+    Mat vect = m.reshape(3, m.total());
+    PRINT_MAT_INFO(vect);
 
     // now we can call kmeans(...)
-    Mat centers;
-    Mat labels;
-    kmeans(m, k, labels, TermCriteria(TermCriteria::EPS+TermCriteria::COUNT, 10, 1.0), 3, KMEANS_PP_CENTERS, centers);
+    Mat1f centers;
+    vector<int> labels;
+    kmeans(vect, k, labels, TermCriteria(TermCriteria::EPS+TermCriteria::COUNT, 10, 1.0), 3, KMEANS_PP_CENTERS, centers);
 
-    centers.convertTo(centers, CV_8UC1);
-    labels.reshape(1, labels.rows * labels.cols);
-    m = centers(labels);
-    m.reshape(3, m.rows * m.cols);
+    for (int i = 0; i < 2; i++) {
+        centers.at<float>(0, i) = 0;
+        centers.at<float>(1, i) = 255;
+    }
+    PRINT_MAT_INFO(centers);
 
-    imwrite("kmeans.jpg", m);
+    for (int i = 0; i < m.total(); i++)
+    {
+        vect.at<float>(i,0) = centers(labels[i], 0);
+        vect.at<float>(i,1) = centers(labels[i], 1);
+        vect.at<float>(i,2) = centers(labels[i], 0);
+    }
+
+    Mat vect_r = vect.reshape(3, m.rows);
+
+    long TP = 0, TN = 0, FP = 0, FN = 0;
+
+    for (int i = 0; i < m.rows; i++)
+    {
+        for (int j = 0; j < m.cols; j++)
+        {
+            if (gt.at<uchar>(i, j) == 255 && vect_r.at<Vec3b>(i, j)[0] == 255)
+                TP++;
+            else if (gt.at<uchar>(i, j) == 0 && vect_r.at<Vec3b>(i, j)[0] == 0)
+                TN++;
+            else if (gt.at<uchar>(i, j) == 0 && vect_r.at<Vec3b>(i, j)[0] == 255)
+                FP++;
+            else if (gt.at<uchar>(i, j) == 255 && vect_r.at<Vec3b>(i, j)[0] == 0)
+                FN++;
+        }
+    }
+        cout << "TP: " << TP << endl;
+        cout << "TN: " << TN << endl;
+        cout << "FP: " << FP << endl;
+        cout << "FN: " << FN << endl;
+        cout << "Accuracy: " << TP / (TP + FP) << endl;
+        cout << "Precision: " << TP / (TP + FN) << endl;
+        cout << "DICE Coefficient: " << 2 * TP / (2 * TP + FP + FN) << endl;
+    }
+  
+    imwrite("kmeans.jpg", vect_r);
 
     namedWindow(imageFilename, cv::WINDOW_AUTOSIZE);
     namedWindow("kmeans image", cv::WINDOW_AUTOSIZE);
 
-    imshow(imageFilename, aux);
-    imshow("kmeans image", m);
+    imshow(imageFilename, src);
+    imshow("kmeans image", vect_r);
 
     // Wait for a keystroke in the window
     waitKey(0);
