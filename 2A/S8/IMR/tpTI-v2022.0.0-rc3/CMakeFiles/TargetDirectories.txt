@@ -1,0 +1,13 @@
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/CMakeFiles/edit_cache.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/CMakeFiles/edit_cache.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/CMakeFiles/kmeans.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/CMakeFiles/edit_cache.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tutorials/CMakeFiles/display_image.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tutorials/CMakeFiles/load_modify_image.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tutorials/CMakeFiles/mat_the_basic_image_container.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tutorials/CMakeFiles/tutorials.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tutorials/CMakeFiles/edit_cache.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tutorials/CMakeFiles/rebuild_cache.dir
