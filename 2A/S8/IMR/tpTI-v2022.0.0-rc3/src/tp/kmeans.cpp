@@ -10,10 +10,21 @@
 using namespace cv;
 using namespace std;
 
-Mat kmoyenne(Mat data, int k, ) {
-    
+Mat kmoyenne(Mat data, k) {
+
+    cvtColor(data, data, CV_RGB2GRAY); 
+    data.reshape(1, data.total());
+
+    vector<int> labels;
+
+    vector<int> centers;
+    for (int i = 0; i < k; i++) {
+        centers.push_back(rand() % 255);
+    }
+
     
 }
+
 
 void printHelp(const string& progName)
 {
@@ -76,7 +87,7 @@ int main(int argc, char** argv) {
     vector<int> labels;
     kmeans(vect, k, labels, TermCriteria(TermCriteria::EPS+TermCriteria::COUNT, 10, 1.0), 3, KMEANS_PP_CENTERS, centers);
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i <= k; i++) {
         centers.at<float>(0, i) = 0;
         centers.at<float>(1, i) = 255;
     }
@@ -104,23 +115,23 @@ int main(int argc, char** argv) {
                 TP++;
             else if (gt.at<uchar>(i, j) == 255 && vect_r.at<uchar>(i, j) == 255)
                 TN++;
-            else if (gt.at<uchar>(i, j) == 0 && vect_r.at<uchar>(i, j) == 255)
+            else if (gt.at<uchar>(i, j) == 0   && vect_r.at<uchar>(i, j) == 255)
                 FP++;
             else if (gt.at<uchar>(i, j) == 255 && vect_r.at<uchar>(i, j) == 0)
                 FN++;
         }
     }
 
-        double Accuracy = (double) TP/(TP+FP);
-        double Precision = (double) TP/(TP+FN);
-        double DICE_coef = (double) (2*TP)/(2*TP+FP+FN);
+        double Accuracy    = (double) TP/(TP+FP);
+        double Sensibilite = (double) TP/(TP+FN);
+        double DICE_coef   = (double) (2*TP)/(2*TP+FP+FN);
 
         cout << "TP: " << TP << endl;
         cout << "TN: " << TN << endl;
         cout << "FP: " << FP << endl;
         cout << "FN: " << FN << endl;
         cout << "Accuracy: " << Accuracy << endl;
-        cout << "Precision: " << Precision << endl;
+        cout << "Sensibilité: " << Sensibilite << endl;
         cout << "DICE Coefficient: " << DICE_coef << endl;
 
     }
