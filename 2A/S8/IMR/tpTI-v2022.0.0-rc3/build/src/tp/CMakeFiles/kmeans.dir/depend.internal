@@ -14,11 +14,15 @@ src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.o
  /usr/include/opencv4/opencv2/core/cuda.hpp
  /usr/include/opencv4/opencv2/core/cuda.inl.hpp
  /usr/include/opencv4/opencv2/core/cuda_types.hpp
+ /usr/include/opencv4/opencv2/core/cv_cpu_dispatch.h
+ /usr/include/opencv4/opencv2/core/cv_cpu_helper.h
  /usr/include/opencv4/opencv2/core/cvdef.h
  /usr/include/opencv4/opencv2/core/cvstd.hpp
  /usr/include/opencv4/opencv2/core/cvstd.inl.hpp
  /usr/include/opencv4/opencv2/core/cvstd_wrapper.hpp
  /usr/include/opencv4/opencv2/core/fast_math.hpp
+ /usr/include/opencv4/opencv2/core/hal/interface.h
+ /usr/include/opencv4/opencv2/core/hal/msa_macros.h
  /usr/include/opencv4/opencv2/core/mat.hpp
  /usr/include/opencv4/opencv2/core/mat.inl.hpp
  /usr/include/opencv4/opencv2/core/matx.hpp
@@ -141,11 +145,15 @@ src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.o
  /usr/include/opencv4/opencv2/core/cuda.hpp
  /usr/include/opencv4/opencv2/core/cuda.inl.hpp
  /usr/include/opencv4/opencv2/core/cuda_types.hpp
+ /usr/include/opencv4/opencv2/core/cv_cpu_dispatch.h
+ /usr/include/opencv4/opencv2/core/cv_cpu_helper.h
  /usr/include/opencv4/opencv2/core/cvdef.h
  /usr/include/opencv4/opencv2/core/cvstd.hpp
  /usr/include/opencv4/opencv2/core/cvstd.inl.hpp
  /usr/include/opencv4/opencv2/core/cvstd_wrapper.hpp
  /usr/include/opencv4/opencv2/core/fast_math.hpp
+ /usr/include/opencv4/opencv2/core/hal/interface.h
+ /usr/include/opencv4/opencv2/core/hal/msa_macros.h
  /usr/include/opencv4/opencv2/core/mat.hpp
  /usr/include/opencv4/opencv2/core/mat.inl.hpp
  /usr/include/opencv4/opencv2/core/matx.hpp

@@ -10,6 +10,10 @@
 using namespace cv;
 using namespace std;
 
+Mat kmoyenne(Mat data, int k, ) {
+    
+    
+}
 
 void printHelp(const string& progName)
 {
@@ -39,8 +43,11 @@ int main(int argc, char** argv) {
 
     // load the color image to process from file
     Mat m;
+    Mat gt;
+
     // for debugging use the macro PRINT_MAT_INFO to print the info about the matrix, like size and type
     PRINT_MAT_INFO(m);
+    PRINT_MAT_INFO(gt);
     
     // 1) in order to call kmeans we need to first convert the image into floats (CV_32F)
     // see the method Mat.convertTo()
@@ -51,6 +58,9 @@ int main(int argc, char** argv) {
         cout << "Could not open or find the image" << std::endl;
         return EXIT_FAILURE;
     }
+
+    gt = imread(groundTruthFilename, IMREAD_GRAYSCALE);
+
     Mat src = m.clone();
     m.convertTo(m, CV_32F);
     
@@ -76,34 +86,43 @@ int main(int argc, char** argv) {
     {
         vect.at<float>(i,0) = centers(labels[i], 0);
         vect.at<float>(i,1) = centers(labels[i], 1);
-        vect.at<float>(i,2) = centers(labels[i], 0);
+        vect.at<float>(i,2) = centers(labels[i], 2);
     }
 
     Mat vect_r = vect.reshape(3, m.rows);
+    vect_r.convertTo(vect_r, CV_8U);
 
     long TP = 0, TN = 0, FP = 0, FN = 0;
+
+    if(!gt.empty()) {
 
     for (int i = 0; i < m.rows; i++)
     {
         for (int j = 0; j < m.cols; j++)
         {
-            if (gt.at<uchar>(i, j) == 255 && vect_r.at<Vec3b>(i, j)[0] == 255)
+            if (gt.at<uchar>(i, j) == 0 && vect_r.at<uchar>(i, j) == 0)
                 TP++;
-            else if (gt.at<uchar>(i, j) == 0 && vect_r.at<Vec3b>(i, j)[0] == 0)
+            else if (gt.at<uchar>(i, j) == 255 && vect_r.at<uchar>(i, j) == 255)
                 TN++;
-            else if (gt.at<uchar>(i, j) == 0 && vect_r.at<Vec3b>(i, j)[0] == 255)
+            else if (gt.at<uchar>(i, j) == 0 && vect_r.at<uchar>(i, j) == 255)
                 FP++;
-            else if (gt.at<uchar>(i, j) == 255 && vect_r.at<Vec3b>(i, j)[0] == 0)
+            else if (gt.at<uchar>(i, j) == 255 && vect_r.at<uchar>(i, j) == 0)
                 FN++;
         }
     }
+
+        double Accuracy = (double) TP/(TP+FP);
+        double Precision = (double) TP/(TP+FN);
+        double DICE_coef = (double) (2*TP)/(2*TP+FP+FN);
+
         cout << "TP: " << TP << endl;
         cout << "TN: " << TN << endl;
         cout << "FP: " << FP << endl;
         cout << "FN: " << FN << endl;
-        cout << "Accuracy: " << TP / (TP + FP) << endl;
-        cout << "Precision: " << TP / (TP + FN) << endl;
-        cout << "DICE Coefficient: " << 2 * TP / (2 * TP + FP + FN) << endl;
+        cout << "Accuracy: " << Accuracy << endl;
+        cout << "Precision: " << Precision << endl;
+        cout << "DICE Coefficient: " << DICE_coef << endl;
+
     }
   
     imwrite("kmeans.jpg", vect_r);
