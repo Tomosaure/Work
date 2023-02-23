@@ -10,9 +10,9 @@
 using namespace cv;
 using namespace std;
 
-Mat kmoyenne(Mat data, k) {
+void kmoyenne(Mat data, int k) {
 
-    cvtColor(data, data, CV_RGB2GRAY); 
+    cvtColor(data, data, COLOR_BGR2GRAY); 
     data.reshape(1, data.total());
 
     vector<int> labels;
@@ -23,6 +23,8 @@ Mat kmoyenne(Mat data, k) {
     }
 
     
+
+    return;
 }
 
 
@@ -113,8 +115,6 @@ int main(int argc, char** argv) {
         {
             if (gt.at<uchar>(i, j) == 0 && vect_r.at<uchar>(i, j) == 0)
                 TP++;
-            else if (gt.at<uchar>(i, j) == 255 && vect_r.at<uchar>(i, j) == 255)
-                TN++;
             else if (gt.at<uchar>(i, j) == 0   && vect_r.at<uchar>(i, j) == 255)
                 FP++;
             else if (gt.at<uchar>(i, j) == 255 && vect_r.at<uchar>(i, j) == 0)
@@ -122,15 +122,14 @@ int main(int argc, char** argv) {
         }
     }
 
-        double Accuracy    = (double) TP/(TP+FP);
+        double Precision    = (double) TP/(TP+FP);
         double Sensibilite = (double) TP/(TP+FN);
         double DICE_coef   = (double) (2*TP)/(2*TP+FP+FN);
 
         cout << "TP: " << TP << endl;
-        cout << "TN: " << TN << endl;
         cout << "FP: " << FP << endl;
         cout << "FN: " << FN << endl;
-        cout << "Accuracy: " << Accuracy << endl;
+        cout << "Précision: " << Precision << endl;
         cout << "Sensibilité: " << Sensibilite << endl;
         cout << "DICE Coefficient: " << DICE_coef << endl;
 
