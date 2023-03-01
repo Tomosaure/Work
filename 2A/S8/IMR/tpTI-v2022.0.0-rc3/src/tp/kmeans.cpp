@@ -17,81 +17,69 @@ using namespace std;
 //                     vector<int>& labels : vecteur des labels
 // Données en sortie : void
 void kmoyenne(Mat& data, int k, Mat& centers, vector<int>& labels) {
-
-    // On convertit l'image en niveau de gris
+    // conversion de l'image en niveaux de gris
     cvtColor(data, data, COLOR_BGR2GRAY);
-
+    PRINT_MAT_INFO(centers);
     //srand(time(0));
-
-    // On initialise les centres
+    // initialisation des centres en attribuant une valer d'intensité différente à chaque centre
     for (int i = 0; i < k; i++) {
-        // On travail en niveaux de gris, un seul canal est donc nécessaire
-        // On initialise les centres avec un pas de 255/k
         centers.at<float>(i,2) = (255/k)*i;
         //centers.at<float>(i,2) = rand() % 255;
     }
-
-    // On initialise les labels à 0
+    cout << "centers = " << centers << endl;
+    // initialisation du vecteur des labels: on pré-alloue la mémoire nécessaire stocker les labels de chaque pixel
     for (int i = 0; i < data.total(); i++) {
         labels.push_back(0);
     }
-
-    bool convergence = false; // Booléen pour vérifier la convergence
-    double EPSILON = 0.0001;  // Critère de précision pour la convergence
-
+    // convergence est un booléen qui permet de savoir si l'algorithme a convergé ou non
+    bool convergence = false;
+    // EPSILON est la valeur de convergence
+    double EPSILON = 0.0001;
+// boucle principale de l'algorithme k-means 
     // on attribue une étiquette de cluster à chaque pixel en calculant la distance euclidienne entre le pixel et chaque centre
     // on attribue l'étiquette du centre le plus proche
     while(!convergence) {
-
-        // On attribue chaque pixel à un cluster
+        // boucle sur les pixels de l'image 
         for (int i = 0; i < data.total(); i++) {
             int min = 255;
             int index = 0;
             for (int j = 0; j < k; j++) {
-                // On travail en niveaux de gris, la distance est donc la différence de niveau de gris
+                // calcul de la distance euclidienne entre le pixel et le centre
                 if (abs(data.at<float>(i) - centers.at<float>(j,2)) < min) {
-                    // Le centre le plus proche est celui qui minimise la distance
                     min = abs(data.at<float>(i) - centers.at<float>(j,2));
-                    // On stocke l'index du centre le plus proche
+                    // on stocke l'étiquette du centre le plus proche pour le pixel i
                     index = j;
                 }
             }
-            // On attribue le label au pixel
+            // on stocke l'étiquette du centre le plus proche pour le pixel i
             labels.at(i) = index;
         }
+        // boucle sur les centres pour calculer les nouveaux centres en fonction des pixels qui leur sont associés 
 
-        // On recalcule les centres
         for (int j = 0; j < k; j++) {
             float sum = 0;
             float count = 0;
             for (int i = 0; i < data.total(); i++) {
-                // On chercher les pixels appartenant au centre j, c'est à dire a un même cluster
+                // on calcule la somme des pixels associés au centre j
                 if (labels.at(i) == j) {
-                    // On additionne les niveaux de gris des pixels du cluster
                     sum += data.at<float>(i);
-                    // On compte le nombre de pixels du cluster
                     count++;
                 }
             }
-
-            // On calcule la moyenne des niveaux de gris des pixels du cluster
-            // Cette valeur est le nouveau centre du cluster
-            float newCenter = sum / count; 
-
-            // Si le centre n'a pas bougé, on a convergé
+            float newCenter = sum / count;
+            // on vérifie si l'algorithme a convergé ou non c'est à dire si la différence entre le nouveau centre et l'ancien est inférieure à EPSILON
             if (abs(newCenter - centers.at<float>(j,2)) < EPSILON) {
                 convergence = true;
-            // Sinon on met à jour le centre
             } else {
+                // si l'algorithme n'a pas convergé on met à jour le centre j
                 convergence = false;
                 centers.at<float>(j,2) = newCenter;
+                // on sort de la boucle for pour recommencer l'algorithme
             }            
         }
     }
-
-    // On repasse l'image en couleur
+    // on remet l'image en couleur
     cvtColor(data, data, COLOR_GRAY2BGR);
-
     return;
 }
 
@@ -134,20 +122,13 @@ int main(int argc, char** argv) {
     // see the method Mat.convertTo()
     
     m = imread(imageFilename, IMREAD_COLOR);
-    if(m.empty())
+       if(m.empty())
     {
         cout << "Could not open or find the image" << std::endl;
         return EXIT_FAILURE;
     }
 
-    if (argc == 4) {
-        gt = imread(groundTruthFilename, IMREAD_COLOR);
-        if(gt.empty())
-        {
-            cout << "Could not open or find the image" << std::endl;
-            return EXIT_FAILURE;
-        }
-    }
+    gt = imread(groundTruthFilename, IMREAD_GRAYSCALE);
 
     Mat src = m.clone();
     m.convertTo(m, CV_32F);
@@ -157,6 +138,7 @@ int main(int argc, char** argv) {
     // to re-arrange them into a single vector.
     // see the method Mat.reshape(), it is similar to matlab's reshape
     Mat vect = m.reshape(3, m.total());
+    PRINT_MAT_INFO(vect);
 
     // now we can call kmeans(...)
     Mat centers;
@@ -164,6 +146,8 @@ int main(int argc, char** argv) {
     vector<int> labels;
     //kmeans(vect, k, labels, TermCriteria(TermCriteria::EPS+TermCriteria::COUNT, 10, 1.0), 3, KMEANS_PP_CENTERS, centers);
     kmoyenne(vect, k, centers, labels);
+
+    PRINT_MAT_INFO(centers);
 
     for (int i = 0; i < 3; i++) {
         centers.at<float>(0,i) = 255;
@@ -177,10 +161,9 @@ int main(int argc, char** argv) {
     }
 
     Mat vect_r = vect.reshape(3, m.rows);
-
     vect_r.convertTo(vect_r, CV_8U);
 
-    long TP = 0, FP = 0, FN = 0;
+    long TP = 0, TN = 0, FP = 0, FN = 0;
 
     if(!gt.empty()) {
 
@@ -207,6 +190,7 @@ int main(int argc, char** argv) {
         cout << "Précision: " << Precision << endl;
         cout << "Sensibilité: " << Sensibilite << endl;
         cout << "DICE Coefficient: " << DICE_coef << endl;
+
     }
   
     imwrite("kmeans.jpg", vect_r);

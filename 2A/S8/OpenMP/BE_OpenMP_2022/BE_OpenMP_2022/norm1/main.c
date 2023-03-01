@@ -121,7 +121,6 @@ double norm1_rowmajor(double **A, int m, int n){
     for(i=0; i<m; i++) {
 #pragma omp for
       for(j=0; j<n; j++) {
-
         tmp[j] += fabs(A[i][j]);
       }
     }
