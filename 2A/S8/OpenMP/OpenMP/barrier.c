@@ -17,7 +17,6 @@ int main() {
     } else {
       do_stuff(0.3); // 0.3 seconds
     }
-#pragma omp barrier
     printf("Thread %2d reached this point at time %f.\n",iam,secs()-t);
   }
 return 0;

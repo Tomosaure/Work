@@ -130,6 +130,34 @@ kmeans/fast:
 	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/build
 .PHONY : kmeans/fast
 
+# Convenience name for target.
+src/tp/CMakeFiles/meanshift.dir/rule:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tp/CMakeFiles/meanshift.dir/rule
+.PHONY : src/tp/CMakeFiles/meanshift.dir/rule
+
+# Convenience name for target.
+meanshift: src/tp/CMakeFiles/meanshift.dir/rule
+.PHONY : meanshift
+
+# fast build rule for target.
+meanshift/fast:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/build
+.PHONY : meanshift/fast
+
+# Convenience name for target.
+src/tp/CMakeFiles/test.dir/rule:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tp/CMakeFiles/test.dir/rule
+.PHONY : src/tp/CMakeFiles/test.dir/rule
+
+# Convenience name for target.
+test: src/tp/CMakeFiles/test.dir/rule
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/build
+.PHONY : test/fast
+
 kmeans.o: kmeans.cpp.o
 .PHONY : kmeans.o
 
@@ -154,12 +182,38 @@ kmeans.cpp.s:
 	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/kmeans.cpp.s
 .PHONY : kmeans.cpp.s
 
+meanshift.o: meanshift.cpp.o
+.PHONY : meanshift.o
+
+# target to build an object file
+meanshift.cpp.o:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/meanshift.cpp.o
+.PHONY : meanshift.cpp.o
+
+meanshift.i: meanshift.cpp.i
+.PHONY : meanshift.i
+
+# target to preprocess a source file
+meanshift.cpp.i:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/meanshift.cpp.i
+.PHONY : meanshift.cpp.i
+
+meanshift.s: meanshift.cpp.s
+.PHONY : meanshift.s
+
+# target to generate assembly for a file
+meanshift.cpp.s:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/meanshift.cpp.s
+.PHONY : meanshift.cpp.s
+
 ocv_utils.o: ocv_utils.cpp.o
 .PHONY : ocv_utils.o
 
 # target to build an object file
 ocv_utils.cpp.o:
 	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.o
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/ocv_utils.cpp.o
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/ocv_utils.cpp.o
 .PHONY : ocv_utils.cpp.o
 
 ocv_utils.i: ocv_utils.cpp.i
@@ -168,6 +222,8 @@ ocv_utils.i: ocv_utils.cpp.i
 # target to preprocess a source file
 ocv_utils.cpp.i:
 	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.i
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/ocv_utils.cpp.i
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/ocv_utils.cpp.i
 .PHONY : ocv_utils.cpp.i
 
 ocv_utils.s: ocv_utils.cpp.s
@@ -176,7 +232,33 @@ ocv_utils.s: ocv_utils.cpp.s
 # target to generate assembly for a file
 ocv_utils.cpp.s:
 	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/ocv_utils.cpp.s
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/ocv_utils.cpp.s
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/ocv_utils.cpp.s
 .PHONY : ocv_utils.cpp.s
+
+test.o: test.cpp.o
+.PHONY : test.o
+
+# target to build an object file
+test.cpp.o:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/test.cpp.o
+.PHONY : test.cpp.o
+
+test.i: test.cpp.i
+.PHONY : test.i
+
+# target to preprocess a source file
+test.cpp.i:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/test.cpp.i
+.PHONY : test.cpp.i
+
+test.s: test.cpp.s
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.cpp.s:
+	cd /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3 && $(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/test.cpp.s
+.PHONY : test.cpp.s
 
 # Help Target
 help:
@@ -187,12 +269,20 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... kmeans"
+	@echo "... meanshift"
+	@echo "... test"
 	@echo "... kmeans.o"
 	@echo "... kmeans.i"
 	@echo "... kmeans.s"
+	@echo "... meanshift.o"
+	@echo "... meanshift.i"
+	@echo "... meanshift.s"
 	@echo "... ocv_utils.o"
 	@echo "... ocv_utils.i"
 	@echo "... ocv_utils.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 

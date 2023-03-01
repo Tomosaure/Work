@@ -3,6 +3,8 @@
 /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/CMakeFiles/edit_cache.dir
 /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/CMakeFiles/rebuild_cache.dir
 /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/CMakeFiles/kmeans.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/CMakeFiles/meanshift.dir
+/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/CMakeFiles/test.dir
 /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/CMakeFiles/edit_cache.dir
 /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tp/CMakeFiles/rebuild_cache.dir
 /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/src/tutorials/CMakeFiles/display_image.dir

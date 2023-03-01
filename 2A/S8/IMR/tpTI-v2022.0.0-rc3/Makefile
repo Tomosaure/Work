@@ -130,6 +130,32 @@ kmeans/fast:
 .PHONY : kmeans/fast
 
 #=============================================================================
+# Target rules for targets named meanshift
+
+# Build rule for target.
+meanshift: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 meanshift
+.PHONY : meanshift
+
+# fast build rule for target.
+meanshift/fast:
+	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/build
+.PHONY : meanshift/fast
+
+#=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/build
+.PHONY : test/fast
+
+#=============================================================================
 # Target rules for targets named display_image
 
 # Build rule for target.
@@ -194,6 +220,8 @@ help:
 	@echo "... kmeans"
 	@echo "... load_modify_image"
 	@echo "... mat_the_basic_image_container"
+	@echo "... meanshift"
+	@echo "... test"
 .PHONY : help
 
 

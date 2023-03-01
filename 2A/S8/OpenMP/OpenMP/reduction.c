@@ -11,9 +11,9 @@ int main() {
 
     rand_fill(x, n); sum=0;
 
-#pragma omp parallel for reduction(+:sum)
+#pragma omp parallel for
     for(i=0; i<n; i++){
-       sum += x[i];
+       sum += sum + 1;
     }
 
     printf("Sum is %d\n",sum);

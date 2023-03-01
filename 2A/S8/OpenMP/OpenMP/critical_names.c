@@ -13,13 +13,13 @@ int main() {
   {
     iam = omp_get_thread_num();
 
-#pragma omp critical (toti)
+#pragma omp critical
     {
       do_stuff(0.1);
       printf("First  is done by %2d  at time %f\n",iam, secs()-t);
     }
 
-#pragma omp critical (toto)
+#pragma omp critical
     {
       do_stuff(0.1);
       printf("Second is done by %2d  at time %f\n",iam, secs()-t);

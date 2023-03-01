@@ -14,7 +14,6 @@ int main() {
 
 #pragma omp master
     {
-      do_stuff(0.1);
       printf(" ---> This is only done by: %2d\n",iam);
     }
     printf("      This is also done by: %2d.\n",iam);

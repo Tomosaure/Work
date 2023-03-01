@@ -97,6 +97,8 @@ src/clean: src/tutorials/clean
 
 # Recursive "all" directory target.
 src/tp/all: src/tp/CMakeFiles/kmeans.dir/all
+src/tp/all: src/tp/CMakeFiles/meanshift.dir/all
+src/tp/all: src/tp/CMakeFiles/test.dir/all
 .PHONY : src/tp/all
 
 # Recursive "preinstall" directory target.
@@ -105,6 +107,8 @@ src/tp/preinstall:
 
 # Recursive "clean" directory target.
 src/tp/clean: src/tp/CMakeFiles/kmeans.dir/clean
+src/tp/clean: src/tp/CMakeFiles/meanshift.dir/clean
+src/tp/clean: src/tp/CMakeFiles/test.dir/clean
 .PHONY : src/tp/clean
 
 #=============================================================================
@@ -152,6 +156,58 @@ kmeans: src/tp/CMakeFiles/kmeans.dir/rule
 src/tp/CMakeFiles/kmeans.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/kmeans.dir/build.make src/tp/CMakeFiles/kmeans.dir/clean
 .PHONY : src/tp/CMakeFiles/kmeans.dir/clean
+
+#=============================================================================
+# Target rules for target src/tp/CMakeFiles/meanshift.dir
+
+# All Build rule for target.
+src/tp/CMakeFiles/meanshift.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/CMakeFiles --progress-num=10,11,12 "Built target meanshift"
+.PHONY : src/tp/CMakeFiles/meanshift.dir/all
+
+# Build rule for subdir invocation for target.
+src/tp/CMakeFiles/meanshift.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tp/CMakeFiles/meanshift.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/CMakeFiles 0
+.PHONY : src/tp/CMakeFiles/meanshift.dir/rule
+
+# Convenience name for target.
+meanshift: src/tp/CMakeFiles/meanshift.dir/rule
+.PHONY : meanshift
+
+# clean rule for target.
+src/tp/CMakeFiles/meanshift.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/meanshift.dir/build.make src/tp/CMakeFiles/meanshift.dir/clean
+.PHONY : src/tp/CMakeFiles/meanshift.dir/clean
+
+#=============================================================================
+# Target rules for target src/tp/CMakeFiles/test.dir
+
+# All Build rule for target.
+src/tp/CMakeFiles/test.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/CMakeFiles --progress-num=13,14,15 "Built target test"
+.PHONY : src/tp/CMakeFiles/test.dir/all
+
+# Build rule for subdir invocation for target.
+src/tp/CMakeFiles/test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/tp/CMakeFiles/test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/bonet/Documents/Work/2A/S8/IMR/tpTI-v2022.0.0-rc3/CMakeFiles 0
+.PHONY : src/tp/CMakeFiles/test.dir/rule
+
+# Convenience name for target.
+test: src/tp/CMakeFiles/test.dir/rule
+.PHONY : test
+
+# clean rule for target.
+src/tp/CMakeFiles/test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/tp/CMakeFiles/test.dir/build.make src/tp/CMakeFiles/test.dir/clean
+.PHONY : src/tp/CMakeFiles/test.dir/clean
 
 #=============================================================================
 # Target rules for target src/tutorials/CMakeFiles/display_image.dir

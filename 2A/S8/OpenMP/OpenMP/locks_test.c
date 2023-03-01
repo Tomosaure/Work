@@ -21,6 +21,7 @@ omp_init_lock(&lock);
   printf("%d: It's my turn to use the resource\n",omp_get_thread_num());
   use_resource();
   omp_unset_lock(&lock);
+  printf("%d: I'm done with the resource\n",omp_get_thread_num());
 }
 
 omp_destroy_lock(&lock);

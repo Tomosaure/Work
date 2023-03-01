@@ -18,7 +18,6 @@ int x, y, z;
 #pragma omp task
     y = compute_one(0.2);
 
-#pragma omp taskwait
     z = x+y;
     printf("z is %d\n", z);
   }

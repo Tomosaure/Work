@@ -1,2 +1,6 @@
-add_executable( kmeans kmeans.cpp ocv_utils.cpp ocv_utils.hpp)
-target_link_libraries( kmeans ${OpenCV_LIBS} )
+add_executable(kmeans kmeans.cpp ocv_utils.cpp ocv_utils.hpp)
+add_executable(meanshift meanshift.cpp ocv_utils.cpp ocv_utils.hpp)
+add_executable(test test.cpp ocv_utils.cpp ocv_utils.hpp)
+target_link_libraries( test ${OpenCV_LIBS})
+target_link_libraries( kmeans ${OpenCV_LIBS})
+target_link_libraries( meanshift ${OpenCV_LIBS})

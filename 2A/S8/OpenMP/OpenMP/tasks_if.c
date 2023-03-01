@@ -15,7 +15,7 @@ double w=0.4;
 #pragma omp task
     printf("Thread  %d executes this first task\n", omp_get_thread_num());
 
-#pragma omp task if(w>0.4)
+#pragma omp task if(w>0.3)
     {
       do_stuff(w);
       printf("Thread  %d executes this second task\n", omp_get_thread_num());
