@@ -64,9 +64,7 @@ void meanshift(Mat& data, Mat& result, TermCriteria termcrit, int spatialRad, in
                 }
             }
            
-            // on calcule le mode
-            mode = Vec3b(sum / count);
-            // on calcule le déplacement du pixel
+
             Vec3b shift = mode - pixel;
             // on vérifie si le critère d'arrêt est atteint
             if (norm(shift) < termcrit.epsilon) {

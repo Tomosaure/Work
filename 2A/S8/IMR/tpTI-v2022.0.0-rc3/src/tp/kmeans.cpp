@@ -35,7 +35,7 @@ void kmoyenne(Mat& data, int k, Mat& centers, vector<int>& labels) {
     bool convergence = false;
     // EPSILON est la valeur de convergence
     double EPSILON = 0.0001;
-// boucle principale de l'algorithme k-means 
+    // boucle principale de l'algorithme k-means 
     // on attribue une étiquette de cluster à chaque pixel en calculant la distance euclidienne entre le pixel et chaque centre
     // on attribue l'étiquette du centre le plus proche
     while(!convergence) {
