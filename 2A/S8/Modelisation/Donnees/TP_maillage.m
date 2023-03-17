@@ -1,5 +1,5 @@
 clear;
-close all;
+%close all;
 % Nombre d'images utilisees
 nb_images = 36; 
 
@@ -30,14 +30,76 @@ subplot(2,2,4); imshow(im(:,:,:,25)); title('Image 25');
 % à chaque étape / à chaque itération                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-K = 100;
+% ........................................................%
+k = 100;
 [m,n] = size(im(:,:,1,1));
-s = sqrt(m*n/K);
-Ck = zeros(K,5);
-[XX,YY] = meshgrid(s*0.5:s:m,s*0.5:s:n);
+s = sqrt(m*n/k);
+centre = zeros(k-1,5);
+% initilisa tion des centres répartis sur l'image de manière homogène avec meshgrid
+[XX,YY] = meshgrid(s/2:s:m,s/2:s:n);
+abs_centre=(XX');
+abs_centre=abs_centre(:);
+ord_centre=(YY');
+ord_centre=ord_centre(:);
+centre(:,4)=abs_centre;
+centre(:,5)=ord_centre;
 
- 
+% on affine la grille
+im_1=im2double(im(:,:,:,1));
+[Gmag, Gdir] = imgradient(rgb2gray(im(:,:,:,1)));
+imshow(Gmag, []);
+n_affinage=3;
+centre_avant=centre;
+for i = 1:99
+    % gradient dans le voisinage 
+     gradient_k = Gmag(max(centre(i,4)-n_affinage,1):min(centre(i,4)+n_affinage,m),max(centre(i,5)-n_affinage,1):min(centre(i,5)+n_affinage,n));
+    % on choisit le minimum
+    [min_val, min_ind] = min(gradient_k(:));
+    [row, col] = ind2sub(size(gradient_k), min_ind);
+    centre(i,1)=im_1(round(centre(i,4)+row-(n_affinage+1)),round(centre(i,5)+col-(n_affinage+1)),1);
+    centre(i,2)=im_1(round(centre(i,4)+row-(n_affinage+1)),round(centre(i,5)+col-(n_affinage+1)),2);
+    centre(i,3)=im_1(round(centre(i,4)+row-(n_affinage+1)),round(centre(i,5)+col-(n_affinage+1)),3);
+    
+    centre(i,4) =  round(centre(i,4)+row-(n_affinage+1));
+    centre(i,5) = round(centre(i,5)+col-(n_affinage+1));
 
+end
+%% on affiche la grille sur l'image
+figure;
+imshow(im(:,:,:,1));
+hold on;
+plot(centre(:,5),centre(:,4),'r*');
+hold on;
+plot(centre_avant(:,5),centre_avant(:,4),'g*');
+
+hold off;
+%% Evolution des centres de chaque pixel:
+pixel_kmeans = zeros(n*m,5);
+l=1;
+%pixel_kmeans=im2double(pixel_kmeans);
+for i=1:m
+    for j=1:n
+        pixel_kmeans(l,:)=[im_1(i,j,1) im_1(i,j,2) im_1(i,j,3) i j];
+        l=l+1;
+    end
+end
+m_S=1;
+pixel_kmeans_copie=pixel_kmeans;
+centre(:,4)= centre(:,4)*(m_S/s);
+centre(:,5)=centre(:,5)*(m_S/s);
+pixel_kmeans(:,4)=pixel_kmeans(:,4)*(m_S/s);
+pixel_kmeans(:,5)=pixel_kmeans(:,5)*(m_S/s);
+%% IDX est un vecteur colonne qui indique à quel cluster chaque pixel de l'image a été assigné
+%% C est une matrice qui contient les centres des K clusters
+[idx, C] = kmeans(pixel_kmeans,k-1,'Start',centre,'MaxIter',100);
+C(:,4)= C(:,4)*(s/m_S);
+C(:,5)=C(:,5)*(s/m_S);
+% Adapation 
+[nb_lignes, nb_colonnes, ~]=size(im);
+idx=(reshape(idx,size(im_1,2),size(im_1,1)))';
+figure
+mask=boundarymask(idx);
+imshow(labeloverlay(im_1,mask,'Transparency',0))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A COMPLETER                                             %
