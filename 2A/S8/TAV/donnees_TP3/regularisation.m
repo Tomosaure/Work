@@ -1,10 +1,11 @@
-function regul = regularisation(k_voisins,k_i_j,~)
-    function x = delta(m,n) 
-        if m ~= n
-            x=0; 
-        else 
-            x=1; 
-        end
+function regul = regularisation(k_voisins,ks,kt)
+
+    voisins_diff = k_voisins ~= kt;
+    nb_voisins_diff = sum(voisins_diff, 'all');
+
+    if ks == kt
+        nb_voisins_diff = nb_voisins_diff - 1;
     end
-    regul = sum(sum(1-delta(k_voisins,k_i_j)));
+
+    regul = nb_voisins_diff;
 end
