@@ -28,10 +28,14 @@ figure('Name',['Detection de ' num2str(N) ' flamants roses'],'Position',[0,0,L,0
 % Tirage aleatoire d'une configuration initiale et calcul des niveaux de gris moyens :
 c = zeros(N,2);
 I_moyen = zeros(N,1);
-for i = 1:3
+for i = 1:N
 	c_i = [nb_colonnes*rand nb_lignes*rand];
-    while isempty(find(norm(c-c_i) <= sqrt(2)*R, 1))
+    d = sqrt(sum((c - c_i).^2,2));
+    mini = min(d);
+    while mini <= sqrt(2)*R
         c_i = [nb_colonnes*rand nb_lignes*rand];
+        d = sqrt(sum((c - c_i).^2,2));
+        mini = min(d);
     end
 	c(i,:) = c_i;
 
@@ -73,8 +77,12 @@ for q = 1:q_max
 
 	% Tirage aleatoire d'un nouveau disque et calcul du niveau de gris moyen :
 	c_alea = [nb_colonnes*rand nb_lignes*rand];
-    while ~isempty(find(norm(c-c_i).^2 <= 2*R.^2, 1))
+    d = sqrt(sum((c - c_alea).^2,2));
+    mini = min(d);
+    while mini <= sqrt(2)*R
         c_alea = [nb_colonnes*rand nb_lignes*rand];
+        d = sqrt(sum((c - c_alea).^2,2));
+        mini = min(d);
     end
 	I_moyen_nouv = calcul_I_moyen(I,c_alea,R);
 

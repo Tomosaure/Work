@@ -148,9 +148,8 @@ hold on;
 in = inpolygon(vx,vy,contour(:,1),contour(:,2));
 sx = vx(in);
 sy = vy(in);
-plot(sy, sx,'r*', 'MarkerSize', 0.7)
+plot(sy, sx)
 hold off;
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A FAIRE SI VOUS UTILISEZ LES MASQUES BINAIRES FOURNIS   %
@@ -223,13 +222,13 @@ axis equal;
 % A COMPLETER                  %
 % Tetraedrisation de Delaunay  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% T = ...                      
+T = delaunayTriangulation(X(1,:)',X(2,:)',X(3,:)');   
 
 % A DECOMMENTER POUR AFFICHER LE MAILLAGE
-% fprintf('Tetraedrisation terminee : %d tetraedres trouves. \n',size(T,1));
-% Affichage de la tetraedrisation de Delaunay
-% figure;
-% tetramesh(T);
+fprintf('Tetraedrisation terminee : %d tetraedres trouves. \n',size(T,1));
+%Affichage de la tetraedrisation de Delaunay
+figure;
+tetramesh(T);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A DECOMMENTER ET A COMPLETER %
