@@ -16,8 +16,8 @@ figure('Name','Debruitage par variation totale',...
 	'Position',[0.05*L,0.1*H,0.9*L,0.7*H]);
 
 % Lecture de l'image :
-u_0 = double(imread('Images/randonneur.jpg'));
-defaut = double(imread('Images/masque_randonneur.png'));
+u_0 = double(imread('Images/fleur_avec_defaut.png'));
+defaut = double(imread('Images/defaut_fleur.png'));
 % u_0 = double(imread('Images/lena_avec_bruit.bmp'));
 [nb_lignes,nb_colonnes,nb_canaux] = size(u_0);
 u_max = max(u_0(:));
