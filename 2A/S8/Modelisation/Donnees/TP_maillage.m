@@ -31,7 +31,7 @@ subplot(2,2,4); imshow(im(:,:,:,25)); title('Image 25');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ........................................................%
-k = 50;
+k = 200;
 [m,n] = size(im(:,:,1,1));
 s = sqrt(m*n/k);
 % initilisa tion des centres répartis sur l'image de manière homogène avec meshgrid
@@ -48,6 +48,7 @@ centre(:,5)=ord_centre;
 
 % on affine la grille
 im_1=im2double(im(:,:,:,1));
+
 [Gmag, Gdir] = imgradient(rgb2gray(im(:,:,:,1)));
 imshow(Gmag, []);
 n_affinage=3;
@@ -126,8 +127,6 @@ end
 
 % Affichage de la segmentation binaire
 BW=imfill(binaryImg);
-figure;
-imshow(BW);
 s = size(BW);
 % estimation de l'axe médian
 middle_row = s(1)/2;
@@ -136,20 +135,70 @@ for i = 1:s(2)-1
         break;
     end
 end
-
+hold on;
 pixel_contour = [middle_row,i+1];
+
+figure;
+imshow(BW);
 contour=bwtraceboundary(binaryImg,pixel_contour,'W',8,Inf,'counterclockwise');
 hold on;
 plot(contour(:,2),contour(:,1),'g','LineWidth',2);
 hold on;
-% Squelette
-[vx,vy] = voronoi(contour(:,1), contour(:,2));
-% Filtrage
-in = inpolygon(vx,vy,contour(:,1),contour(:,2));
-sx = vx(in);
-sy = vy(in);
-plot(sy, sx)
-hold off;
+% Calcul de la matrice de Voronoï
+[vx, vy] = voronoi(contour(:,2), contour(:,1));
+points_nuls_x=[find(vx(1,:)>=nb_lignes) find(vx(2,:)>=nb_colonnes) find(vx(1,:)<=0) find(vx(2,:)<=0)];
+points_nuls_y=[find(vy(1,:)>=nb_lignes) find(vy(2,:)>=nb_colonnes) find(vy(1,:)<=0) find(vy(2,:)<=0)];
+points_a_enlever=[points_nuls_x points_nuls_y];
+vx(:,points_a_enlever)=[];
+vy(:,points_a_enlever)=[];
+
+points_a_retirer=[];
+for i=1:length(vx)
+    vx1=min(max(1,round(vx(1,i))),nb_colonnes);
+    vx2=min(max(1,round(vx(2,i))),nb_colonnes);
+    vy1=min(max(1,round(vy(1,i))),nb_lignes);
+    vy2=min(max(1,round(vy(2,i))),nb_lignes);
+    if BW(vy1,vx1)==0 || BW(vy2,vx2)==0
+        points_a_retirer=[points_a_retirer i];
+    end
+end
+
+vx(:,points_a_retirer)=[];
+vy(:,points_a_retirer)=[];
+
+hold on;
+plot(vx,vy);
+% partie bonus: vérification avec des cercles
+% Coordonnées du centre du cercle
+% Rayon du cercle
+
+x0 = vx;
+y0 = vy;
+[taille1,taille2]=size(vx)
+for i=1:taille2
+    x0= vx(1,i);
+    y0= vy(1,i);
+    x1= vx(2,i);
+    y1= vy(2,i);
+    rayon = pdist2([x0 y0], [x1 y1]);
+
+    % Création des points du cercle
+    theta = linspace(0, 2*pi);
+    k1 = rayon * cos(theta) + x0;
+    k2 = rayon * sin(theta) + y0;
+    hold on;
+    % Tracé du cercle
+    plot(k1, k2, 'r');
+     k3= rayon * cos(theta) + x0;
+    k4 = rayon * sin(theta) + y0;
+     hold on;
+    % Tracé du cercle
+    plot(k3, k4, 'r');
+end 
+hold off; 
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A FAIRE SI VOUS UTILISEZ LES MASQUES BINAIRES FOURNIS   %
@@ -217,30 +266,37 @@ for i = 1:size(X,2)
     plot3(X(1,i),X(2,i),X(3,i),'.','col',color(:,i)/255);
 end;
 axis equal;
-
+hold off;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A COMPLETER                  %
 % Tetraedrisation de Delaunay  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-T = delaunayTriangulation(X(1,:)',X(2,:)',X(3,:)');   
+hold off; 
+T = DelaunayTri(X(1,:)',X(2,:)', X(3,:)');
 
 % A DECOMMENTER POUR AFFICHER LE MAILLAGE
 fprintf('Tetraedrisation terminee : %d tetraedres trouves. \n',size(T,1));
-%Affichage de la tetraedrisation de Delaunay
-figure;
-tetramesh(T);
+% Affichage de la tetraedrisation de Delaunay
+ figure;
+ tetramesh(T);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A DECOMMENTER ET A COMPLETER %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Calcul des barycentres de chacun des tetraedres
-% poids = ... 
-% nb_barycentres = ... 
-% for i = 1:size(T,1)
+% choix de la pondération:En appliquant 5 pondérations différentes (une uniforme et les 4 autres favorisant un des 4 sommets), on obtient 10790 tétraèdres. 
+poids = [1, 1, 1, 1; 3, 1, 1, 1; 1, 3, 1, 1; 1, 1, 3, 1; 1, 1, 1, 3];
+nb_barycentres = size(poids,2);
+load mask;
+for i = 1:size(T,1)
     % Calcul des barycentres differents en fonction des poids differents
     % En commencant par le barycentre avec poids uniformes
-%     C_g(:,i,1)=[ ...
-
+    Ti = T(i,:);
+    Pi = T.X(Ti,:);
+    for k=1:nb_barycentres
+        C_g(:,i,k) = [sum(Pi.*poids(k,:)',1)/sum(poids(k,:)) 1]; 
+    end
+end 
 % A DECOMMENTER POUR VERIFICATION 
 % A RE-COMMENTER UNE FOIS LA VERIFICATION FAITE
 % Visualisation pour vérifier le bon calcul des barycentres
@@ -251,27 +307,44 @@ tetramesh(T);
 %        imshow(im_mask(:,:,i));
 %        hold on;
 %        plot(o(2,:),o(1,:),'rx');
-%        pause;
-%        close;
+%        %pause;
+%        %close;
 %    end
-%end
+% end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A DECOMMENTER ET A COMPLETER %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Copie de la triangulation pour pouvoir supprimer des tetraedres
-% tri=T.Triangulation;
+tri=T.Triangulation;
 % Retrait des tetraedres dont au moins un des barycentres 
 % ne se trouvent pas dans au moins un des masques des images de travail
 % Pour chaque barycentre
-% for k=1:nb_barycentres
-% ...
+removed_i = [];
 
+ for k=1:nb_barycentres
+     for i = 1:nb_images
+        for i_tetra=1:size(tri,1)
+             o = P{i}*C_g(:,i_tetra,k);
+             o = o./repmat(o(3,:),3,1);
+             x = round(o(1));
+             y = round(o(2));
+             if(x>0 && y>0 && x<=size(im_mask,1) && y<=size(im_mask,2))
+             if (im_mask(x,y,i) == 1)
+                     removed_i = [removed_i; i_tetra];
+             end
+             end
+        end
+     end
+end    
+triInd = unique(removed_i);
+tri(triInd,:)=[];
+ 
 % A DECOMMENTER POUR AFFICHER LE MAILLAGE RESULTAT
 % Affichage des tetraedres restants
-% fprintf('Retrait des tetraedres exterieurs a la forme 3D termine : %d tetraedres restants. \n',size(Tbis,1));
-% figure;
-% trisurf(tri,X(1,:),X(2,:),X(3,:));
+fprintf('Retrait des tetraedres exterieurs a la forme 3D termine : %d tetraedres restants. \n',size(tri,1));
+figure;
+trisurf(tri,X(1,:),X(2,:),X(3,:));
 
 % Sauvegarde des donnees
 % save donnees;
