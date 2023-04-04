@@ -347,7 +347,7 @@ figure;
 trisurf(tri,X(1,:),X(2,:),X(3,:));
 
 % Sauvegarde des donnees
-% save donnees;
+save donnees;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONSEIL : A METTRE DANS UN AUTRE SCRIPT %

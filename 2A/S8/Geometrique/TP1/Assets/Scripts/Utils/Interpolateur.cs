@@ -44,9 +44,15 @@ public class Interpolateur : MonoBehaviour
         List<float> tToEval = new List<float>();
 
         // Construction des pas temporels
-
+        for (int i = 0; i < nbElem; i++)
+        {
+            T.Add(i);
+        }
         // Construction des échantillons
-
+        for (float t = T.Min(); t < T.Max(); t += pas)
+        {
+            tToEval.Add(t);
+        }
 
         return (T, tToEval);
     }
@@ -70,10 +76,17 @@ public class Interpolateur : MonoBehaviour
         List<float> tToEval = new List<float>();
 
         // Construction des pas temporels
-        // TODO !!
+        T.Add(0.0f);
+        for (int i = 0; i < nbElem-1 ; i++)
+        {
+            T.Add(T.Last() + (float) Math.Sqrt(Mathf.Pow(X[i+1]-X[i],2) + Mathf.Pow(Y[i+1]-Y[i],2)));
+        }
 
         // Construction des échantillons
-        // TODO !!
+        for (float t = T.Min(); t < T.Max(); t += pas)
+        {
+            tToEval.Add(t);
+        }
 
         return (T, tToEval);
     }
@@ -97,10 +110,17 @@ public class Interpolateur : MonoBehaviour
         List<float> tToEval = new List<float>();
 
         // Construction des pas temporels
-        // TODO !!
+        T.Add(0.0f);
+        for (int i = 0; i < nbElem - 1; i++)
+        {
+            T.Add(T.Last() + (float) Math.Sqrt(Math.Sqrt(Mathf.Pow(X[i+1]-X[i],2) + Mathf.Pow(Y[i+1]-Y[i],2))));        
+        }
 
         // Construction des échantillons
-        // TODO !!
+        for (float t = T.Min(); t < T.Max(); t += pas)
+        {
+            tToEval.Add(t);
+        }
 
         return (T, tToEval);
     }
@@ -124,10 +144,17 @@ public class Interpolateur : MonoBehaviour
         List<float> tToEval = new List<float>();
 
         // Construction des pas temporels
-        // TODO !!
+        for (int i = 0; i < nbElem; i++)
+        {
+            T.Add((float) Math.Cos(((2 * i + 1) * Math.PI) / (2 * (nbElem-1) + 2)));
+        }
 
         // Construction des échantillons
-        // TODO !!
+        for (float t = T.Min(); t < T.Max(); t += pas)
+        {
+            tToEval.Add(t);
+        }
+
 
         return (T, tToEval);
     }
@@ -171,8 +198,7 @@ public class Interpolateur : MonoBehaviour
         for (int i = 0; i < tToEval.Count; ++i)
         {
             // Appliquer neville a l'echantillon i
-            // TODO !!
-            Vector2 v = new Vector2(0.0f,0.0f);
+            Vector2 v = neville(X, Y, T, tToEval[i]);
             Vector3 pos = new Vector3(v[0], 0.0f, v[1]);
             P2DRAW.Add(pos);
         }
@@ -222,8 +248,31 @@ public class Interpolateur : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////
     private Vector2 neville(List<float> X, List<float> Y, List<float> T, float t)
     {
-        // TODO !!
-        return new Vector2(0.0f,0.0f);
+        int n = T.Count;
+
+        float[,] Ix = new float[n,n];
+        float[,] Iy = new float[n,n];
+
+        for (int i = 0; i < n; ++i)
+        {
+            Ix[i, 0] = X[i];
+            Iy[i, 0] = Y[i];
+        }
+
+        for (int j = 1; j < n; ++j)
+        {
+            for (int i = j; i < n; ++i)
+            {
+                float numerateur = (T[i] - t) * Ix[i - 1, j - 1] + (t - T[i - j]) * Ix[i, j - 1];
+                float denominateur = (T[i] - T[i - j]);
+                Ix[i, j] = numerateur / denominateur;
+
+                numerateur = (T[i] - t) * Iy[i - 1, j - 1] + (t - T[i - j]) * Iy[i, j - 1];
+                Iy[i, j] = numerateur / denominateur;
+            }
+        }
+
+        return new Vector2(Ix[n - 1, n - 1], Iy[n - 1, n - 1]);
     }
 
     //////////////////////////////////////////////////////////////////////////
