@@ -92,8 +92,8 @@ centre(:,4)= centre(:,4)*(m_S/s);
 centre(:,5)=centre(:,5)*(m_S/s);
 pixel_kmeans(:,4)=pixel_kmeans(:,4)*(m_S/s);
 pixel_kmeans(:,5)=pixel_kmeans(:,5)*(m_S/s);
-%% IDX est un vecteur colonne qui indique à quel cluster chaque pixel de l'image a été assigné
-%% C est une matrice qui contient les centres des K clusters
+% IDX est un vecteur colonne qui indique à quel cluster chaque pixel de l'image a été assigné
+% C est une matrice qui contient les centres des K clusters
 [idx, C] = kmeans(pixel_kmeans,Nombre_classe,'Start',centre,'MaxIter',100);
 C(:,4)= C(:,4)*(s/m_S);
 C(:,5)=C(:,5)*(s/m_S);
@@ -110,42 +110,76 @@ imshow(labeloverlay(im_1,mask,'Transparency',0))
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % On récupère la couleur des centres
 couleurs = C(:,1:3);
-canal= C(:,1);
-seuil=graythresh(canal);
+canal= 0.7 * C(:,1) + 0.3 * C(:,3);
+%seuil=graythresh(canal);
+seuil = mean(canal);
 % on concertit en niveau de gris 
-%C_gray = 0.2989 * couleurs(:,1) + 0.5870 * couleurs(:,2) + 0.1140 * couleurs(:,3);
-%level = 0.6
+% C_gray = 0.2989 * couleurs(:,1) + 0.5870 * couleurs(:,2) + 0.1140 * couleurs(:,3);
+% level = 0.6
 
 % Seuillage des centres de superpixels pour obtenir une segmentation binaire
 binaryImg = ones(size(im_1,1), size(im_1,2));
-I=kmeans(couleurs,2);
+% I = kmeans(couleurs,2);
 for k = 1:Nombre_classe
-    if canal(k)<seuil
+    if sum(find(sum(C(:,1:3))>min(C(:,1)))) > sum(find(sum(C(:,1:3))>min(C(:,3))))
         binaryImg(idx==k) = 0;
+    else 
+        binaryImg(idx==k) = 1;
     end
 end
 
 % Affichage de la segmentation binaire
 BW=imfill(binaryImg);
 s = size(BW);
+
 % estimation de l'axe médian
-middle_row = s(1)/2;
-for i = 1:s(2)-1
-    if BW(middle_row,i) ~= BW(middle_row,i+1)
-        break;
+
+% trouver un pixel sur la frontière pour applique bwtraceboundary
+
+% % on se place sur la ligne du milieu 
+% middle_row = s(1)/2;
+% for i = 1:s(2)-1
+%     % Quand on se trouve à la forntière, la valeur change
+%     if BW(middle_row,i) ~= BW(middle_row,i+1)
+%         break;
+%     end
+% end
+% 
+% 
+% % On récupère le pixel qui appartient au contour
+% pixel_contour = [middle_row,i+1];
+
+
+% Trouver un pixel sur la frontière pour applique bwtraceboundary
+
+flag = 0;
+for i = 1:s(1)-1
+    for j = 1:s(2)-1
+        % Quand on se trouve à la forntière, la valeur change
+        if BW(i,j) ~= BW(i,j+1)
+            flag = 1;
+            break
+        end
+    end
+    if flag
+        break
     end
 end
+
 hold on;
-pixel_contour = [middle_row,i+1];
+% On récupère le pixel qui appartient au contour
+pixel_contour = [i,j+1];
 
 figure;
 imshow(BW);
+% On trace le contour
 contour=bwtraceboundary(binaryImg,pixel_contour,'W',8,Inf,'counterclockwise');
 hold on;
 plot(contour(:,2),contour(:,1),'g','LineWidth',2);
 hold on;
 % Calcul de la matrice de Voronoï
 [vx, vy] = voronoi(contour(:,2), contour(:,1));
+
 points_nuls_x=[find(vx(1,:)>=nb_lignes) find(vx(2,:)>=nb_colonnes) find(vx(1,:)<=0) find(vx(2,:)<=0)];
 points_nuls_y=[find(vy(1,:)>=nb_lignes) find(vy(2,:)>=nb_colonnes) find(vy(1,:)<=0) find(vy(2,:)<=0)];
 points_a_enlever=[points_nuls_x points_nuls_y];
@@ -168,13 +202,14 @@ vy(:,points_a_retirer)=[];
 
 hold on;
 plot(vx,vy);
+
 % partie bonus: vérification avec des cercles
 % Coordonnées du centre du cercle
 % Rayon du cercle
 
 x0 = vx;
 y0 = vy;
-[taille1,taille2]=size(vx)
+[taille1,taille2]=size(vx);
 for i=1:taille2
     x0= vx(1,i);
     y0= vy(1,i);
@@ -189,7 +224,7 @@ for i=1:taille2
     hold on;
     % Tracé du cercle
     plot(k1, k2, 'r');
-     k3= rayon * cos(theta) + x0;
+    k3 = rayon * cos(theta) + x0;
     k4 = rayon * sin(theta) + y0;
      hold on;
     % Tracé du cercle
@@ -284,19 +319,21 @@ fprintf('Tetraedrisation terminee : %d tetraedres trouves. \n',size(T,1));
 % A DECOMMENTER ET A COMPLETER %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Calcul des barycentres de chacun des tetraedres
-% choix de la pondération:En appliquant 5 pondérations différentes (une uniforme et les 4 autres favorisant un des 4 sommets), on obtient 10790 tétraèdres. 
-poids = [1, 1, 1, 1; 3, 1, 1, 1; 1, 3, 1, 1; 1, 1, 3, 1; 1, 1, 1, 3];
+% On applique 5 pondérations différentes : une uniforme et les 4 autres favorisant un des 4 sommets 
+poids = [1, 1, 1, 1; 20, 1, 1, 1; 1, 20, 1, 1; 1, 1, 20, 1; 1, 1, 1,20];
 nb_barycentres = size(poids,2);
 load mask;
 for i = 1:size(T,1)
-    % Calcul des barycentres differents en fonction des poids differents
-    % En commencant par le barycentre avec poids uniformes
+    % On récupère les indices des sommets
     Ti = T(i,:);
+    % On récupère les coordonnées des sommets
     Pi = T.X(Ti,:);
     for k=1:nb_barycentres
+        % On calcul des barycentres differents en fonction des poids differents
         C_g(:,i,k) = [sum(Pi.*poids(k,:)',1)/sum(poids(k,:)) 1]; 
     end
 end 
+
 % A DECOMMENTER POUR VERIFICATION 
 % A RE-COMMENTER UNE FOIS LA VERIFICATION FAITE
 % Visualisation pour vérifier le bon calcul des barycentres
@@ -329,14 +366,21 @@ removed_i = [];
              o = o./repmat(o(3,:),3,1);
              x = round(o(1));
              y = round(o(2));
-             if(x>0 && y>0 && x<=size(im_mask,1) && y<=size(im_mask,2))
-             if (im_mask(x,y,i) == 1)
-                     removed_i = [removed_i; i_tetra];
+             % On vérifie que le barycentre est bien projeté l'image
+             if(x>0 && y>0 && x<size(im_mask,1) && y<size(im_mask,2))
+                % On vérifie ensuite s'il est projeté sur le masque 
+                if (im_mask(x,y,i) == 1)
+                    % On retire le barycentre qui ne se projette pas dans la région du dinosaure dans au moins une des 36 images
+                    removed_i = [removed_i; i_tetra];
+                end
+             else
+                 % Le barycentre n'est pas projeté dans l'image
+                 removed_i = [removed_i; i_tetra];
              end
-             end
+
         end
      end
-end    
+ end
 triInd = unique(removed_i);
 tri(triInd,:)=[];
  

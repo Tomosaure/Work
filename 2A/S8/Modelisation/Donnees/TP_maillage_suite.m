@@ -7,6 +7,8 @@ Nf = 4*n;
 
 %% Etape 1 
 for i = 1:n
+    % Les faces d'un tétraèdre correspondent aux combinaisons de taille 3
+    % des 4 sommets de celui-ci
     FACES = [FACES; nchoosek(tri(i,:),3)];
 end
 
@@ -17,11 +19,13 @@ FACES=sortrows(FACES);
 face_gardee=[];
 
 for i=1:Nf-1
+    % Si une face est différente de celle qui suit, on la garde
     if all(FACES(i,:)~=FACES(i+1,:))
         face_gardee = [face_gardee; FACES(i,:)];
     end
 end
 
+% On rajoute à la main la dernière face
 FACES = [face_gardee; FACES(end,:)];
 
 fprintf('Calcul du maillage final termine : %d faces. \n',size(FACES,1));
