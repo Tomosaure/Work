@@ -26,12 +26,52 @@ public class CalculHodographe : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////
     (List<float>, List<float>) DeCasteljauSub(List<float> X, List<float> Y, int nombreDeSubdivision)
     {
+        int n = X.Count;
+    
+        if (nombreDeSubdivision == 0) {
+            return (X, Y);
+        }
+
         List<float> XSortie = new List<float>();
         List<float> YSortie = new List<float>();
+        List<float> xL = new List<float>();
+        List<float> yL = new List<float>();
+        List<float> xR = new List<float>();
+        List<float> yR = new List<float>();
 
-        // TODO !!
+        for (int i=0;i<X.Count;i++){
+            XSortie.Add(X[i]);
+            YSortie.Add(Y[i]);
+        }
 
-        return (XSortie, YSortie);
+        float t = 0.5f; 
+
+        xL.Add(XSortie[0]);
+        yL.Add(YSortie[0]);
+        xR.Add(XSortie[XSortie.Count-1]);
+        yR.Add(YSortie[YSortie.Count-1]);
+
+        for (int ligne=0 ; ligne < YSortie.Count-1; ligne++) {
+            for(int col=0; col < YSortie.Count-ligne-1; col++){
+                YSortie[col] = (1 - t) * YSortie[col] + t * YSortie[col+1];
+                XSortie[col] = (1 - t) * XSortie[col] + t * XSortie[col+1];
+            }
+            xL.Add(XSortie[0]);
+            yL.Add(YSortie[0]);
+            xR.Add(XSortie[YSortie.Count-ligne-2]);
+            yR.Add(YSortie[YSortie.Count-ligne-2]);
+        }
+        XSortie.Clear();
+        xR.Reverse();
+        XSortie.AddRange(xL);
+        XSortie.AddRange(xR);
+        YSortie.Clear();
+        yR.Reverse();
+        YSortie.AddRange(yL);
+        YSortie.AddRange(yR);
+
+        return DeCasteljauSub(XSortie, YSortie, nombreDeSubdivision - 1);
+
     }
 
     //////////////////////////////////////////////////////////////////////////
@@ -49,12 +89,18 @@ public class CalculHodographe : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////
     (List<float>, List<float>) Hodographe(List<float> X, List<float> Y, float Cx = 1.5f, float Cy = 0.0f)
     {
-        List<float> XSortie = new List<float>();
-        List<float> YSortie = new List<float>();
+        List<float> Xs = new List<float>();
+        List<float> Ys = new List<float>();
 
-        // TODO !!
+        int n = X.Count;
         
-        return (XSortie, YSortie);
+        for (int i = 0; i < n-1; i++)
+        {
+            Xs.Add(n * (X[i + 1] - X[i]) - Cx);
+            Ys.Add(n * (Y[i + 1] - Y[i]) - Cy);
+        }
+
+        return (Xs, Ys);
     }
 
     //////////////////////////////////////////////////////////////////////////

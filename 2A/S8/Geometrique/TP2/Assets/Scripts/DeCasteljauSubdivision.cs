@@ -31,57 +31,54 @@ public class DeCasteljauSubdivision : MonoBehaviour
     //          - (List<float>, List<float>) : liste des abscisses et liste //
     //            des ordonnées des points composant la courbe              //
     //////////////////////////////////////////////////////////////////////////
-       (List<float>, List<float>) DeCasteljauSub(List<float> X, List<float> Y, int nombreDeSubdivision)
-    {
-        List<float> XSortie = new List<float>();
-        List<float> YSortie = new List<float>();
-
-        List<float> Xg = new List<float>();
-        List<float> Xd = new List<float>();
-        List<float> Yd = new List<float>();
-        List<float> Yg = new List<float>();
-        List<Vector2> list_vect = new List<Vector2>();
-        float t = 0.5f;
-
-        for (int i = 0; i < X.Count; i++)
-        {
-            list_vect.Add(new Vector2(X[i], Y[i]));
-        }
-        Xg.Add(X[0]);
-        Yg.Add(Y[0]);
-        Xd.Add(X[X.Count - 1]);
-        Yd.Add(Y[Y.Count - 1]);
-
-        for (int i = 1; i < X.Count; i++)
-        {
-            for (int j = 0; j < X.Count - i; j++)
-            {
-                list_vect[j] = (1-t) * list_vect[j] + t * list_vect[j + 1];
-            }
-            Xg.Add(list_vect[0][0]);
-            Yg.Add(list_vect[0][1]);
-            Xd.Insert(0, list_vect[list_vect.Count - i - 1][0]);
-            Yd.Insert(0, list_vect[list_vect.Count - i - 1][1]);
-        }
-        if (nombreDeSubdivision != 1)
-        {
-            (List<float>, List<float>) subG = DeCasteljauSub(Xg, Yg, nombreDeSubdivision - 1);
-            (List<float>, List<float>) subD = DeCasteljauSub(Xd, Yd, nombreDeSubdivision - 1);
-            XSortie.AddRange(subG.Item1);
-            XSortie.AddRange(subD.Item1);
-            YSortie.AddRange(subG.Item2);
-            YSortie.AddRange(subD.Item2);
-        }
-        else
-        {
-            XSortie.AddRange(Xg);
-            XSortie.AddRange(Xd);
-            YSortie.AddRange(Yg);
-            YSortie.AddRange(Yd);
-        }
-        return (XSortie, YSortie);
-
+    (List<float>, List<float>) DeCasteljauSub(List<float> X, List<float> Y, int nombreDeSubdivision)
+{
+    int n = X.Count;
+    
+    if (nombreDeSubdivision == 0) {
+        return (X, Y);
     }
+
+    List<float> XSortie = new List<float>();
+    List<float> YSortie = new List<float>();
+    List<float> xL = new List<float>();
+    List<float> yL = new List<float>();
+    List<float> xR = new List<float>();
+    List<float> yR = new List<float>();
+
+    for (int i=0;i<X.Count;i++){
+        XSortie.Add(X[i]);
+        YSortie.Add(Y[i]);
+    }
+
+    float t = 0.5f; 
+
+    xL.Add(XSortie[0]);
+    yL.Add(YSortie[0]);
+    xR.Add(XSortie[XSortie.Count-1]);
+    yR.Add(YSortie[YSortie.Count-1]);
+
+    for (int ligne=0 ; ligne < YSortie.Count-1; ligne++) {
+        for(int col=0; col < YSortie.Count-ligne-1; col++){
+            YSortie[col] = (1 - t) * YSortie[col] + t * YSortie[col+1];
+            XSortie[col] = (1 - t) * XSortie[col] + t * XSortie[col+1];
+        }
+        xL.Add(XSortie[0]);
+        yL.Add(YSortie[0]);
+        xR.Add(XSortie[YSortie.Count-ligne-2]);
+        yR.Add(YSortie[YSortie.Count-ligne-2]);
+    }
+    XSortie.Clear();
+    xR.Reverse();
+    XSortie.AddRange(xL);
+    XSortie.AddRange(xR);
+    YSortie.Clear();
+    yR.Reverse();
+    YSortie.AddRange(yL);
+    YSortie.AddRange(yR);
+
+    return DeCasteljauSub(XSortie, YSortie, nombreDeSubdivision - 1);
+}
 
 
     //////////////////////////////////////////////////////////////////////////
