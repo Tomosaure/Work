@@ -117,14 +117,15 @@ public class Mesh {
         try {
             for (int i = 0; i < 3 * getNumFaces(); i += 3) {
 
+                Vector3 v0 = new Vector3 (vertices[faces[i+0]]);
+                Vector3 v1 = new Vector3 (vertices[faces[i+1]]);
+                Vector3 v2 = new Vector3 (vertices[faces[i+2]]);
 
+                v1.subtract (v0);
+                v2.subtract (v0);
 
-		/* A COMPLETER */
-
-
-		Vector3 n = new Vector3(); //?
-
-
+                Vector3 n = v1.cross (v2);
+                n.normalize ();
                 
 		// ajoute la normale calculee a chq sommet de la face
 		for (int j = 0; j < 3; j++) { 

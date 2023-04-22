@@ -23,45 +23,79 @@ public class Transformation  {
 
     public void setLookAt (Vector3 cam, Vector3 lookAt, Vector3 up) {
         try {
-            Vector3 e3 = new Vector3 (lookAt);
-            e3.subtract (cam);
-            e3.normalize ();
-            Vector3 e1 = up.cross (e3);
-            e1.normalize ();
-            Vector3 e2 = e3.cross (e1);
-            e2.normalize ();
+         Vector3 e3_c=new Vector3(lookAt);
+        // compute rotation
+        e3_c.subtract(cam);
+        e3_c.normalize ();
+        Vector3 e1_c = up.cross(e3_c);
+        e1_c.normalize ();
+        Vector3 e2_c = e3_c.cross(e1_c);
+        e2_c.normalize();
+        Matrix N_transpose = new Matrix(3, 3);
+        N_transpose.setRow(0, e1_c);
+        N_transpose.setRow(1, e2_c);
+        N_transpose.setRow(2, e3_c);
+        //vecteur  de translation
+        Vector t= new Vector(3);
+        t=N_transpose.multiply(cam);
+        t.scale(-1);
+        //matrice de passage
+        worldToCamera = new Matrix(4, 4);
+        worldToCamera.setSubMatrix(0, 0, N_transpose);
+        worldToCamera.setSubVector(0, 3, t);
+        Vector v = new Vector(4);
+        v.set(3, 1);
+        worldToCamera.setRow(3, v);
 
-            Matrix N = new Matrix(3, 3)
-            N.multiply (e1, 0, 0);
-            N.multiply (e2, 1, 1);
-            N.multiply (e3, 2, 2);
-            N.transpose ();
-
-            t = new Vector (3);
-            t = cam.multiply (-1);
-            t = N.multiply (t);
-
-            worldToCamera = new Matrix (4, 4);
-            worldToCamera.setSubMatrix (0, 0, N);
-            worldToCamera.setSubMatrix (0, 3, t);
-            worldToCamera.setSubMatrix (3, 3, 1);
 
         } catch (Exception e) { /* unreached */ };
         
-        System.out.println ("Modelview matrix:\n" + worldToCamera);
+        System.out.println("Modelview matrix:\n" + worldToCamera);
     }
 
     public void setProjection () {
-        
-        System.out.println ("Projection matrix:\n" + projection);
+        // création de la matrice de projection pour z = 1
+       try { 
+        //Matrix projection = new Matrix (3, 4);
+        System.out.println("ok");
+        Vector v1 = new Vector (4);
+        v1.set (0, 1);
+        Vector v2 = new Vector (4);
+        v2.set (1, 1);
+        Vector v3 = new Vector (4);
+        v3.set (2, 1);
+    
+        projection.setRow(0, v1);
+
+        projection.setRow(1, v2);
+        projection.setRow(2, v3);
+        System.out.println("Projection matrix:\n" + projection);
+
+        } catch (Exception e) { /* unreached */ };
+
     }
 
     public void setCalibration (double focal, double width, double height) {
+        try { //Matrix
+        //calibration= new Matrix (3, 3);
+        Vector v1 = new Vector (3);
+        v1.set (0, focal);
+        v1.set (1, 0);
+        v1.set (2, width/2);
+        Vector v2 = new Vector (3);
+        v2.set (0, 0);
+        v2.set (1, focal);
+        v2.set (2, height/2);
+        Vector v3 = new Vector (3);
+        v3.set (0, 0);
+        v3.set (1, 0);
+        v3.set (2, 1);
+        calibration.setRow (0, v1);
+        calibration.setRow (1, v2);
+        calibration.setRow (2, v3);
+        System.out.println ("Calibration matrix:\n" + calibration);
+        } catch (Exception e) { /* unreached */ };
 
-
-	/* à compléter */
-
-	System.out.println ("Calibration matrix:\n" + calibration);
     }
 
     /**
@@ -71,11 +105,12 @@ public class Transformation  {
      */  
     public Vector3 projectPoint (Vector p)
         throws SizeMismatchException, InstantiationException {
-	Vector ps = new Vector(3);
-
-        /* à compléter */
-
-	return new Vector3 (ps);
+	    Vector ps = new Vector(3);
+        ps = calibration.multiply(projection.multiply(worldToCamera.multiply(p)));
+        double z= ps.get(2);
+        ps.scale(1/ps.get(2));
+        ps.set(2, z);
+	    return new Vector3 (ps);
     }
     
     /**

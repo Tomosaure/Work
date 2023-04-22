@@ -65,13 +65,12 @@ public class Matrix {
 
         return sub;
     }
-
-    public Matrix setSubMatrix (int offsetRow, int offsetCol, Matrix sub)
-        throws InstantiationException
+    public void setSubMatrix (int offsetRow, int offsetCol, Matrix sub)
+        throws SizeMismatchException
     {
         if ((offsetRow < 0) || (offsetCol < 0) ||
             (offsetRow + sub.nRows > this.nRows) || (offsetCol + sub.nCols > this.nCols)) {
-            throw new InstantiationException ("Invalid submatrix");
+            throw new SizeMismatchException ("Invalid submatrix");
         }
 
         for (int i = 0; i < sub.nRows; i++) {
@@ -79,8 +78,18 @@ public class Matrix {
                 this.set (offsetRow + i, offsetCol + j, sub.get (i, j));
             }
         }
+    }
+    public void setSubVector(int offsetRow, int offsetCol, Vector sub)
+        throws SizeMismatchException
+    {
+        if ((offsetRow < 0) || (offsetCol < 0) ||
+            (offsetRow + sub.size > this.nRows) || (offsetCol + 1 > this.nCols)) {
+            throw new SizeMismatchException ("Invalid submatrix");
+        }
 
-        return this;
+        for (int i = 0; i < sub.size; i++) {
+            this.set (offsetRow + i, offsetCol, sub.get (i));
+        }
     }
 
     /**
@@ -161,6 +170,11 @@ public class Matrix {
      */
     public void set (int i, int j, double value) {
         values[i * nCols + j] = value;
+    }
+
+    public void setRow(int i, Vector v) {
+        for (int j = 0; j < nCols; j++)
+            set(i, j, v.get(j));
     }
 
     /**

@@ -156,7 +156,19 @@ public class Vector implements Cloneable {
         }
         this.values = values;
     }
+   public void setRow2 (int i, Vector v) throws SizeMismatchException {
+        if (v.size != this.size) {
+            throw new SizeMismatchException (this, v);
+        }
 
+        for (int j = 0; j < this.size; j++) {
+            if (i == j) {
+                for (int k = 0; k < this.size; k++) {
+                    this.values[k] = v.values[k];
+                }
+            }
+        }
+    }
     /**
      * Sets all elements of the vector to 0 
      */

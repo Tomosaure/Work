@@ -40,9 +40,11 @@ public class DepthBuffer {
     public boolean testFragment (Fragment fragment) {
         if ((fragment.getX () >= 0) && (fragment.getX () < width) && (fragment.getY () >= 0) && (fragment.getY () < height)) {
 
-            /* COMPLETER */
-
-            return false;
+            if (fragment.getDepth () < buffer[fragment.getY () * width + fragment.getX ()]) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
@@ -54,8 +56,7 @@ public class DepthBuffer {
     public void writeFragment (Fragment fragment) {
         if ((fragment.getX () >= 0) && (fragment.getX () < width) && (fragment.getY () >= 0) && (fragment.getY () < height)) {
 
-            /* COMPLETER */
-
+            buffer[fragment.getY () * width + fragment.getX ()] = fragment.getDepth ();
         }
     }
 

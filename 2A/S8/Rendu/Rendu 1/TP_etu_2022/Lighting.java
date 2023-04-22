@@ -40,8 +40,7 @@ public class Lighting {
             Light light = (Light) it.next ();
             switch (light.type) {
                 case AMBIENT:
-                    /* Ambient light : A COMPLETER */
-		    /* I += ... */
+                    I += light.params[0]*ka;
                     break;
                 case POINT:
                     try {
@@ -57,11 +56,9 @@ public class Lighting {
                     Vector3 h = new Vector3 (e);
                     h.add (l);
                     h.normalize ();
-                    /* diffuse contribution : A COMPLETER */
-                    /* double Id = ... */
-                    /* specular contribution : A COMPLETER */
-                    /* double Is = ... */
-                    /* I += Id + Is;*/
+                    double Id = light.params[3] * kd * normal.dot (l);
+                    double Is = light.params[3] * ks * Math.pow (normal.dot (h), s);
+                    I += Id + Is;
                     } catch (InstantiationException ex) { /* should not reach*/ }
                       catch (SizeMismatchException  ex) { /* should not reach*/ }
                     break;
