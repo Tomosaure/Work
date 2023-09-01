@@ -90,6 +90,7 @@ while convergence > 1e-3
 		title(['Image restauree (iteration ' num2str(iteration) ')'],'FontSize',20)
         
     subplot(1,3,3)
+        set(gcf)
         imagesc(max(0,min(1,(reshape(u_0-u_k,[nb_lignes nb_colonnes nb_canaux])/u_max+1)/2)),[0 1])
         if nb_canaux==1
 			colormap gray
@@ -98,6 +99,6 @@ while convergence > 1e-3
         title(['Soustraction de la solution (iteration ' num2str(iteration) ')'],'FontSize',20)    
         
 	drawnow nocallbacks
-	pause(0.1)
+	pause()
 
 end

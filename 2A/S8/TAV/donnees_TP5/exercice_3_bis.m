@@ -1,7 +1,7 @@
 %--------------------------------------------------------------------------
 % ENSEEIHT - 2SN MM - Traitement des donnees audio-visuelles
 % TP5 - Restauration d'images
-% exercice_3_bis : inpainting par rapieage (domaine D variable)
+% exercice_3_bis : inpainting par rapieÂage (domaine D variable)
 %--------------------------------------------------------------------------
 
 clear
@@ -16,7 +16,7 @@ figure('Name','Inpainting par rapiecage',...
 	'Position',[0.06*L,0.1*H,0.9*L,0.75*H])
 
 % Lecture de l'image :
-u_0 = double(imread('Images/randonneur.jpg'));
+u_0 = double(imread('Images/Concave.png'));
 [nb_lignes,nb_colonnes,nb_canaux] = size(u_0);
 u_max = max(u_0(:));
 
@@ -57,7 +57,7 @@ nb_points_delta_D = length(indices_delta_D);
 
 % Parametres :
 t = 9;			% Voisinage d'un pixel de taille (2t+1) x (2t+1)
-T = 50;			% Fentre de recherche de taille (2T+1) x (2T+1)
+T = 50;			% FenÂtre de recherche de taille (2T+1) x (2T+1)
 
 % Tant que la frontiere de D n'est pas vide :
 while nb_points_delta_D > 0
@@ -72,7 +72,7 @@ while nb_points_delta_D > 0
 	% S'il existe au moins un pixel q eligible :
 	if existe_q
 
-		% Rapieage et mise a jour de D :
+		% RapieÂage et mise a jour de D :
 		[u_k,D] = rapiecage(bornes_V_p,bornes_V_q_chapeau,u_k,D);
 
 		% Mise a jour de la frontiere de D :

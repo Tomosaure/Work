@@ -1,7 +1,7 @@
 %--------------------------------------------------------------------------
 % ENSEEIHT - 2SN MM - Traitement des donnees audio-visuelles
 % TP5 - Restauration d'images
-% exercice_3 : inpainting par rapieçage (domaine D connu)
+% exercice_3 : inpainting par rapieÔøΩage (domaine D connu)
 %--------------------------------------------------------------------------
 
 clear
@@ -16,7 +16,7 @@ figure('Name','Inpainting par rapiecage',...
 	'Position',[0.06*L,0.1*H,0.9*L,0.75*H])
 
 % Lecture de l'image :
-u_0 = double(imread('Images/randonneur.jpg'));
+u_0 = double(imread('Images/arbre.jpg'));
 [nb_lignes,nb_colonnes,nb_canaux] = size(u_0);
 u_max = max(u_0(:));
 
@@ -46,9 +46,7 @@ subplot(1,2,2)
 	end
 drawnow nocallbacks
 
-% Lancement du traitement :
-fprintf('Tapez un caractere pour lancer le traitement !\n');
-pause
+pause(2)
 
 % Initialisation de la frontiere de D :
 delta_D = frontiere(D);
@@ -57,22 +55,34 @@ nb_points_delta_D = length(indices_delta_D);
 
 % Parametres :
 t = 9;			% Voisinage d'un pixel de taille (2t+1) x (2t+1)
-T = 50;			% Fenêtre de recherche de taille (2T+1) x (2T+1)
+T = 50;			% FenÔøΩtre de recherche de taille (2T+1) x (2T+1)
 
 % Tant que la frontiere de D n'est pas vide :
 while nb_points_delta_D > 0
 
+
+    % Calcul du gradient pour chaque canal et somme des normes
+    G = zeros(nb_lignes, nb_colonnes);
+    for c = 1:nb_canaux
+        [Gx, Gy] = imgradientxy(u_0(:, :, c), 'sobel');
+        G = G + sqrt(Gx.^2 + Gy.^2);
+    end
+
+    % Pixel p de la frontiere de D avec la plus grande norme de gradient :
+    [~, indice_p] = max(G(indices_delta_D));
+    [i_p,j_p] = ind2sub(size(D),indices_delta_D(indice_p));
+
 	% Pixel p de la frontiere de D tire aleatoirement :
-	indice_p = indices_delta_D(randi(nb_points_delta_D));
-	[i_p,j_p] = ind2sub(size(D),indice_p);
+	%indice_p = indices_delta_D(randi(nb_points_delta_D));
+	%[i_p,j_p] = ind2sub(size(D),indice_p);
 
 	% Recherche du pixel q_chapeau :
 	[existe_q,bornes_V_p,bornes_V_q_chapeau] = d_min(i_p,j_p,u_k,D,t,T);
-
+    
 	% S'il existe au moins un pixel q eligible :
 	if existe_q
 
-		% Rapieçage et mise a jour de D :
+		% RapieÔøΩage et mise a jour de D :
 		[u_k,D] = rapiecage(bornes_V_p,bornes_V_q_chapeau,u_k,D);
 
 		% Mise a jour de la frontiere de D :

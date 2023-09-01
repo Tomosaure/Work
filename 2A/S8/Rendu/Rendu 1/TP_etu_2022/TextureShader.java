@@ -36,13 +36,13 @@ public class TextureShader extends Shader {
     public void shade (Fragment fragment) {
         if (depth.testFragment (fragment)) {
             /* The Fragment may not have texture coordinates */
-            try {
+            try {   
 
+                double u = fragment.getAttribute (7);
+                double v = fragment.getAttribute (8);
 
-
-		/* à compléter */
-
-
+                screen.setPixel (fragment.getX (), fragment.getY (), texture.sample (u, v));
+        
 
             } catch (ArrayIndexOutOfBoundsException e) {
                 screen.setPixel (fragment.getX (), fragment.getY (), fragment.getColor ());

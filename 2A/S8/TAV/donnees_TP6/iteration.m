@@ -1,9 +1,5 @@
 function [x,y] = iteration(x,y,Fx,Fy,gamma,A)
-    x1 = round(x);
-    y1 = round(y);
-    ind = sub2ind([max(x1),max(y1)],x1,y1);
-    Bx = -gamma*Fx(ind);
-    By = -gamma*Fy(ind);
-    x = A*x + Bx;
-    y = A*y + By;
+    ind = sub2ind(size(Fx),round(y),round(x));
+    x = A*x - gamma*Fx(ind);
+    y = A*y - gamma*Fy(ind);
 end

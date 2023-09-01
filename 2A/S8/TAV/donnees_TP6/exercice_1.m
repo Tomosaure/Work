@@ -5,7 +5,7 @@ L = taille_ecran(3);
 H = taille_ecran(4);
 
 % Lecture et affichage de l'image a segmenter :
-I = imread('coins.png');
+I = imread('IRM.png');
 [nb_lignes,nb_colonnes,nb_canaux] = size(I);
 if nb_canaux==3
 	I = rgb2gray(I);

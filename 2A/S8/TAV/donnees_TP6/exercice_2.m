@@ -7,16 +7,16 @@ H = taille_ecran(4);
 load force_externe;
 
 % Parametres du modele :
-alpha = 0.001;				% Poids de la penalisation de la longueur
+alpha = 0.01;				% Poids de la penalisation de la longueur
 beta = 0.0001;				% Poids de la penalisation de la courbure
 
 % Parametre de la descente de gradient :
-gamma = 0.5;				% Pas de la descente de gradient
+gamma = 0.8;				% Pas de la descente de gradient
 nb_iterations_max = 500000;		% Nombre d'iterations maximal
 seuil_convergence = 1e-8;		% Critere d'arrêt sur l'ecart quadratique relatif entre deux affichages
 
 % Parametre du filtrage gaussien :
-sigma = 5;				% Variance
+sigma = 10;				% Variance
 T = ceil(3*sigma);			% Taille du noyau gaussien
 
 % Autres parametres :

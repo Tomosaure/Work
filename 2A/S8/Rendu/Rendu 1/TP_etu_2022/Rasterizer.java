@@ -48,32 +48,6 @@ public class Rasterizer {
             f.setAttribute (i, (1.0 - alpha) * v1.getAttribute (i) + alpha * v2.getAttribute (i));
         }
     }
- 
-    private void interpolate3 (Fragment v1, Fragment v2, Fragment v3, Fragment f) {
-        int x1 = v1.getX ();
-        int y1 = v1.getY ();
-        int x2 = v2.getX ();
-        int y2 = v2.getY ();
-        int x3 = v3.getX ();
-        int y3 = v3.getY ();
-        int x = f.getX ();
-        int y = f.getY ();
-
-        double alpha = 0.0;
-        double beta = 0.0;
-        double gamma = 0.0;
-        double det = (x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1);
-        if (det != 0.0) {
-            alpha = ((y3 - y1) * (x - x1) - (x3 - x1) * (y - y1)) / det;
-            beta = ((y1 - y2) * (x - x1) - (x1 - x2) * (y - y1)) / det;
-            gamma = 1.0 - alpha - beta;
-        }
-        int numAttributes = f.getNumAttributes ();
-        for (int i = 0; i < numAttributes; i++) {
-            f.setAttribute (i, alpha * v1.getAttribute (i) + beta * v2.getAttribute (i) + gamma * v3.getAttribute (i));
-        }
-    }
-
 
     /* Swaps x and y coordinates of the fragment. Used by the Bresenham algorithm. */
     private static void swapXAndY (Fragment f) {
@@ -210,14 +184,13 @@ public class Rasterizer {
        // Coordonnées barycentriques alpha, beta, gamma
        double alpha, beta, gamma;
    
-       /* iterate over the triangle's bounding box */
-   
        int x1 = v1.getX ();
        int y1 = v1.getY ();
        int x2 = v2.getX ();
        int y2 = v2.getY ();
        int x3 = v3.getX ();
        int y3 = v3.getY ();
+
        int xmin = Math.min (x1, Math.min (x2, x3));
        int xmax = Math.max (x1, Math.max (x2, x3));
        int ymin = Math.min (y1, Math.min (y2, y3));
@@ -227,7 +200,8 @@ public class Rasterizer {
            for (int y = ymin; y <= ymax; y++) {
                alpha = C.get (0, 0) + C.get (0, 1) * x + C.get (0, 2) * y;
                beta =  C.get (1, 0) + C.get (1, 1) * x + C.get (1, 2) * y;
-                gamma = C.get (2, 0) + C.get (2, 1) * x + C.get (2, 2) * y;
+               gamma = C.get (2, 0) + C.get (2, 1) * x + C.get (2, 2) * y;
+               // 
                if (alpha >= 0 && beta >= 0 && gamma >= 0) {
                    Fragment f = new Fragment (x, y);
                    for (int i=0; i < v1.getNumAttributes (); i++) {

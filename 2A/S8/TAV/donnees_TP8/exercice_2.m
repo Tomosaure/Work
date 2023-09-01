@@ -4,7 +4,7 @@ close all;
 % Paramètres à régler :
 nb_iterations = 20;
 epsilon = 0.01;
-lambda = 100;
+lambda = 5;
 
 % Mise en place de la figure pour affichage :
 taille_ecran = get(0,'ScreenSize');
@@ -13,7 +13,7 @@ H = taille_ecran(4);
 figure('Name','Decomposition structure + texture par le modele ROF','Position',[0,0,L,0.5*H]);
 
 % Lecture et affichage de l'image u :
-u = imread('Images/pilier.png');
+u = imread('Images/Lena.jpg');
 u = double(u);
 [nb_lignes,nb_colonnes,nb_canaux] = size(u);
 subplot(1,3,1);

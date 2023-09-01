@@ -27,10 +27,13 @@ public class Texture {
      */ 
     public Color sample (double u, double v) {
 
+        u = u%1;
+        v = v%1;
 
-	/* A COMPLETER */
+        int x = (int) Math.round (u * width);
+        int y = (int) Math.round (v * height);
 
+        return new Color (image.getRGB (x, y));
 
-        return new Color (0,0,0);
     }
 }
